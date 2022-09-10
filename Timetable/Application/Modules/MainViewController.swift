@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white //UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
+        view.backgroundColor = .white
         
         view.addSubview(label)
         
