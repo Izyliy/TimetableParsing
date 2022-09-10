@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E56BE76428CD1F3F007FE14E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E56BE76328CD1F3F007FE14E /* SnapKit */; };
+		E56BE76728CD1FA3007FE14E /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E56BE76628CD1FA3007FE14E /* SwiftSoup */; };
+		E56BE76A28CD208D007FE14E /* Promises in Frameworks */ = {isa = PBXBuildFile; productRef = E56BE76928CD208D007FE14E /* Promises */; };
 		E5E18D8C28CCF56C0057EB2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18D8B28CCF56C0057EB2C /* AppDelegate.swift */; };
 		E5E18D8E28CCF56C0057EB2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18D8D28CCF56C0057EB2C /* SceneDelegate.swift */; };
 		E5E18D9028CCF56C0057EB2C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18D8F28CCF56C0057EB2C /* MainViewController.swift */; };
@@ -39,6 +42,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E56BE76428CD1F3F007FE14E /* SnapKit in Frameworks */,
+				E56BE76728CD1FA3007FE14E /* SwiftSoup in Frameworks */,
+				E56BE76A28CD208D007FE14E /* Promises in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +149,11 @@
 			dependencies = (
 			);
 			name = Timetable;
+			packageProductDependencies = (
+				E56BE76328CD1F3F007FE14E /* SnapKit */,
+				E56BE76628CD1FA3007FE14E /* SwiftSoup */,
+				E56BE76928CD208D007FE14E /* Promises */,
+			);
 			productName = Timetable;
 			productReference = E5E18D8828CCF56C0057EB2C /* Timetable.app */;
 			productType = "com.apple.product-type.application";
@@ -171,6 +182,11 @@
 				Base,
 			);
 			mainGroup = E5E18D7F28CCF56C0057EB2C;
+			packageReferences = (
+				E56BE76228CD1F3F007FE14E /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E56BE76528CD1FA3007FE14E /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				E56BE76828CD208D007FE14E /* XCRemoteSwiftPackageReference "promises" */,
+			);
 			productRefGroup = E5E18D8928CCF56C0057EB2C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -412,6 +428,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E56BE76228CD1F3F007FE14E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		E56BE76528CD1FA3007FE14E /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		E56BE76828CD208D007FE14E /* XCRemoteSwiftPackageReference "promises" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/promises.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E56BE76328CD1F3F007FE14E /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E56BE76228CD1F3F007FE14E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		E56BE76628CD1FA3007FE14E /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E56BE76528CD1FA3007FE14E /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		E56BE76928CD208D007FE14E /* Promises */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E56BE76828CD208D007FE14E /* XCRemoteSwiftPackageReference "promises" */;
+			productName = Promises;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E5E18D8028CCF56C0057EB2C /* Project object */;
 }
