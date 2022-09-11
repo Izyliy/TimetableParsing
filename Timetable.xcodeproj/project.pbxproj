@@ -14,6 +14,8 @@
 		E56BE77028CDEE74007FE14E /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56BE76F28CDEE74007FE14E /* RequestManager.swift */; };
 		E56BE77228CDEEF6007FE14E /* RequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56BE77128CDEEF6007FE14E /* RequestOperation.swift */; };
 		E56BE77528CE0A54007FE14E /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = E56BE77428CE0A54007FE14E /* netfox */; };
+		E56BE77728CE582D007FE14E /* MainTimetablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56BE77628CE582D007FE14E /* MainTimetablePresenter.swift */; };
+		E56BE77928CE58BB007FE14E /* MainTimetableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56BE77828CE58BB007FE14E /* MainTimetableModel.swift */; };
 		E5E18D8C28CCF56C0057EB2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18D8B28CCF56C0057EB2C /* AppDelegate.swift */; };
 		E5E18D8E28CCF56C0057EB2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18D8D28CCF56C0057EB2C /* SceneDelegate.swift */; };
 		E5E18D9028CCF56C0057EB2C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18D8F28CCF56C0057EB2C /* MainViewController.swift */; };
@@ -29,6 +31,8 @@
 /* Begin PBXFileReference section */
 		E56BE76F28CDEE74007FE14E /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		E56BE77128CDEEF6007FE14E /* RequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOperation.swift; sourceTree = "<group>"; };
+		E56BE77628CE582D007FE14E /* MainTimetablePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTimetablePresenter.swift; sourceTree = "<group>"; };
+		E56BE77828CE58BB007FE14E /* MainTimetableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTimetableModel.swift; sourceTree = "<group>"; };
 		E5E18D8828CCF56C0057EB2C /* Timetable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timetable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5E18D8B28CCF56C0057EB2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5E18D8D28CCF56C0057EB2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				E5E18DB328CCF9BD0057EB2C /* MainTimetableViewController.swift */,
+				E56BE77628CE582D007FE14E /* MainTimetablePresenter.swift */,
+				E56BE77828CE58BB007FE14E /* MainTimetableModel.swift */,
 			);
 			path = MainTimetableModule;
 			sourceTree = "<group>";
@@ -235,8 +241,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E56BE77928CE58BB007FE14E /* MainTimetableModel.swift in Sources */,
 				E5E18D9028CCF56C0057EB2C /* MainViewController.swift in Sources */,
 				E5E18D8C28CCF56C0057EB2C /* AppDelegate.swift in Sources */,
+				E56BE77728CE582D007FE14E /* MainTimetablePresenter.swift in Sources */,
 				E5E18DAE28CCF7190057EB2C /* Coordinator.swift in Sources */,
 				E5E18DAD28CCF7190057EB2C /* AppCoordinator.swift in Sources */,
 				E5E18DB028CCF7E90057EB2C /* TimetableCoordinator.swift in Sources */,
