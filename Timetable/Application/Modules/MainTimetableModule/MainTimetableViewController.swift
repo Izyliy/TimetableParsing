@@ -38,8 +38,7 @@ class MainTimetableViewController: UIViewController {
     }
     
     @objc func buttonPressed() {
-        gateway.getGroupsSuggestionData().then { data in
-            let list = try JSONDecoder().decode(GroupList.self, from: data)
+        gateway.getGroupsSuggestionData().then { list in
             print(list)
         }.catch { error in
             print(error.localizedDescription)

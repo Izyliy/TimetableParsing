@@ -31,8 +31,9 @@ class MainTimetableGateway {
     }
     
     // https://s.kubsau.ru/bitrix/components/atom/atom.education.schedule-real/get.php?query=%D0%9F%D0%9822&type_schedule=1
-    func getGroupsSuggestionData() -> Promise<Data> {
-        guard let url = URL(string: "https://s.kubsau.ru") else { return defaultPromise }
+    func getGroupsSuggestionData() -> Promise<GroupList> {
+        let promise = Promise<GroupList>.pending()
+        let url = URL(string: "https://s.kubsau.ru")!
         
         let urlRequest = URLRequestBuilder(path: "/bitrix/components/atom/atom.education.schedule-real/get.php")
             .method(.get)
@@ -43,6 +44,14 @@ class MainTimetableGateway {
             ])
             .makeRequest(withBaseURL: url)
         
-        return RequestManager.sharedInstance.makeRequest(urlRequest)
+        RequestManager.sharedInstance.makeRequest(urlRequest).then { data in
+            let groupList = try JSONDecoder().decode(GroupList.self, from: data)
+            
+            promise.fulfill(groupList)
+        }.catch { error in
+            promise.reject(error)
+        }
+        
+        return promise
     }
 }
