@@ -21,6 +21,14 @@ class MainTimetableViewController: UIViewController {
         
         return button
     }()
+    
+    let textField: UITextField = {
+        let textField = UITextField()
+        
+        textField.borderStyle = .line
+        
+        return textField
+    }()
 
     let gateway = MainTimetableGateway()
     
@@ -28,6 +36,13 @@ class MainTimetableViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
         view.addSubview(button)
+        view.addSubview(textField)
+        
+        textField.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.greaterThanOrEqualTo(150)
+            make.bottom.equalTo(button.snp.top).offset(-15)
+        }
         
         button.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -38,7 +53,8 @@ class MainTimetableViewController: UIViewController {
     }
     
     @objc func buttonPressed() {
-        gateway.getGroupsSuggestionData().then { list in
+        let text = textField.text ?? ""
+        gateway.getGroupsSuggestionDataFor(text).then { list in
             print(list)
         }.catch { error in
             print(error.localizedDescription)
