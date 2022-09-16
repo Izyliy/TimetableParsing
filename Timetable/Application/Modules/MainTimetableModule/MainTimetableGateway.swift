@@ -10,26 +10,7 @@ import URLRequestBuilder
 import Promises
 
 class MainTimetableGateway {
-    let defaultPromise = Promise<Data> { fulfill, reject in
-        fulfill(Data())
-    }
-    
-    func exampleRequest() {
-        guard let url = URL(string: "https://cdn.igromania.ru") else { return }
-        
-        let urlRequest = URLRequestBuilder(path: "mnt/news/e/7/3/5/f/7/114069/165b2a269068aa78_1920xH.jpg")
-            .method(.get)
-            .timeout(20)
-            .queryItem(name: "city", value: "San Francisco")
-            .makeRequest(withBaseURL: url)
-        
-        RequestManager.sharedInstance.makeRequest(urlRequest).then { data in
-            let _ = UIImage(data: data)
-        }.catch { error in
-            print(error)
-        }
-    }
-    
+
     //https://s.kubsau.ru/bitrix/components/atom/atom.education.schedule-real/get.php?query=%D0%9F%D0%9822&type_schedule=1
     func getGroupsSuggestionDataFor(_ text: String) -> Promise<GroupList> {
         let promise = Promise<GroupList>.pending()

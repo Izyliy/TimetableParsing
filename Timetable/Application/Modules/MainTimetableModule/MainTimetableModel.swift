@@ -12,14 +12,19 @@ import UIKit
 // MARK: - GroupList Models
 struct GroupList: Codable {
     let query: String
-    let suggestions: [Suggestion]
+    let suggestions: [GroupSuggestion]
     
     init(data: Data) throws {
         self = try JSONDecoder().decode(GroupList.self, from: data)
     }
+    
+    init() {
+        query = ""
+        suggestions = []
+    }
 }
 
-struct Suggestion: Codable {
+struct GroupSuggestion: Codable {
     let value: String
     let data: String
 }
