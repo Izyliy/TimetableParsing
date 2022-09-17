@@ -39,7 +39,20 @@ class TimetableCoordinator: TimetableCoordinatorProtocol {
     //MARK: - Methods for creating modules
     func getMainTimetableModule() -> MainTimetableViewController {
         let viewController = MainTimetableViewController()
+        
+        viewController.openTimetableForGroup = { str in // TODO: добавить weak self
+            let vc = self.getGroupTimetableFor(group: str)
+            self.navigationController.pushViewController(vc, animated: true)
+        }
                 
+        return viewController
+    }
+    
+    func getGroupTimetableFor(group: String) -> ExtendedTimetableViewController {
+        let viewController = ExtendedTimetableViewController()
+        
+        viewController.configure(group: group)
+        
         return viewController
     }
 }

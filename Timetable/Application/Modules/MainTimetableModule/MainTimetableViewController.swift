@@ -28,13 +28,15 @@ class MainTimetableViewController: UIViewController {
     let gateway = MainTimetableGateway()
     var displayManager: MainTimetableDisplayManager?
     
+    var openTimetableForGroup: ((String) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
         view.addSubview(textField)
         view.addSubview(tableView)
-        displayManager = MainTimetableDisplayManager(tableView: tableView)
+        displayManager = MainTimetableDisplayManager(tableView: tableView, view: self)
 
         tableView.delegate = displayManager
         tableView.dataSource = displayManager
@@ -58,8 +60,9 @@ class MainTimetableViewController: UIViewController {
     @objc func textFieldChanged(_ textField: UITextField) {
         let text = textField.text ?? ""
         gateway.getGroupsSuggestionDataFor(text).then { list in
-            self.displayManager?.updateTableView(with: list)
-            print(list)
+            if list.query == textField.text {
+                self.displayManager?.updateTableView(with: list)
+            }
         }.catch { error in
             print(error.localizedDescription)
         }

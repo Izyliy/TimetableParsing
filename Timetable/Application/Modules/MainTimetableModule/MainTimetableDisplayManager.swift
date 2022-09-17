@@ -10,10 +10,12 @@ import UIKit
 class MainTimetableDisplayManager: NSObject {
     var tableView: UITableView
     var groupList: GroupList
+    weak var view: MainTimetableViewController?
     
-    init(tableView: UITableView) {
+    init(tableView: UITableView, view: MainTimetableViewController) {
         self.tableView = tableView
         self.groupList = .init()
+        self.view = view
         super.init()
 
         tableView.delegate = self
@@ -41,7 +43,10 @@ class MainTimetableDisplayManager: NSObject {
 }
 
 extension MainTimetableDisplayManager: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+        view?.openTimetableForGroup?(groupList.suggestions[row].value)
+    }
 }
 
 extension MainTimetableDisplayManager: UITableViewDataSource {
