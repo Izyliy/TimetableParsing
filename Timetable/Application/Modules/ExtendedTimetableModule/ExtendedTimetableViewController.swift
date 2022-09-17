@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import SwiftSoup
 
 class ExtendedTimetableViewController: UIViewController {
+    
+    let gateway = ExtendedTimetableGateway()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,20 +20,24 @@ class ExtendedTimetableViewController: UIViewController {
     
     func configure(group: String) {
         
-        guard var urlComps = URLComponents(string: "https://s.kubsau.ru/") else { return }
-        
-        urlComps.queryItems = [
-            URLQueryItem(name: "type_schedule", value: "1"),
-            URLQueryItem(name: "val", value: group)
-        ]
-        
-        guard let url = urlComps.url else { return }
-            
-        do {
-            let contents = try String(contentsOf: url)
-            print(contents)
-        } catch {
-            // contents could not be loaded
+        gateway.getTimetableHtmlFor(group).then { html in
+            self.parseTimetableWith(html: html)
         }
+    }
+    
+    func parseTimetableWith(html: String) {
+        do {
+            let doc = try SwiftSoup.parse(html)
+            let firstWeekDoc = try doc.select("div").filter({ try $0.classNames().contains("schedule-first-week") }).first
+            let secondWeekDoc = try doc.select("div").filter({ try $0.classNames().contains("schedule-second-week") }).first
+            try parseWeekWith(html: secondWeekDoc)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func parseWeekWith(html: Element?) throws {
+        let haha = try html?.text()
+        print(haha)
     }
 }
