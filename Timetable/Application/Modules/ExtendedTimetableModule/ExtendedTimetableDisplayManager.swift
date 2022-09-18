@@ -55,6 +55,10 @@ extension ExtendedTimetableDisplayManager: UITableViewDelegate {
 }
 
 extension ExtendedTimetableDisplayManager: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        timetableWeek[section].date
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         timetableWeek.count
     }

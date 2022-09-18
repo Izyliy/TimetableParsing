@@ -64,9 +64,11 @@ class ExtendedTimetableViewController: UIViewController {
         guard let dayDocs = try html?.select("div").filter({ try !$0.className().contains("week") }) else { return [] }
         var week: [TimetableDay] = []
         
-        for day in dayDocs {
-            let lessons = try day.select("tr")
-            var day = TimetableDay(date: "", lessons: [])
+        for dayDoc in dayDocs {
+            let lessons = try dayDoc.select("tr")
+            let dayDate = try dayDoc.select("h4").first()?.text()
+            
+            var day = TimetableDay(date: dayDate, lessons: [])
             
             for lesson in lessons {
                 let timeMas = try lesson.select("td")
