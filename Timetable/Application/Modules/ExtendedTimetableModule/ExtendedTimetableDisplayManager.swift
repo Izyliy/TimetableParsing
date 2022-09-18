@@ -50,7 +50,7 @@ extension ExtendedTimetableDisplayManager: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        64
+        UITableView.automaticDimension//64
     }
 }
 

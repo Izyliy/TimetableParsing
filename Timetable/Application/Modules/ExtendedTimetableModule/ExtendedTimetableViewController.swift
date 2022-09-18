@@ -128,7 +128,6 @@ class ExtendedTimetableViewController: UIViewController {
             week.append(day)
         }
         
-        print(week)
         return week
     }
 }

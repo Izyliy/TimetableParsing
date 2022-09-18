@@ -21,7 +21,8 @@ class LessonTableViewCell: UITableViewCell {
         let label = UILabel()
         
         label.text = "Not Configured"
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: 18)
+        label.numberOfLines = 0
         
         return label
     }()
@@ -30,7 +31,7 @@ class LessonTableViewCell: UITableViewCell {
         let field = UITextField()
         
         field.text = "Not Configured"
-        field.font = .systemFont(ofSize: 16)
+        field.font = .systemFont(ofSize: 14)
         field.isUserInteractionEnabled = false
         
         return field
@@ -40,7 +41,8 @@ class LessonTableViewCell: UITableViewCell {
         let label = UILabel()
         
         label.text = "Not Configured"
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: 16)
+        label.textAlignment = .right
         
         return label
     }()
@@ -49,7 +51,7 @@ class LessonTableViewCell: UITableViewCell {
         let label = UILabel()
         
         label.text = "Not Configured"
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: 16)
         
         return label
     }()
@@ -81,25 +83,29 @@ class LessonTableViewCell: UITableViewCell {
         lectionView.snp.makeConstraints { make in
             make.left.top.bottom.equalToSuperview()
             make.width.equalTo(8)
+            make.height.greaterThanOrEqualTo(55)
         }
         
         nameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(4)
             make.left.equalTo(lectionView.snp.right).offset(4)
+            make.right.lessThanOrEqualTo(timeLabel.snp.left)
         }
         
         professorTextField.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp.bottom).offset(4)
             make.left.equalTo(lectionView.snp.right).offset(4)
-//            make.height.equalTo(<#T##other: ConstraintRelatableTarget##ConstraintRelatableTarget#>)
+            make.bottom.equalToSuperview().offset(-4)
         }
         
         timeLabel.snp.makeConstraints { make in
-            make.top.right.equalToSuperview()
+            make.top.equalToSuperview().offset(4)
+            make.right.equalToSuperview().offset(-4)
+            make.width.equalTo(105)
         }
         
         cabinetLabel.snp.makeConstraints { make in
-            make.bottom.right.equalToSuperview()
+            make.bottom.right.equalToSuperview().offset(-4)
         }
     }
 }
