@@ -10,12 +10,31 @@ import SwiftSoup
 
 class ExtendedTimetableViewController: UIViewController {
     
+    let tableView: UITableView = {
+        let tableView = UITableView(frame: CGRectZero, style: .grouped)
+                
+        return tableView
+    }()
+    
     let gateway = ExtendedTimetableGateway()
+    var displayManager: ExtendedTimetableDisplayManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(tableView)
+        
+        displayManager = ExtendedTimetableDisplayManager(tableView: tableView, view: self)
+        
+        tableView.delegate = displayManager
+        tableView.dataSource = displayManager
+        
+        tableView.snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
+            make.height.equalTo(view.safeAreaLayoutGuide.snp.height)
+        }
 
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .lightGray
     }
     
     func configure(group: String) {
@@ -34,8 +53,8 @@ class ExtendedTimetableViewController: UIViewController {
             
             let firstWeek = try parseWeekWith(html: firstWeekDoc)
             let secondWeek = try parseWeekWith(html: secondWeekDoc)
-            
-            print("")
+
+            displayManager?.updateTableView(with: firstWeek)
         } catch {
             print(error.localizedDescription)
         }
@@ -47,7 +66,7 @@ class ExtendedTimetableViewController: UIViewController {
         
         for day in dayDocs {
             let lessons = try day.select("tr")
-            var day = TimetableDay(date: "", lesson: [])
+            var day = TimetableDay(date: "", lessons: [])
             
             for lesson in lessons {
                 let timeMas = try lesson.select("td")
@@ -103,7 +122,7 @@ class ExtendedTimetableViewController: UIViewController {
                     cabinet: cabinet,
                     className: className)
                 
-                day.lesson.append(lsn)
+                day.lessons.append(lsn)
             }
             
             week.append(day)

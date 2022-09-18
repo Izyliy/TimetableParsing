@@ -23,7 +23,7 @@ struct TimetableLesson {
 
 struct TimetableDay {
     let date: String?
-    var lesson: [TimetableLesson]
+    var lessons: [TimetableLesson]
 }
 
 struct GroupTimetable {
