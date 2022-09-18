@@ -12,13 +12,18 @@ struct Professor {
     let link: String?
 }
 
-struct TimetableDay {
+struct TimetableLesson {
     let startTime: String?
     let endTime: String?
     let isLection: Bool?
     let professor: Professor?
     let cabinet: String?
     let className: String?
+}
+
+struct TimetableDay {
+    let date: String?
+    var lesson: [TimetableLesson]
 }
 
 struct GroupTimetable {
