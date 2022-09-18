@@ -16,22 +16,39 @@ class ExtendedTimetableViewController: UIViewController {
         return tableView
     }()
     
+    let weekControl: UISegmentedControl = {
+        let view = UISegmentedControl(items: ["First week", "Second week"])
+        
+        view.selectedSegmentIndex = 0
+        
+        return view
+    }()
+    
     let gateway = ExtendedTimetableGateway()
     var displayManager: ExtendedTimetableDisplayManager?
+    var timetable: GroupTimetable?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
+        view.addSubview(weekControl)
         
         displayManager = ExtendedTimetableDisplayManager(tableView: tableView, view: self)
         
         tableView.delegate = displayManager
         tableView.dataSource = displayManager
         
+        weekControl.addTarget(self, action: #selector(chooseWeek(_:)), for: .valueChanged)
+        
         tableView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
-            make.height.equalTo(view.safeAreaLayoutGuide.snp.height)
+            make.top.equalTo(weekControl.snp.bottom).offset(4)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        
+        weekControl.snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(4)
         }
 
         view.backgroundColor = .lightGray
@@ -41,6 +58,19 @@ class ExtendedTimetableViewController: UIViewController {
         
         gateway.getTimetableHtmlFor(group).then { html in
             self.parseTimetableWith(html: html)
+        }
+    }
+    
+    @objc func chooseWeek(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            displayManager?.updateTableView(with: timetable?.firstWeek ?? [])
+            break
+        case 1:
+            displayManager?.updateTableView(with: timetable?.secondWeek ?? [])
+            break
+        default:
+            break
         }
     }
     
@@ -54,6 +84,9 @@ class ExtendedTimetableViewController: UIViewController {
             let firstWeek = try parseWeekWith(html: firstWeekDoc)
             let secondWeek = try parseWeekWith(html: secondWeekDoc)
 
+            timetable = GroupTimetable(firstWeek: firstWeek,
+                                       secondWeek: secondWeek)
+            
             displayManager?.updateTableView(with: firstWeek)
         } catch {
             print(error.localizedDescription)
