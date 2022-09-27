@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import URLRequestBuilder
 
-class MainTimetableViewController: UIViewController {
+class MainTimetableViewController: UIViewController, UITextFieldDelegate {
     
     let textField: UITextField = {
         let textField = UITextField()
@@ -55,6 +55,19 @@ class MainTimetableViewController: UIViewController {
         }
         
         textField.addTarget(self, action: #selector(textFieldChanged(_:)), for: .editingChanged)
+        textField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.textField {
+            if let group = textField.text, group.count > 5, group.count < 9 {
+                openTimetableForGroup?(group)
+            }
+            
+            textField.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     @objc func textFieldChanged(_ textField: UITextField) {

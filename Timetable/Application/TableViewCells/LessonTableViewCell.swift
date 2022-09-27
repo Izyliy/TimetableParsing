@@ -58,11 +58,11 @@ class LessonTableViewCell: UITableViewCell {
     
     func setup(lesson: TimetableLesson) {
         self.timetableLesson = lesson
-        self.addSubview(lectionView)
-        self.addSubview(nameLabel)
-        self.addSubview(professorTextField)
-        self.addSubview(timeLabel)
-        self.addSubview(cabinetLabel)
+        contentView.addSubview(lectionView)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(professorTextField)
+        contentView.addSubview(timeLabel)
+        contentView.addSubview(cabinetLabel)
         
         
         lectionView.backgroundColor = (lesson.isLection ?? false) ? .yellow : .gray
