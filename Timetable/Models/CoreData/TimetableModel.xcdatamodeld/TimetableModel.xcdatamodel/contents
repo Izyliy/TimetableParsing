@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Professor" representedClassName="Professor" syncable="YES">
+        <attribute name="link" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="lesson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimetableLesson" inverseName="professors" inverseEntity="TimetableLesson"/>
+    </entity>
+    <entity name="Timetable" representedClassName="Timetable" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="firstWeek" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimetableDay"/>
+        <relationship name="secondWeek" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimetableDay"/>
+    </entity>
+    <entity name="TimetableDay" representedClassName="TimetableDay" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="weekDay" optional="YES" attributeType="String"/>
+        <relationship name="lessons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimetableLesson" inverseName="day" inverseEntity="TimetableLesson"/>
+    </entity>
+    <entity name="TimetableLesson" representedClassName="TimetableLesson" syncable="YES">
+        <attribute name="cabinets" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="endTime" optional="YES" attributeType="String"/>
+        <attribute name="isLection" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="startTime" optional="YES" attributeType="String"/>
+        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimetableDay" inverseName="lessons" inverseEntity="TimetableDay"/>
+        <relationship name="professors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Professor" inverseName="lesson" inverseEntity="Professor"/>
+    </entity>
+</model>

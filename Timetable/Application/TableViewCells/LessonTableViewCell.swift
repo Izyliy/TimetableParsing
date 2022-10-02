@@ -50,7 +50,7 @@ class LessonTableViewCell: UITableViewCell {
     let cabinetLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Not Configured"
+//        label.text = " "
         label.font = .systemFont(ofSize: 16)
         
         return label
@@ -65,19 +65,19 @@ class LessonTableViewCell: UITableViewCell {
         contentView.addSubview(cabinetLabel)
         
         
-        lectionView.backgroundColor = (lesson.isLection ?? false) ? .yellow : .gray
+        lectionView.backgroundColor = lesson.isLection ? .yellow : .gray
         
-        nameLabel.text = lesson.className
+        nameLabel.text = lesson.name
         
-        let attributedString = NSMutableAttributedString(string: lesson.professor?.name ?? "")
+        let attributedString = NSMutableAttributedString(string: lesson.professorsArray[0].name ?? "")
         attributedString.addAttribute(.link,
-                                      value: lesson.professor?.link ?? "",
-                                      range: NSRange(location: 0, length: lesson.professor?.name?.count ?? 0))
+                                      value: lesson.professorsArray[0].link ?? "",
+                                      range: NSRange(location: 0, length: lesson.professorsArray[0].name?.count ?? 0))
         professorTextField.attributedText = attributedString
         
         timeLabel.text = (lesson.startTime ?? "") + " - " + (lesson.endTime ?? "")
         
-        cabinetLabel.text = lesson.cabinet
+        cabinetLabel.text = lesson.cabinets?.joined(separator: "|")
         
         
         lectionView.snp.makeConstraints { make in

@@ -25,7 +25,7 @@ class ExtendedTimetableGateway {
             ])
             .makeRequest(withBaseURL: url)
             
-        RequestManager.sharedInstance.makeRequest(urlRequest).then { data in
+        RequestManager.sharedInstance.makeDataRequest(urlRequest).then { data in
             if let contents = String(data: data, encoding: .utf8) {
                 promise.fulfill(contents)
             } else {

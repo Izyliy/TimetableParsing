@@ -32,7 +32,7 @@ class ExtendedTimetableDisplayManager: NSObject {
         let section = indexPath.section
         let row = indexPath.row
 
-        cell.setup(lesson: timetableWeek[section].lessons[row])
+        cell.setup(lesson: timetableWeek[section].lessonsArray[row])
 
         return cell
     }
@@ -56,7 +56,7 @@ extension ExtendedTimetableDisplayManager: UITableViewDelegate {
 
 extension ExtendedTimetableDisplayManager: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        timetableWeek[section].date
+        timetableWeek[section].date?.timetableTitle()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -64,7 +64,7 @@ extension ExtendedTimetableDisplayManager: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        timetableWeek[section].lessons.count
+        timetableWeek[section].lessonsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

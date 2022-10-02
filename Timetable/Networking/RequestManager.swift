@@ -17,7 +17,26 @@ class RequestManager {
         queue.addOperation(operation)
     }
     
-    func makeRequest(_ request: URLRequest) -> Promise<Data> {
+    func makeRequest<T: Codable>(_ request: URLRequest) -> Promise<T> {
+        return Promise { [unowned self] fulfill, reject in
+            let operation = RequestOperation(request: request) { data, response, error in
+                if let error = error {
+                    reject(error)
+                } else if let data = data {
+                    do {
+                        let object = try JSONDecoder().decode(T.self, from: data)
+                        fulfill(object)
+                    } catch {
+                        reject(error)
+                    }
+                }
+            }
+            
+            execute(operation: operation)
+        }
+    }
+    
+    func makeDataRequest(_ request: URLRequest) -> Promise<Data> {
         return Promise { [unowned self] fulfill, reject in
             let operation = RequestOperation(request: request) { data, response, error in
                 if let error = error {
