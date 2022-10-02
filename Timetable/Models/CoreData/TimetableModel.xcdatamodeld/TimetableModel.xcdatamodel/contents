@@ -8,21 +8,21 @@
     <entity name="Timetable" representedClassName="Timetable" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
-        <relationship name="firstWeek" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimetableDay"/>
-        <relationship name="secondWeek" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimetableDay"/>
+        <relationship name="firstWeek" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TimetableDay"/>
+        <relationship name="secondWeek" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TimetableDay"/>
     </entity>
     <entity name="TimetableDay" representedClassName="TimetableDay" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="weekDay" optional="YES" attributeType="String"/>
-        <relationship name="lessons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimetableLesson" inverseName="day" inverseEntity="TimetableLesson"/>
+        <relationship name="lessons" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TimetableLesson" inverseName="day" inverseEntity="TimetableLesson"/>
     </entity>
     <entity name="TimetableLesson" representedClassName="TimetableLesson" syncable="YES">
-        <attribute name="cabinets" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="cabinets" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="endTime" optional="YES" attributeType="String"/>
         <attribute name="isLection" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="startTime" optional="YES" attributeType="String"/>
-        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimetableDay" inverseName="lessons" inverseEntity="TimetableDay"/>
-        <relationship name="professors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Professor" inverseName="lesson" inverseEntity="Professor"/>
+        <relationship name="day" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TimetableDay" inverseName="lessons" inverseEntity="TimetableDay"/>
+        <relationship name="professors" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Professor" inverseName="lesson" inverseEntity="Professor"/>
     </entity>
 </model>

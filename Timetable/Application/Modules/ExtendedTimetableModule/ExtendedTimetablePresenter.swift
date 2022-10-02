@@ -32,7 +32,15 @@ class ExtendedTimetablePresenter {
         }
     }
     
-    func parseTimetable(with html: String, name: String, type: TimetableType) {
+    func getWeek(index: Int) -> [TimetableDay]? {
+        if index == 0 {
+            return state.timetable?.firstWeekArray
+        } else {
+            return state.timetable?.secondWeekArray
+        }
+    }
+    
+    private func parseTimetable(with html: String, name: String, type: TimetableType) {
         do {
             let doc = try SwiftSoup.parse(html)
             
@@ -47,13 +55,12 @@ class ExtendedTimetablePresenter {
                                                              firstWeek: firstWeek,
                                                              secondWeek: secondWeek)
             
-//            displayManager?.updateTableView(with: firstWeek)
         } catch {
             print(error.localizedDescription)
         }
     }
     
-    func parseWeek(with html: Element?) throws -> [TimetableDay] {
+    private func parseWeek(with html: Element?) throws -> [TimetableDay] {
         guard let dayDocs = try html?.select("div").filter({ try !$0.className().contains("week") }) else { return [] }
         var week: [TimetableDay] = []
         
@@ -89,7 +96,6 @@ class ExtendedTimetablePresenter {
                 let profName = try profDoc?.text()
                 let profLink = try profDoc?.attr("href")
                 let professor = useCase.getNewProfessor(name: profName, link: profLink)
-//                let professor = Professor(name: profName, link: profLink)
 
                 let cabinet = try lesson.select("td")
                     .filter({ try $0.classNames().contains("who-where") })
@@ -110,15 +116,7 @@ class ExtendedTimetablePresenter {
                     .text()
                     .dropLast(professor.name?.count ?? 0)
                 let className = String(classNameSubstring ?? "")
-                
-//                let lsn = TimetableLesson(
-//                    startTime: startTime,
-//                    endTime: endTime,
-//                    isLection: isLection,
-//                    professor: professor,
-//                    cabinet: cabinet,
-//                    className: className)
-                
+                                
                 let lsn = useCase.getNewLesson(startTime: startTime,
                                                endTime: endTime,
                                                isLection: isLection,
@@ -127,7 +125,6 @@ class ExtendedTimetablePresenter {
                                                name: className)
                 
                 day.addToLessons(lsn)
-//                day.lessons.append(lsn)
             }
             
             week.append(day)

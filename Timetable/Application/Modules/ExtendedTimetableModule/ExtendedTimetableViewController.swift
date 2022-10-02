@@ -63,16 +63,7 @@ class ExtendedTimetableViewController: UIViewController {
     }
     
     @objc func chooseWeek(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            //TODO: вывод первой недели
-            
-            break
-        case 1:
-            //TODO: вывод второй недели
-            break
-        default:
-            break
-        }
+        let timetable = presenter?.getWeek(index: sender.selectedSegmentIndex)
+        displayManager?.updateTableView(with: timetable ?? [])
     }
 }

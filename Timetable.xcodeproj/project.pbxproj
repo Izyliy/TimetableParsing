@@ -10,6 +10,7 @@
 		E53FB41F28E8A24D00BDACB9 /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB41E28E8A24D00BDACB9 /* Date+Format.swift */; };
 		E53FB42128E8A97A00BDACB9 /* ExtendedTimetableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB42028E8A97A00BDACB9 /* ExtendedTimetableState.swift */; };
 		E53FB42328E9A7B100BDACB9 /* String+Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB42228E9A7B100BDACB9 /* String+Cast.swift */; };
+		E53FB43528E9EF1700BDACB9 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB43428E9EF1700BDACB9 /* TextTableViewCell.swift */; };
 		E56BE76428CD1F3F007FE14E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E56BE76328CD1F3F007FE14E /* SnapKit */; };
 		E56BE76728CD1FA3007FE14E /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E56BE76628CD1FA3007FE14E /* SwiftSoup */; };
 		E56BE76A28CD208D007FE14E /* Promises in Frameworks */ = {isa = PBXBuildFile; productRef = E56BE76928CD208D007FE14E /* Promises */; };
@@ -53,6 +54,7 @@
 		E53FB41E28E8A24D00BDACB9 /* Date+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
 		E53FB42028E8A97A00BDACB9 /* ExtendedTimetableState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedTimetableState.swift; sourceTree = "<group>"; };
 		E53FB42228E9A7B100BDACB9 /* String+Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Cast.swift"; sourceTree = "<group>"; };
+		E53FB43428E9EF1700BDACB9 /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
 		E56BE76F28CDEE74007FE14E /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		E56BE77128CDEEF6007FE14E /* RequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOperation.swift; sourceTree = "<group>"; };
 		E56BE77628CE582D007FE14E /* MainTimetablePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTimetablePresenter.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				E584200E28D3949700948B8F /* SuggestedGroupTableViewCell.swift */,
 				E584201928D7521C00948B8F /* LessonTableViewCell.swift */,
+				E53FB43428E9EF1700BDACB9 /* TextTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				E5E18DAC28CCF7190057EB2C /* TabCoordinator.swift in Sources */,
 				E5E18D8E28CCF56C0057EB2C /* SceneDelegate.swift in Sources */,
 				E56BE77228CDEEF6007FE14E /* RequestOperation.swift in Sources */,
+				E53FB43528E9EF1700BDACB9 /* TextTableViewCell.swift in Sources */,
 				E56BE77B28CF95BC007FE14E /* MainTimetableGateway.swift in Sources */,
 				E5AFABC128E844C700482829 /* Professor+CoreDataClass.swift in Sources */,
 				E53FB42328E9A7B100BDACB9 /* String+Cast.swift in Sources */,
