@@ -6,6 +6,7 @@
         <relationship name="lesson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimetableLesson" inverseName="professors" inverseEntity="TimetableLesson"/>
     </entity>
     <entity name="Timetable" representedClassName="Timetable" syncable="YES">
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="firstWeek" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TimetableDay"/>

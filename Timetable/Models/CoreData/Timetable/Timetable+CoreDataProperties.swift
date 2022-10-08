@@ -2,7 +2,7 @@
 //  Timetable+CoreDataProperties.swift
 //  Timetable
 //
-//  Created by Павел Грабчак on 01.10.2022.
+//  Created by Павел Грабчак on 08.10.2022.
 //
 //
 
@@ -16,8 +16,9 @@ extension Timetable {
         return NSFetchRequest<Timetable>(entityName: "Timetable")
     }
 
-    @NSManaged public var type: String?
     @NSManaged public var name: String?
+    @NSManaged public var type: String?
+    @NSManaged public var creationDate: Date?
     @NSManaged public var firstWeek: NSSet?
     @NSManaged public var secondWeek: NSSet?
 

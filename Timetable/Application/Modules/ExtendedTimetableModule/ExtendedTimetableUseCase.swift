@@ -39,6 +39,7 @@ class ExtendedTimetableUseCase {
         
         timetable.name = name
         timetable.type = type.rawValue
+        timetable.creationDate = Date()
         
         guard let firstWeekSet = Set(firstWeek) as? NSSet,
               let secondWeekSet = Set(secondWeek) as? NSSet
