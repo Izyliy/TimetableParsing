@@ -135,6 +135,11 @@ class MainViewController: UIViewController {
         table.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getData()
+        table.reloadData()
+    }
+    
     func getData() {
         do {
             professors = try context.fetch(Professor.fetchRequest())
@@ -209,5 +214,26 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         1
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if display == .timetables {
+            let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, handler) in
+                guard let timetable = self.timetables?[indexPath.row] else { return }
+                
+                self.context.delete(timetable)
+                
+                do {
+                    try self.context.save()
+                } catch { }
+                
+                self.getData()
+                self.table.reloadData()
+            }
+            
+            return UISwipeActionsConfiguration(actions: [action])
+        }
+        
+        return nil
     }
 }
