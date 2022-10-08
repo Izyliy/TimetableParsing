@@ -45,6 +45,6 @@ enum CoordinatorType {
     case app
     case tab
     case timetable
+    case search
     case settings
 }
-

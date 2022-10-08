@@ -9,6 +9,7 @@ import UIKit
 
 enum TabBarPage {
     case timetable
+    case search
     case settings
 
     init?(index: Int) {
@@ -16,6 +17,8 @@ enum TabBarPage {
         case 0:
             self = .timetable
         case 1:
+            self = .search
+        case 2:
             self = .settings
         default:
             return nil
@@ -26,6 +29,8 @@ enum TabBarPage {
         switch self {
         case .timetable:
             return "Расписание"
+        case .search:
+            return "Поиск"
         case .settings:
             return "Настройки"
         }
@@ -35,8 +40,10 @@ enum TabBarPage {
         switch self {
         case .timetable:
             return 0
-        case .settings:
+        case .search:
             return 1
+        case .settings:
+            return 2
         }
     }
 
@@ -76,7 +83,7 @@ class TabCoordinator: NSObject, Coordinator {
 
     func start() {
         // Let's define which pages do we want to add into tab bar
-        let pages: [TabBarPage] = [.timetable, .settings]
+        let pages: [TabBarPage] = [.timetable, .search, .settings]
             .sorted(by: { $0.pageOrderNumber() < $1.pageOrderNumber() })
         
         // Initialization of ViewControllers or these pages
@@ -94,6 +101,20 @@ class TabCoordinator: NSObject, Coordinator {
         timetableCoordinator.finishDelegate = self
         timetableCoordinator.start()
         childCoordinators.append(timetableCoordinator)
+    }
+    
+    private func startSearchFlow(navigationController: UINavigationController){
+        let searchCoordinator = SearchCoordinator.init(navigationController)
+        searchCoordinator.finishDelegate = self
+        searchCoordinator.start()
+        childCoordinators.append(searchCoordinator)
+    }
+    
+    private func startSettingsFlow(navigationController: UINavigationController){
+        let settingsCoordinator = SettingsCoordinator.init(navigationController)
+        settingsCoordinator.finishDelegate = self
+        settingsCoordinator.start()
+        childCoordinators.append(settingsCoordinator)
     }
     
     private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
@@ -122,16 +143,18 @@ class TabCoordinator: NSObject, Coordinator {
         switch page {
         case .timetable:
             startTimetableFlow(navigationController: navController)
+        case .search:
+            startSearchFlow(navigationController: navController)
         case .settings:
-            let goVC = MainViewController()
-            
-            navController.pushViewController(goVC, animated: true)
+            startSettingsFlow(navigationController: navController)
         }
         
         return navController
     }
     
-    func currentPage() -> TabBarPage? { TabBarPage.init(index: tabBarController.selectedIndex) }
+    func currentPage() -> TabBarPage? {
+        TabBarPage.init(index: tabBarController.selectedIndex)
+    }
 
     func selectPage(_ page: TabBarPage) {
         tabBarController.selectedIndex = page.pageOrderNumber()
@@ -157,7 +180,7 @@ extension TabCoordinator: CoordinatorFinishDelegate {
         childCoordinators = childCoordinators.filter({ $0.type != childCoordinator.type })
 
         switch childCoordinator.type {
-        case .timetable:
+        case .search:
             print("puk")
         default:
             break

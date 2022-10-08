@@ -1,5 +1,5 @@
 //
-//  TimetableCoordinator.swift
+//  SettingsCoordinator.swift
 //  Timetable
 //
 //  Created by Павел Грабчак on 08.10.2022.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol TimetableCoordinatorProtocol: Coordinator {
-    func showTimetableCoordinator()
+protocol SettingsCoordinatorProtocol: Coordinator {
+    func showSettingsCoordinator()
 }
 
-class TimetableCoordinator: TimetableCoordinatorProtocol {
+class SettingsCoordinator: SettingsCoordinatorProtocol {
     weak var finishDelegate: CoordinatorFinishDelegate?
     
     var navigationController: UINavigationController
@@ -25,20 +25,20 @@ class TimetableCoordinator: TimetableCoordinatorProtocol {
     }
         
     func start() {
-        showTimetableCoordinator()
+        showSettingsCoordinator()
     }
     
     deinit {
         print("SettingsCoordinator deinit")
     }
     
-    func showTimetableCoordinator() {
-        navigationController.pushViewController(getMainModule(), animated: true)
+    func showSettingsCoordinator() {
+        navigationController.pushViewController(getMainSettingsModule(), animated: true)
     }
     
     //MARK: - Methods for creating modules
-    func getMainModule() -> PlaceholderViewController {
-        let viewController = PlaceholderViewController()
+    func getMainSettingsModule() -> MainViewController {
+        let viewController = MainViewController()
                 
         return viewController
     }
