@@ -40,6 +40,10 @@ class ExtendedTimetablePresenter {
         }
     }
     
+    func setFavourite() {
+        UserDefaults.standard.set(state.timetable?.name, forKey: "FavTimetable")
+    }
+    
     private func parseTimetable(with html: String, name: String, type: TimetableType) {
         do {
             let doc = try SwiftSoup.parse(html)

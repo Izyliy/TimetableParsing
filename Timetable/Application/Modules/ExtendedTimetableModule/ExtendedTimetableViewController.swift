@@ -23,6 +23,15 @@ class ExtendedTimetableViewController: UIViewController {
         return view
     }()
     
+    let favoriteButton: UIButton = {
+        let button = UIButton()
+        
+        let imageConfiguration = UIImage.SymbolConfiguration(pointSize: 17, weight: .medium, scale: .large)
+        button.setImage(UIImage(systemName: "ellipsis", withConfiguration: imageConfiguration), for: .normal)
+        
+        return button
+    }()
+    
     var displayManager: ExtendedTimetableDisplayManager?
     var presenter: ExtendedTimetablePresenter?
     var timetable: [Timetable]?
@@ -55,11 +64,19 @@ class ExtendedTimetableViewController: UIViewController {
         tableView.delegate = displayManager
         tableView.dataSource = displayManager
         
+        title = group
+        favoriteButton.addTarget(self, action: #selector(tapOnFavorite(_:)), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favoriteButton)
+        
         presenter?.setupInitialState(name: group, type: .group)
     }
     
     func updateTimetable(week: [TimetableDay]) {
         displayManager?.updateTableView(with: week)
+    }
+        
+    @objc func tapOnFavorite(_ sender: UIButton) {
+        presenter?.setFavourite()
     }
     
     @objc func chooseWeek(_ sender: UISegmentedControl) {
