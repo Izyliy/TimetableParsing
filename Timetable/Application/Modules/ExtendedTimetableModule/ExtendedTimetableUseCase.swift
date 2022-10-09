@@ -66,7 +66,9 @@ class ExtendedTimetableUseCase {
         return day
     }
     
-    func getNewProfessor(name: String?, link: String?) -> Professor {
+    func getNewProfessor(name: String?, link: String?) -> Professor? {
+        guard let name = name else { return nil }
+        
         let professor = Professor(context: context)
         
         professor.name = name

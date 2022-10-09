@@ -182,13 +182,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         var message = ""
         switch display {
         case .professors:
-            message = professors?[index].name ?? " smth wrong "
+            message = professors?[index].name ?? " no name "
         case .lessons:
-            message = lessons?[index].name ?? " smth wrong "
+            message = "\(lessons?[index].day?.date?.timetableTitle()  ?? "no date") | \(lessons?[index].startTime ?? "no time")"
         case .days:
-            message = days?[index].date?.timetableTitle() ?? " smth wrong "
+            message = days?[index].date?.timetableTitle() ?? "no date"
         case .timetables:
-            message = timetables?[index].name ?? " smth wrong "
+            message = timetables?[index].name ?? "no name"
         }
         cell.setup(message)
         

@@ -69,10 +69,10 @@ class LessonTableViewCell: UITableViewCell {
         
         nameLabel.text = lesson.name
         
-        let attributedString = NSMutableAttributedString(string: lesson.professorsArray[0].name ?? "")
+        let attributedString = NSMutableAttributedString(string: lesson.professorsArray.first?.name ?? "")
         attributedString.addAttribute(.link,
-                                      value: lesson.professorsArray[0].link ?? "",
-                                      range: NSRange(location: 0, length: lesson.professorsArray[0].name?.count ?? 0))
+                                      value: lesson.professorsArray.first?.link ?? "",
+                                      range: NSRange(location: 0, length: lesson.professorsArray.first?.name?.count ?? 0))
         professorTextField.attributedText = attributedString
         
         timeLabel.text = (lesson.startTime ?? "") + " - " + (lesson.endTime ?? "")

@@ -114,13 +114,13 @@ class ExtendedTimetablePresenter {
                     .filter({ try $0.classNames().contains("diss") })
                     .first?
                     .text()
-                    .dropLast(professor.name?.count ?? 0)
+                    .dropLast(professor?.name?.count ?? 0)
                 let className = String(classNameSubstring ?? "")
                                 
                 let lsn = useCase.getNewLesson(startTime: startTime,
                                                endTime: endTime,
                                                isLection: isLection,
-                                               professors: [professor],
+                                               professors: [professor].compactMap{ $0 } ,
                                                cabinets: [cabinet],
                                                name: className)
                 
