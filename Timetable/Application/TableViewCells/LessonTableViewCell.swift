@@ -27,14 +27,13 @@ class LessonTableViewCell: UITableViewCell {
         return label
     }()
     
-    let professorTextField: UITextField = {
-        let field = UITextField()
+    let professorTextView: UITextView = {
+        let view = UITextView()
         
-        field.text = "Not Configured"
-        field.font = .systemFont(ofSize: 14)
-        field.isUserInteractionEnabled = false
+        view.text = "Not Configured"
+        view.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
-        return field
+        return view
     }()
     
     let timeLabel: UILabel = {
@@ -50,7 +49,6 @@ class LessonTableViewCell: UITableViewCell {
     let cabinetLabel: UILabel = {
         let label = UILabel()
         
-//        label.text = " "
         label.font = .systemFont(ofSize: 16)
         
         return label
@@ -60,7 +58,7 @@ class LessonTableViewCell: UITableViewCell {
         self.timetableLesson = lesson
         contentView.addSubview(lectionView)
         contentView.addSubview(nameLabel)
-        contentView.addSubview(professorTextField)
+        contentView.addSubview(professorTextView)
         contentView.addSubview(timeLabel)
         contentView.addSubview(cabinetLabel)
         
@@ -69,11 +67,13 @@ class LessonTableViewCell: UITableViewCell {
         
         nameLabel.text = lesson.name
         
-        let attributedString = NSMutableAttributedString(string: lesson.professorsArray.first?.name ?? "")
-        attributedString.addAttribute(.link,
-                                      value: lesson.professorsArray.first?.link ?? "",
-                                      range: NSRange(location: 0, length: lesson.professorsArray.first?.name?.count ?? 0))
-        professorTextField.attributedText = attributedString
+        let attributes: [NSAttributedString.Key: Any] = [
+            .link: lesson.professorsArray.first?.link ?? "",
+            .font: UIFont.systemFont(ofSize: 15),
+        ]
+        let attributedString = NSAttributedString(string: lesson.professorsArray.first?.name ?? "", attributes: attributes)
+        
+        professorTextView.attributedText = attributedString
         
         timeLabel.text = (lesson.startTime ?? "") + " - " + (lesson.endTime ?? "")
         
@@ -88,13 +88,15 @@ class LessonTableViewCell: UITableViewCell {
         
         nameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(4)
-            make.left.equalTo(lectionView.snp.right).offset(4)
+            make.left.equalTo(lectionView.snp.right).offset(8)
             make.right.lessThanOrEqualTo(timeLabel.snp.left)
         }
         
-        professorTextField.snp.makeConstraints { make in
+        professorTextView.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp.bottom).offset(4)
             make.left.equalTo(lectionView.snp.right).offset(4)
+            make.height.equalTo(20)
+            make.width.equalToSuperview().dividedBy(2)
             make.bottom.equalToSuperview().offset(-4)
         }
         
