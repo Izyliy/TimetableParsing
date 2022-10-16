@@ -40,18 +40,19 @@ class SearchCoordinator: SearchCoordinatorProtocol {
     func getMainTimetableModule() -> SearchTimetableViewController {
         let viewController = SearchTimetableViewController()
         
-        viewController.openTimetableForGroup = { str in
-            let vc = self.getGroupTimetableFor(name: str)
+        viewController.openTimetableForGroup = { str, type in
+            let vc = self.getGroupTimetableFor(name: str, type: type)
             self.navigationController.pushViewController(vc, animated: true)
         }
                 
         return viewController
     }
     
-    func getGroupTimetableFor(name: String) -> ExtendedTimetableViewController {
+    func getGroupTimetableFor(name: String, type: TimetableType) -> ExtendedTimetableViewController {
         let viewController = ExtendedTimetableViewController()
         
-        viewController.configure(name: name, mode: .extended)
+        //TODO: set mode
+        viewController.configure(name: name, mode: .extended, type: type)
         
         return viewController
     }

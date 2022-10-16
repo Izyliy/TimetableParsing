@@ -27,8 +27,8 @@ class ExtendedTimetableUseCase {
         }
     }
     
-    func getTimetableHtml(for str: String) -> Promise<String> {
-        return gateway.getTimetableHtmlFor(str)
+    func getTimetableHtml(for str: String, type: TimetableType) -> Promise<String> {
+        return gateway.getTimetableHtmlFor(name: str, type: type)
     }
     
     func createTimetableAndSave(name: String,
@@ -38,7 +38,7 @@ class ExtendedTimetableUseCase {
         let timetable = Timetable(context: context)
         
         timetable.name = name
-        timetable.type = type.rawValue
+        timetable.type = type.getTypeString()
         timetable.creationDate = Date()
         
         guard let firstWeekSet = Set(firstWeek) as? NSSet,

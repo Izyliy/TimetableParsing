@@ -23,7 +23,7 @@ class ExtendedTimetablePresenter {
             state.timetable = timetable
             view?.updateTimetable(week: timetable.firstWeekArray)
         } else {
-            useCase.getTimetableHtml(for: name).then { html in
+            useCase.getTimetableHtml(for: name, type: type).then { html in
                 self.parseTimetable(with: html, name: name, type: type)
                 self.view?.updateTimetable(week: self.state.timetable?.firstWeekArray ?? [])
             }.catch { error in

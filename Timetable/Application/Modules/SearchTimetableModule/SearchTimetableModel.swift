@@ -20,16 +20,25 @@ struct SuggestionsList: Codable {
     }
 }
 
-enum SearchType: Int {
+enum TimetableType: Int {
     case group = 0
     case cabinet = 1
     
-    func getRequestInt() -> String {
+    func getTypeNumber() -> String {
         switch self {
         case .group:
             return "1"
         case .cabinet:
             return "3"
+        }
+    }
+    
+    func getTypeString() -> String {
+        switch self {
+        case .group:
+            return "group"
+        case .cabinet:
+            return "cabinet"
         }
     }
 }

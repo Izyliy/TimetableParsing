@@ -45,7 +45,10 @@ class SearchTimetableDisplayManager: NSObject {
 extension SearchTimetableDisplayManager: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
-        view?.openTimetableForGroup?(suggestionsList.suggestions[row].value)
+        let name = suggestionsList.suggestions[row].value
+        let type = view?.getTimetableType() ?? .group
+        
+        view?.openTimetableForGroup?(name, type)
     }
 }
 

@@ -57,7 +57,7 @@ class ExtendedTimetableViewController: UIViewController {
         view.backgroundColor = .lightGray
     }
     
-    func configure(name: String, mode: TimetableMode) {
+    func configure(name: String, mode: TimetableMode, type: TimetableType) {
         displayManager = ExtendedTimetableDisplayManager(tableView: tableView, view: self)
         presenter = ExtendedTimetablePresenter(view: self)
         
@@ -68,7 +68,7 @@ class ExtendedTimetableViewController: UIViewController {
         favoriteButton.addTarget(self, action: #selector(tapOnFavorite(_:)), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favoriteButton)
         
-        presenter?.setupInitialState(name: name, type: .group)
+        presenter?.setupInitialState(name: name, type: type)
     }
     
     func updateTimetable(week: [TimetableDay]) {

@@ -12,11 +12,6 @@ enum TimetableMode {
     case preview
 }
 
-enum TimetableType: String {
-    case group
-    case cabinet
-}
-
 class ExtendedTimetableState {
     var timetable: Timetable?
 }

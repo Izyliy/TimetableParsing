@@ -12,7 +12,7 @@ import URLRequestBuilder
 class ExtendedTimetableGateway {
     
     //https://s.kubsau.ru/?type_schedule=1&val=ПИ2241
-    func getTimetableHtmlFor(_ group: String) -> Promise<String> {
+    func getTimetableHtmlFor(name: String, type: TimetableType) -> Promise<String> {
         let promise = Promise<String>.pending()
         let url = URL(string: "https://s.kubsau.ru/")!
         
@@ -20,8 +20,8 @@ class ExtendedTimetableGateway {
             .method(.get)
             .timeout(60)
             .queryItems([
-                .init(name: "type_schedule", value: "1"),
-                .init(name: "val", value: group)
+                .init(name: "type_schedule", value: type.getTypeNumber()),
+                .init(name: "val", value: name)
             ])
             .makeRequest(withBaseURL: url)
             
