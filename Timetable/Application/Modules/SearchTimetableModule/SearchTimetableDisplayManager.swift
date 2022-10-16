@@ -9,34 +9,34 @@ import UIKit
 
 class SearchTimetableDisplayManager: NSObject {
     var tableView: UITableView
-    var groupList: GroupList
+    var suggestionsList: SuggestionsList
     weak var view: SearchTimetableViewController?
     
     init(tableView: UITableView, view: SearchTimetableViewController) {
         self.tableView = tableView
-        self.groupList = .init()
+        self.suggestionsList = SuggestionsList(query: "", suggestions: [])
         self.view = view
         super.init()
 
         tableView.delegate = self
         tableView.dataSource = self
 
-        tableView.register(SuggestedGroupTableViewCell.self, forCellReuseIdentifier: "SuggestedGroupTableViewCell")
+        tableView.register(SuggestionTableViewCell.self, forCellReuseIdentifier: "SuggestionTableViewCell")
         
         tableView.reloadData()
     }
     
-    func createCell(indexPath: IndexPath) -> SuggestedGroupTableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestedGroupTableViewCell") as? SuggestedGroupTableViewCell else { return SuggestedGroupTableViewCell() }
+    func createCell(indexPath: IndexPath) -> SuggestionTableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestionTableViewCell") as? SuggestionTableViewCell else { return SuggestionTableViewCell() }
         
         let index = indexPath.row
-        cell.setup(group: groupList.suggestions[index])
+        cell.setup(group: suggestionsList.suggestions[index])
         
         return cell
     }
     
-    func updateTableView(with groups: GroupList) {
-        self.groupList = groups
+    func updateTableView(with groups: SuggestionsList) {
+        self.suggestionsList = groups
         
         tableView.reloadData()
     }
@@ -45,7 +45,7 @@ class SearchTimetableDisplayManager: NSObject {
 extension SearchTimetableDisplayManager: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
-        view?.openTimetableForGroup?(groupList.suggestions[row].value)
+        view?.openTimetableForGroup?(suggestionsList.suggestions[row].value)
     }
 }
 
@@ -55,7 +55,7 @@ extension SearchTimetableDisplayManager: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        groupList.suggestions.count
+        suggestionsList.suggestions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

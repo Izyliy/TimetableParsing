@@ -8,8 +8,8 @@
 import UIKit
 import SnapKit
 
-class SuggestedGroupTableViewCell: UITableViewCell {
-    var group: GroupSuggestion?
+class SuggestionTableViewCell: UITableViewCell {
+    var group: SuggestionsList.Suggestion?
     
     let label: UILabel = {
         let label = UILabel()
@@ -20,7 +20,7 @@ class SuggestedGroupTableViewCell: UITableViewCell {
         return label
     }()
     
-    func setup(group: GroupSuggestion) {
+    func setup(group: SuggestionsList.Suggestion) {
         self.group = group
         self.addSubview(label)
         

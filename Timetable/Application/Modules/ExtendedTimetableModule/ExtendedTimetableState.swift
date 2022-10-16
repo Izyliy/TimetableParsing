@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum TimetalbeMode {
+enum TimetableMode {
     case extended
     case preview
 }

@@ -57,7 +57,7 @@ class ExtendedTimetableViewController: UIViewController {
         view.backgroundColor = .lightGray
     }
     
-    func configure(name: String, mode: TimetalbeMode) {
+    func configure(name: String, mode: TimetableMode) {
         displayManager = ExtendedTimetableDisplayManager(tableView: tableView, view: self)
         presenter = ExtendedTimetablePresenter(view: self)
         

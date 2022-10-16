@@ -10,21 +10,26 @@ import UIKit
 // https://s.kubsau.ru/bitrix/components/atom/atom.education.schedule-real/get.php?query=%D0%9F%D0%9822&type_schedule=1
 
 // MARK: - GroupList Models
-struct GroupList: Codable {
+struct SuggestionsList: Codable {
     let query: String
-    let suggestions: [GroupSuggestion]
+    let suggestions: [Suggestion]
     
-    init(data: Data) throws {
-        self = try JSONDecoder().decode(GroupList.self, from: data)
-    }
-    
-    init() {
-        query = ""
-        suggestions = []
+    struct Suggestion: Codable {
+        let value: String
+        let data: String
     }
 }
 
-struct GroupSuggestion: Codable {
-    let value: String
-    let data: String
+enum SearchType: Int {
+    case group = 0
+    case cabinet = 1
+    
+    func getRequestInt() -> String {
+        switch self {
+        case .group:
+            return "1"
+        case .cabinet:
+            return "3"
+        }
+    }
 }

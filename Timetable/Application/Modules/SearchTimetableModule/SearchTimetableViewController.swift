@@ -24,6 +24,14 @@ class SearchTimetableViewController: UIViewController, UITextFieldDelegate {
         
         return tableView
     }()
+    
+    let typeControl: UISegmentedControl = {
+        let view = UISegmentedControl(items: ["Group", "Cabinet"])
+        
+        view.selectedSegmentIndex = 0
+        
+        return view
+    }()
 
     let gateway = SearchTimetableGateway()
     var displayManager: SearchTimetableDisplayManager?
@@ -36,15 +44,21 @@ class SearchTimetableViewController: UIViewController, UITextFieldDelegate {
         view.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
         view.addSubview(textField)
         view.addSubview(tableView)
+        view.addSubview(typeControl)
         displayManager = SearchTimetableDisplayManager(tableView: tableView, view: self)
 
         tableView.delegate = displayManager
         tableView.dataSource = displayManager
         
+        typeControl.snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(4)
+        }
+
         textField.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.width.greaterThanOrEqualTo(150)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
+            make.top.equalTo(typeControl.snp.bottom).offset(16)
         }
         
         tableView.snp.makeConstraints { make in
@@ -71,8 +85,10 @@ class SearchTimetableViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func textFieldChanged(_ textField: UITextField) {
-        let text = textField.text ?? ""
-        gateway.getGroupsSuggestionDataFor(text).then { list in
+        let name = textField.text ?? ""
+        let type = SearchType(rawValue: typeControl.selectedSegmentIndex) ?? .group
+        
+        gateway.getGroupsSuggestionDataFor(name: name, type: type).then { list in
             if list.query == textField.text {
                 self.displayManager?.updateTableView(with: list)
             }
