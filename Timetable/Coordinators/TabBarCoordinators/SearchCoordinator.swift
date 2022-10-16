@@ -37,21 +37,21 @@ class SearchCoordinator: SearchCoordinatorProtocol {
     }
     
     //MARK: - Methods for creating modules
-    func getMainTimetableModule() -> MainTimetableViewController {
-        let viewController = MainTimetableViewController()
+    func getMainTimetableModule() -> SearchTimetableViewController {
+        let viewController = SearchTimetableViewController()
         
-        viewController.openTimetableForGroup = { str in // TODO: добавить weak self
-            let vc = self.getGroupTimetableFor(group: str)
+        viewController.openTimetableForGroup = { str in
+            let vc = self.getGroupTimetableFor(name: str)
             self.navigationController.pushViewController(vc, animated: true)
         }
                 
         return viewController
     }
     
-    func getGroupTimetableFor(group: String) -> ExtendedTimetableViewController {
+    func getGroupTimetableFor(name: String) -> ExtendedTimetableViewController {
         let viewController = ExtendedTimetableViewController()
         
-        viewController.configure(group: group)
+        viewController.configure(name: name, mode: .extended)
         
         return viewController
     }

@@ -41,7 +41,7 @@ class ExtendedTimetablePresenter {
     }
     
     func setFavourite() {
-        UserDefaults.standard.set(state.timetable?.name, forKey: "FavTimetable")
+        UserDefaults.standard.set(state.timetable?.name, forKey: "MainTimetable")
     }
     
     private func parseTimetable(with html: String, name: String, type: TimetableType) {

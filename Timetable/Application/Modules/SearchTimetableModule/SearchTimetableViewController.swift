@@ -1,5 +1,5 @@
 //
-//  MainTimetableViewController.swift
+//  SearchTimetableViewController.swift
 //  Timetable
 //
 //  Created by Павел Грабчак on 10.09.2022.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import URLRequestBuilder
 
-class MainTimetableViewController: UIViewController, UITextFieldDelegate {
+class SearchTimetableViewController: UIViewController, UITextFieldDelegate {
     
     let textField: UITextField = {
         let textField = UITextField()
@@ -25,8 +25,8 @@ class MainTimetableViewController: UIViewController, UITextFieldDelegate {
         return tableView
     }()
 
-    let gateway = MainTimetableGateway()
-    var displayManager: MainTimetableDisplayManager?
+    let gateway = SearchTimetableGateway()
+    var displayManager: SearchTimetableDisplayManager?
     
     var openTimetableForGroup: ((String) -> Void)?
     
@@ -36,7 +36,7 @@ class MainTimetableViewController: UIViewController, UITextFieldDelegate {
         view.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
         view.addSubview(textField)
         view.addSubview(tableView)
-        displayManager = MainTimetableDisplayManager(tableView: tableView, view: self)
+        displayManager = SearchTimetableDisplayManager(tableView: tableView, view: self)
 
         tableView.delegate = displayManager
         tableView.dataSource = displayManager

@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum TimetalbeMode {
+    case extended
+    case preview
+}
+
 enum TimetableType: String {
     case group
     case cabinet

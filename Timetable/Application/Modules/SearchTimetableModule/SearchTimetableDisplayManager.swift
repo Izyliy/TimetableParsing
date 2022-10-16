@@ -1,5 +1,5 @@
 //
-//  MainTimetableDisplayManager.swift
+//  SearchTimetableDisplayManager.swift
 //  Timetable
 //
 //  Created by Павел Грабчак on 15.09.2022.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-class MainTimetableDisplayManager: NSObject {
+class SearchTimetableDisplayManager: NSObject {
     var tableView: UITableView
     var groupList: GroupList
-    weak var view: MainTimetableViewController?
+    weak var view: SearchTimetableViewController?
     
-    init(tableView: UITableView, view: MainTimetableViewController) {
+    init(tableView: UITableView, view: SearchTimetableViewController) {
         self.tableView = tableView
         self.groupList = .init()
         self.view = view
@@ -42,14 +42,14 @@ class MainTimetableDisplayManager: NSObject {
     }
 }
 
-extension MainTimetableDisplayManager: UITableViewDelegate {
+extension SearchTimetableDisplayManager: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
         view?.openTimetableForGroup?(groupList.suggestions[row].value)
     }
 }
 
-extension MainTimetableDisplayManager: UITableViewDataSource {
+extension SearchTimetableDisplayManager: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }

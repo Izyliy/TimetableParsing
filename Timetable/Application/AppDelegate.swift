@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NFX.sharedInstance().start()
         
+        //TODO: - replace all of UserDefaults sets
+        UserDefaults.standard.set("ПИ2241", forKey: "MainTimetable")
+        UserDefaults.standard.set(true, forKey: "DevMode")
+        
         window = UIWindow.init(frame: UIScreen.main.bounds)
         
         let navigationController: UINavigationController = .init()

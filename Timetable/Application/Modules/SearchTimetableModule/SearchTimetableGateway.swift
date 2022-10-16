@@ -1,5 +1,5 @@
 //
-//  MainTimetableGateway.swift
+//  SearchTimetableGateway.swift
 //  Timetable
 //
 //  Created by Павел Грабчак on 12.09.2022.
@@ -9,7 +9,7 @@ import UIKit
 import URLRequestBuilder
 import Promises
 
-class MainTimetableGateway {
+class SearchTimetableGateway {
 
     //https://s.kubsau.ru/bitrix/components/atom/atom.education.schedule-real/get.php?query=%D0%9F%D0%9822&type_schedule=1
     func getGroupsSuggestionDataFor(_ text: String) -> Promise<GroupList> {

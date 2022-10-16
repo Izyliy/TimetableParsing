@@ -1,5 +1,5 @@
 //
-//  MainTimetablePresenter.swift
+//  SearchTimetablePresenter.swift
 //  Timetable
 //
 //  Created by Павел Грабчак on 11.09.2022.
