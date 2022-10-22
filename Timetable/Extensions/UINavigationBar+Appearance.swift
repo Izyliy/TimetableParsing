@@ -12,7 +12,8 @@ extension UINavigationBar {
     func defaultAppearance() {
         let standardAppearance = UINavigationBarAppearance()
         standardAppearance.configureWithOpaqueBackground()
-        standardAppearance.backgroundColor = UIColor(red: 247/256, green: 248/256, blue: 249/256, alpha: 1)
+        standardAppearance.backgroundColor = UIColor(named: "BrandGreen") //(red: 120/256, green: 175/256, blue: 90/256, alpha: 1)
+        standardAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
 
         self.standardAppearance = standardAppearance
         self.scrollEdgeAppearance = standardAppearance

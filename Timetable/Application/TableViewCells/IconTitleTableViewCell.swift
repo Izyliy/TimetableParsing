@@ -30,7 +30,7 @@ class IconTitleTableViewCell: UITableViewCell {
         label.text = title
         iconView.image = icon
         
-//        iconView.tintColor = .black //TODO: почему iconView красит изображение
+        iconView.tintColor = UIColor(named: "LightGreen")
         
         if let font = font {
             label.font = font
