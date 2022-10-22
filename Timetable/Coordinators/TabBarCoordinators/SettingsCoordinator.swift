@@ -37,8 +37,8 @@ class SettingsCoordinator: SettingsCoordinatorProtocol {
     }
     
     //MARK: - Methods for creating modules
-    func getMainSettingsModule() -> MainViewController {
-        let viewController = MainViewController()
+    func getMainSettingsModule() -> MainSettingsViewController {
+        let viewController = MainSettingsViewController()
                 
         return viewController
     }

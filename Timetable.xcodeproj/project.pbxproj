@@ -18,6 +18,10 @@
 		E53FB44728F2ECA700BDACB9 /* UINavigationBar+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB44128F2ECA700BDACB9 /* UINavigationBar+Appearance.swift */; };
 		E53FB44928F2ECA700BDACB9 /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB44328F2ECA700BDACB9 /* UIView+Animation.swift */; };
 		E53FB44A28F2ECA700BDACB9 /* UIButton+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB44428F2ECA700BDACB9 /* UIButton+Animation.swift */; };
+		E53FB45128FE8A3400BDACB9 /* MainSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB45028FE8A3400BDACB9 /* MainSettingsViewController.swift */; };
+		E53FB45328FE8C3800BDACB9 /* MainSettingsDisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB45228FE8C3800BDACB9 /* MainSettingsDisplayManager.swift */; };
+		E53FB45528FE8D0100BDACB9 /* MainSettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB45428FE8D0100BDACB9 /* MainSettingsState.swift */; };
+		E53FB45728FE8EBD00BDACB9 /* IconTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB45628FE8EBD00BDACB9 /* IconTitleTableViewCell.swift */; };
 		E56BE76428CD1F3F007FE14E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E56BE76328CD1F3F007FE14E /* SnapKit */; };
 		E56BE76728CD1FA3007FE14E /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E56BE76628CD1FA3007FE14E /* SwiftSoup */; };
 		E56BE76A28CD208D007FE14E /* Promises in Frameworks */ = {isa = PBXBuildFile; productRef = E56BE76928CD208D007FE14E /* Promises */; };
@@ -68,6 +72,10 @@
 		E53FB44128F2ECA700BDACB9 /* UINavigationBar+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Appearance.swift"; sourceTree = "<group>"; };
 		E53FB44328F2ECA700BDACB9 /* UIView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
 		E53FB44428F2ECA700BDACB9 /* UIButton+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Animation.swift"; sourceTree = "<group>"; };
+		E53FB45028FE8A3400BDACB9 /* MainSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsViewController.swift; sourceTree = "<group>"; };
+		E53FB45228FE8C3800BDACB9 /* MainSettingsDisplayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsDisplayManager.swift; sourceTree = "<group>"; };
+		E53FB45428FE8D0100BDACB9 /* MainSettingsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsState.swift; sourceTree = "<group>"; };
+		E53FB45628FE8EBD00BDACB9 /* IconTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTitleTableViewCell.swift; sourceTree = "<group>"; };
 		E56BE76F28CDEE74007FE14E /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		E56BE77128CDEEF6007FE14E /* RequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOperation.swift; sourceTree = "<group>"; };
 		E56BE77628CE582D007FE14E /* SearchTimetablePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTimetablePresenter.swift; sourceTree = "<group>"; };
@@ -131,6 +139,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		E53FB44F28FE8A0100BDACB9 /* MainSettingsModule */ = {
+			isa = PBXGroup;
+			children = (
+				E53FB45028FE8A3400BDACB9 /* MainSettingsViewController.swift */,
+				E53FB45228FE8C3800BDACB9 /* MainSettingsDisplayManager.swift */,
+				E53FB45428FE8D0100BDACB9 /* MainSettingsState.swift */,
+			);
+			path = MainSettingsModule;
+			sourceTree = "<group>";
+		};
 		E56BE76E28CDEE2C007FE14E /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +164,7 @@
 				E584200E28D3949700948B8F /* SuggestedGroupTableViewCell.swift */,
 				E584201928D7521C00948B8F /* LessonTableViewCell.swift */,
 				E53FB43428E9EF1700BDACB9 /* TextTableViewCell.swift */,
+				E53FB45628FE8EBD00BDACB9 /* IconTitleTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -295,6 +314,7 @@
 			children = (
 				E53FB43A28F1C3CD00BDACB9 /* PlaceholderViewController.swift */,
 				E5E18D8F28CCF56C0057EB2C /* MainViewController.swift */,
+				E53FB44F28FE8A0100BDACB9 /* MainSettingsModule */,
 				E584201028D5D5D200948B8F /* ExtendedTimetableModule */,
 				E5E18DB228CCF9770057EB2C /* SearchTimetableModule */,
 			);
@@ -399,9 +419,11 @@
 			files = (
 				E53FB42128E8A97A00BDACB9 /* ExtendedTimetableState.swift in Sources */,
 				E5AFABBD28E844C700482829 /* TimetableDay+CoreDataClass.swift in Sources */,
+				E53FB45128FE8A3400BDACB9 /* MainSettingsViewController.swift in Sources */,
 				E56BE77928CE58BB007FE14E /* SearchTimetableModel.swift in Sources */,
 				E53FB43F28F1E01400BDACB9 /* Timetable+CoreDataProperties.swift in Sources */,
 				E5AFABCA28E8854600482829 /* ExtendedTimetableUseCase.swift in Sources */,
+				E53FB45528FE8D0100BDACB9 /* MainSettingsState.swift in Sources */,
 				E5AFABBB28E844C700482829 /* TimetableLesson+CoreDataClass.swift in Sources */,
 				E584201628D6203600948B8F /* ExtendedTimetableGateway.swift in Sources */,
 				E5E18D9028CCF56C0057EB2C /* MainViewController.swift in Sources */,
@@ -411,6 +433,7 @@
 				E56BE77728CE582D007FE14E /* SearchTimetablePresenter.swift in Sources */,
 				E584201A28D7521C00948B8F /* LessonTableViewCell.swift in Sources */,
 				E5AFABC828E8762C00482829 /* ExtendedTimetablePresenter.swift in Sources */,
+				E53FB45728FE8EBD00BDACB9 /* IconTitleTableViewCell.swift in Sources */,
 				E5AFAB9B28E8266300482829 /* TimetableModel.xcdatamodeld in Sources */,
 				E584200F28D3949700948B8F /* SuggestedGroupTableViewCell.swift in Sources */,
 				E5AFABBE28E844C700482829 /* TimetableDay+CoreDataProperties.swift in Sources */,
@@ -426,6 +449,7 @@
 				E53FB44928F2ECA700BDACB9 /* UIView+Animation.swift in Sources */,
 				E584201828D74E0500948B8F /* ExtendedTimetableDisplayManager.swift in Sources */,
 				E5AFABBC28E844C700482829 /* TimetableLesson+CoreDataProperties.swift in Sources */,
+				E53FB45328FE8C3800BDACB9 /* MainSettingsDisplayManager.swift in Sources */,
 				E53FB43928F1C3B400BDACB9 /* TimetableCoordinator.swift in Sources */,
 				E56BE77028CDEE74007FE14E /* RequestManager.swift in Sources */,
 				E53FB43728F172C500BDACB9 /* SettingsCoordinator.swift in Sources */,
