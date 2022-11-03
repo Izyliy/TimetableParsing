@@ -24,17 +24,23 @@ class MainSettingsDisplayManager: NSObject {
         
         tableView.separatorInset = .zero
 
-        tableView.register(IconTitleTableViewCell.self, forCellReuseIdentifier: "IconTitleTableViewCell")
+        tableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: "SettingsTableViewCell")
         
         tableView.reloadData()
     }
     
-    func createCell(indexPath: IndexPath) -> IconTitleTableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "IconTitleTableViewCell") as? IconTitleTableViewCell else { return IconTitleTableViewCell() }
+    func createCell(indexPath: IndexPath, switchable: Bool) -> SettingsTableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell") as? SettingsTableViewCell else { return SettingsTableViewCell() }
         
         let object = timetableObjects[indexPath.row]
+        
+        if switchable {
+            cell.selectionStyle = .none
+        } else {
+            cell.accessoryType = .disclosureIndicator
+        }
 
-        cell.configure(title: object.title, icon: object.icon)
+        cell.configure(title: object.title, switchable: switchable)
 
         return cell
     }
@@ -48,6 +54,7 @@ class MainSettingsDisplayManager: NSObject {
 
 extension MainSettingsDisplayManager: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         timetableObjects[indexPath.row].handler()
     }
     
@@ -67,6 +74,11 @@ extension MainSettingsDisplayManager: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        createCell(indexPath: indexPath)
+        switch indexPath.row {
+        case 2:
+            return createCell(indexPath: indexPath, switchable: false)
+        default:
+            return createCell(indexPath: indexPath, switchable: true)
+        }
     }
 }

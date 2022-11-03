@@ -23,6 +23,7 @@
 		E53FB45528FE8D0100BDACB9 /* MainSettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB45428FE8D0100BDACB9 /* MainSettingsState.swift */; };
 		E53FB45728FE8EBD00BDACB9 /* IconTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB45628FE8EBD00BDACB9 /* IconTitleTableViewCell.swift */; };
 		E53FB4592904264200BDACB9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E53FB4582904264200BDACB9 /* Colors.xcassets */; };
+		E53FB45B290440A100BDACB9 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB45A290440A100BDACB9 /* SettingsTableViewCell.swift */; };
 		E56BE76428CD1F3F007FE14E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E56BE76328CD1F3F007FE14E /* SnapKit */; };
 		E56BE76728CD1FA3007FE14E /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E56BE76628CD1FA3007FE14E /* SwiftSoup */; };
 		E56BE76A28CD208D007FE14E /* Promises in Frameworks */ = {isa = PBXBuildFile; productRef = E56BE76928CD208D007FE14E /* Promises */; };
@@ -78,6 +79,7 @@
 		E53FB45428FE8D0100BDACB9 /* MainSettingsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsState.swift; sourceTree = "<group>"; };
 		E53FB45628FE8EBD00BDACB9 /* IconTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTitleTableViewCell.swift; sourceTree = "<group>"; };
 		E53FB4582904264200BDACB9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		E53FB45A290440A100BDACB9 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		E56BE76F28CDEE74007FE14E /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		E56BE77128CDEEF6007FE14E /* RequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOperation.swift; sourceTree = "<group>"; };
 		E56BE77628CE582D007FE14E /* SearchTimetablePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTimetablePresenter.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				E584201928D7521C00948B8F /* LessonTableViewCell.swift */,
 				E53FB43428E9EF1700BDACB9 /* TextTableViewCell.swift */,
 				E53FB45628FE8EBD00BDACB9 /* IconTitleTableViewCell.swift */,
+				E53FB45A290440A100BDACB9 /* SettingsTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				E53FB43728F172C500BDACB9 /* SettingsCoordinator.swift in Sources */,
 				E5AFABBF28E844C700482829 /* Timetable+CoreDataClass.swift in Sources */,
 				E5E18DAC28CCF7190057EB2C /* TabCoordinator.swift in Sources */,
+				E53FB45B290440A100BDACB9 /* SettingsTableViewCell.swift in Sources */,
 				E5E18D8E28CCF56C0057EB2C /* SceneDelegate.swift in Sources */,
 				E56BE77228CDEEF6007FE14E /* RequestOperation.swift in Sources */,
 				E53FB43528E9EF1700BDACB9 /* TextTableViewCell.swift in Sources */,

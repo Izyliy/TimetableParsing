@@ -47,8 +47,6 @@ class IconTitleTableViewCell: UITableViewCell {
             make.height.width.equalTo(32).priority(900)
             make.top.greaterThanOrEqualToSuperview().offset(8)
             make.bottom.lessThanOrEqualToSuperview().offset(-8)
-            
-//            make.left.greaterThanOrEqualTo(label.snp.right)
         }
         
         label.snp.makeConstraints { make in
