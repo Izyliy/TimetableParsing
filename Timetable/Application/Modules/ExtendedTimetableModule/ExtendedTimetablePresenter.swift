@@ -19,16 +19,14 @@ class ExtendedTimetablePresenter {
     }
     
     func setupInitialState(name: String, type: TimetableType) {
+        state.name = name
+        state.type = type
+        
         if let timetable = useCase.getTimetable(for: name) {
             state.timetable = timetable
             view?.updateTimetable(week: timetable.firstWeekArray)
         } else {
-            useCase.getTimetableHtml(for: name, type: type).then { html in
-                self.parseTimetable(with: html, name: name, type: type)
-                self.view?.updateTimetable(week: self.state.timetable?.firstWeekArray ?? [])
-            }.catch { error in
-                print(error.localizedDescription)
-            }
+            fetchTimetable()
         }
     }
     
@@ -41,7 +39,22 @@ class ExtendedTimetablePresenter {
     }
     
     func setFavourite() {
-        UserDefaults.standard.set(state.timetable?.name, forKey: "MainTimetable")
+        if UserDefaults.standard.string(forKey: "MainTimetable") != state.name {
+            UserDefaults.standard.set(state.name, forKey: "MainTimetable")
+        } else {
+            //error
+        }
+    }
+    
+    func fetchTimetable() {
+        guard let name = state.name, let type = state.type else { return }
+        
+        useCase.getTimetableHtml(for: name, type: type).then { html in
+            self.parseTimetable(with: html, name: name, type: type)
+            self.view?.updateTimetable(week: self.state.timetable?.firstWeekArray ?? [])
+        }.catch { error in
+            print(error.localizedDescription)
+        }
     }
     
     private func parseTimetable(with html: String, name: String, type: TimetableType) {

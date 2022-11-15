@@ -23,7 +23,7 @@ class ExtendedTimetableViewController: UIViewController {
         return view
     }()
     
-    let favoriteButton: UIButton = {
+    let optionsButton: UIButton = {
         let button = UIButton()
         
         let imageConfiguration = UIImage.SymbolConfiguration(pointSize: 17, weight: .medium, scale: .large)
@@ -65,14 +65,39 @@ class ExtendedTimetableViewController: UIViewController {
         tableView.dataSource = displayManager
         
         title = name
-        favoriteButton.addTarget(self, action: #selector(tapOnFavorite(_:)), for: .touchUpInside)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favoriteButton)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: optionsButton)
+        setNavButtonAction(name: name)
         
         presenter?.setupInitialState(name: name, type: type)
     }
     
     func updateTimetable(week: [TimetableDay]) {
         displayManager?.updateTableView(with: week)
+        weekControl.selectedSegmentIndex = 0
+    }
+    
+    func setNavButtonAction(name: String) {
+        if #available(iOS 14.0, *) {
+            let actions: [UIAction] = [
+                UIAction(title: "Избранное", image: UIImage(systemName: "star"), handler: { _ in
+                    self.presenter?.setFavourite()
+                }),
+                UIAction(title: "Обновить", image: UIImage(systemName: "arrow.clockwise"), handler: { _ in
+                    self.presenter?.fetchTimetable()
+                }),
+            ]
+            
+            optionsButton.showsMenuAsPrimaryAction = true
+            optionsButton.menu = UIMenu(title: "",
+                                        image: nil,
+                                        identifier: nil,
+                                        options: [],
+                                        children: actions)
+        } else {
+//            optionsButton.addTarget(self, action: #selector(tapOnFavorite(_:)), for: .touchUpInside)
+            //TODO: fallback to ios 13
+        }
+        
     }
         
     @objc func tapOnFavorite(_ sender: UIButton) {

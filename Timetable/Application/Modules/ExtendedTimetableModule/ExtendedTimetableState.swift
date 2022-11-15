@@ -13,5 +13,8 @@ enum TimetableMode {
 }
 
 class ExtendedTimetableState {
+    var name: String?
+    var type: TimetableType?
+    
     var timetable: Timetable?
 }
