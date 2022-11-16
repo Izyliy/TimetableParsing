@@ -65,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		E520F874292544760011D62B /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
+		E520F876292552FF0011D62B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E53FB41E28E8A24D00BDACB9 /* Date+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
 		E53FB42028E8A97A00BDACB9 /* ExtendedTimetableState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedTimetableState.swift; sourceTree = "<group>"; };
 		E53FB42228E9A7B100BDACB9 /* String+Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Cast.swift"; sourceTree = "<group>"; };
@@ -391,6 +392,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = E5E18D7F28CCF56C0057EB2C;
 			packageReferences = (
@@ -483,6 +485,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E5E18D9728CCF56D0057EB2C /* Base */,
+				E520F876292552FF0011D62B /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -554,6 +558,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

@@ -50,6 +50,8 @@ class SearchTimetableViewController: UIViewController, UITextFieldDelegate {
         tableView.delegate = displayManager
         tableView.dataSource = displayManager
         
+        title = "Поиск"
+        
         typeControl.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(4)
