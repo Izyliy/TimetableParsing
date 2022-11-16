@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E520F875292544760011D62B /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E520F874292544760011D62B /* UIViewController+Alerts.swift */; };
 		E53FB41F28E8A24D00BDACB9 /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB41E28E8A24D00BDACB9 /* Date+Format.swift */; };
 		E53FB42128E8A97A00BDACB9 /* ExtendedTimetableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB42028E8A97A00BDACB9 /* ExtendedTimetableState.swift */; };
 		E53FB42328E9A7B100BDACB9 /* String+Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB42228E9A7B100BDACB9 /* String+Cast.swift */; };
@@ -63,6 +64,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E520F874292544760011D62B /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		E53FB41E28E8A24D00BDACB9 /* Date+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
 		E53FB42028E8A97A00BDACB9 /* ExtendedTimetableState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedTimetableState.swift; sourceTree = "<group>"; };
 		E53FB42228E9A7B100BDACB9 /* String+Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Cast.swift"; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				E53FB44428F2ECA700BDACB9 /* UIButton+Animation.swift */,
 				E53FB44128F2ECA700BDACB9 /* UINavigationBar+Appearance.swift */,
 				E53FB44328F2ECA700BDACB9 /* UIView+Animation.swift */,
+				E520F874292544760011D62B /* UIViewController+Alerts.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				E53FB45728FE8EBD00BDACB9 /* IconTitleTableViewCell.swift in Sources */,
 				E5AFAB9B28E8266300482829 /* TimetableModel.xcdatamodeld in Sources */,
 				E584200F28D3949700948B8F /* SuggestedGroupTableViewCell.swift in Sources */,
+				E520F875292544760011D62B /* UIViewController+Alerts.swift in Sources */,
 				E5AFABBE28E844C700482829 /* TimetableDay+CoreDataProperties.swift in Sources */,
 				E53FB44728F2ECA700BDACB9 /* UINavigationBar+Appearance.swift in Sources */,
 				E5E18DAE28CCF7190057EB2C /* Coordinator.swift in Sources */,

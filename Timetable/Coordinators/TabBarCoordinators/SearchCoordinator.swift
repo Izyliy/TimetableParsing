@@ -53,6 +53,11 @@ class SearchCoordinator: SearchCoordinatorProtocol {
         
         //TODO: set mode
         viewController.configure(name: name, mode: .extended, type: type)
+        navigationController.popViewController(animated: true)
+        
+        viewController.popModule = {
+            self.navigationController.popViewController(animated: true)
+        }
         
         return viewController
     }

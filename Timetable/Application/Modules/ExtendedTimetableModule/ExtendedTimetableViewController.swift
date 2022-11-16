@@ -35,6 +35,8 @@ class ExtendedTimetableViewController: UIViewController {
     var displayManager: ExtendedTimetableDisplayManager?
     var presenter: ExtendedTimetablePresenter?
     var timetable: [Timetable]?
+    
+    var popModule: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,7 +85,7 @@ class ExtendedTimetableViewController: UIViewController {
                     self.presenter?.setFavourite()
                 }),
                 UIAction(title: "Обновить", image: UIImage(systemName: "arrow.clockwise"), handler: { _ in
-                    self.presenter?.fetchTimetable()
+                    self.presenter?.fetchTimetable(forReload: true)
                 }),
             ]
             

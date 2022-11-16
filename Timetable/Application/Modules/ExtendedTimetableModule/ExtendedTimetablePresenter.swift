@@ -26,7 +26,7 @@ class ExtendedTimetablePresenter {
             state.timetable = timetable
             view?.updateTimetable(week: timetable.firstWeekArray)
         } else {
-            fetchTimetable()
+            fetchTimetable(forReload: false)
         }
     }
     
@@ -42,18 +42,21 @@ class ExtendedTimetablePresenter {
         if UserDefaults.standard.string(forKey: "MainTimetable") != state.name {
             UserDefaults.standard.set(state.name, forKey: "MainTimetable")
         } else {
-            //error
+            view?.showError(message: "Данное расписание уже является избранным") //TODO: вместо ошибки убирать из избранного
         }
     }
     
-    func fetchTimetable() {
+    func fetchTimetable(forReload: Bool) {
         guard let name = state.name, let type = state.type else { return }
         
         useCase.getTimetableHtml(for: name, type: type).then { html in
             self.parseTimetable(with: html, name: name, type: type)
             self.view?.updateTimetable(week: self.state.timetable?.firstWeekArray ?? [])
-        }.catch { error in
-            print(error.localizedDescription)
+        }.catch { _ in
+            self.view?.showError(message: "Не удалось загрузить расписание, проверьте соединение с интернетом и попробуйте снова", handler: { _ in
+                guard !forReload else { return }
+                self.view?.popModule?()
+            })
         }
     }
     
