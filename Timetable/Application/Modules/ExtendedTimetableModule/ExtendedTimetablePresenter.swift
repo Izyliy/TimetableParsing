@@ -41,6 +41,7 @@ class ExtendedTimetablePresenter {
     func setFavourite() {
         if UserDefaults.standard.string(forKey: "MainTimetable") != state.name {
             UserDefaults.standard.set(state.name, forKey: "MainTimetable")
+            view?.showMessage("Избранное расписание записано")
         } else {
             view?.showError(message: "Данное расписание уже является избранным") //TODO: вместо ошибки убирать из избранного
         }
@@ -49,6 +50,7 @@ class ExtendedTimetablePresenter {
     func fetchTimetable(forReload: Bool) {
         guard let name = state.name, let type = state.type else { return }
         
+        view?.startIndication()
         useCase.getTimetableHtml(for: name, type: type).then { html in
             self.parseTimetable(with: html, name: name, type: type)
             self.view?.updateTimetable(week: self.state.timetable?.firstWeekArray ?? [])
@@ -57,6 +59,8 @@ class ExtendedTimetablePresenter {
                 guard !forReload else { return }
                 self.view?.popModule?()
             })
+        }.always {
+            self.view?.stopIndication()
         }
     }
     

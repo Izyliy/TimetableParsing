@@ -8,7 +8,11 @@
 import UIKit
 
 extension UIView {
-    func startInditation() {
+    func startIndication() {
+        if viewWithTag(475647) != nil{
+            return
+        }
+        
         let backgroundView = UIView()
         backgroundView.frame = CGRect.init(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
         backgroundView.backgroundColor = UIColor(white: 0, alpha: 0.3)
