@@ -96,14 +96,21 @@ class ExtendedTimetableViewController: UIViewController {
                                         options: [],
                                         children: actions)
         } else {
-//            optionsButton.addTarget(self, action: #selector(tapOnFavorite(_:)), for: .touchUpInside)
-            //TODO: fallback to ios 13
+            optionsButton.addTarget(self, action: #selector(tapOnBarItem(_:)), for: .touchUpInside)
         }
         
     }
         
-    @objc func tapOnFavorite(_ sender: UIButton) {
-        presenter?.setFavourite()
+    @objc func tapOnBarItem(_ sender: UIButton) {
+        showActionSheet(title: nil, actions: [
+            UIAlertAction(title: "Избранное", style: .default, handler: { _ in
+                self.presenter?.setFavourite()
+            }),
+            UIAlertAction(title: "Обновить", style: .default, handler: { _ in
+                self.presenter?.fetchTimetable(forReload: true)
+            }),
+            UIAlertAction(title: "Отмена", style: .cancel)
+        ])
     }
     
     @objc func chooseWeek(_ sender: UISegmentedControl) {
