@@ -33,9 +33,9 @@ class SearchTimetableViewController: UIViewController, UITextFieldDelegate {
         return view
     }()
 
-    let gateway = SearchTimetableGateway()
     var displayManager: SearchTimetableDisplayManager?
-    
+    var presenter: SearchTimetablePresenter?
+
     var openTimetableForGroup: ((String, TimetableType) -> Void)?
     
     override func viewDidLoad() {
@@ -46,6 +46,7 @@ class SearchTimetableViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(tableView)
         view.addSubview(typeControl)
         displayManager = SearchTimetableDisplayManager(tableView: tableView, view: self)
+        presenter = SearchTimetablePresenter(view: self)
 
         tableView.delegate = displayManager
         tableView.dataSource = displayManager
@@ -74,6 +75,10 @@ class SearchTimetableViewController: UIViewController, UITextFieldDelegate {
         textField.delegate = self
     }
     
+    func updateTimetable(with groups: SuggestionsList) {
+        displayManager?.updateTableView(with: groups)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.textField {
             if let group = textField.text, group.count > 5, group.count < 9 {
@@ -90,13 +95,7 @@ class SearchTimetableViewController: UIViewController, UITextFieldDelegate {
         let name = textField.text ?? ""
         let type = getTimetableType()
         
-        gateway.getGroupsSuggestionDataFor(name: name, type: type).then { list in
-            if list.query == textField.text {
-                self.displayManager?.updateTableView(with: list)
-            }
-        }.catch { error in
-            print(error.localizedDescription)
-        }
+        presenter?.fetchGroupList(for: name, of: type)
     }
     
     func getTimetableType() -> TimetableType {
