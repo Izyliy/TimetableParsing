@@ -1,5 +1,5 @@
 //
-//  ExtendedTimetableGateway.swift
+//  TimetableGateway.swift
 //  Timetable
 //
 //  Created by Павел Грабчак on 17.09.2022.
@@ -9,7 +9,7 @@ import UIKit
 import Promises
 import URLRequestBuilder
 
-class ExtendedTimetableGateway {
+class TimetableGateway {
     
     //https://s.kubsau.ru/?type_schedule=1&val=ПИ2241
     func getTimetableHtmlFor(name: String, type: TimetableType) -> Promise<String> {

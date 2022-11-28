@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExtendedTimetableViewController: UIViewController {
+class TimetableViewController: UIViewController {
     
     let tableView: UITableView = {
         let tableView = UITableView(frame: CGRectZero, style: .grouped)
@@ -32,8 +32,8 @@ class ExtendedTimetableViewController: UIViewController {
         return button
     }()
     
-    var displayManager: ExtendedTimetableDisplayManager?
-    var presenter: ExtendedTimetablePresenter?
+    var displayManager: TimetableDisplayManager?
+    var presenter: TimetablePresenter?
     var timetable: [Timetable]?
     
     var popModule: (() -> Void)?
@@ -60,8 +60,8 @@ class ExtendedTimetableViewController: UIViewController {
     }
     
     func configure(name: String, mode: TimetableMode, type: TimetableType) {
-        displayManager = ExtendedTimetableDisplayManager(tableView: tableView, view: self)
-        presenter = ExtendedTimetablePresenter(view: self)
+        displayManager = TimetableDisplayManager(tableView: tableView, view: self)
+        presenter = TimetablePresenter(view: self)
         
         tableView.delegate = displayManager
         tableView.dataSource = displayManager

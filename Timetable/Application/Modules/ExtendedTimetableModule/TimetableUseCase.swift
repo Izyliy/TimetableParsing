@@ -1,5 +1,5 @@
 //
-//  ExtendedTimetableUseCase.swift
+//  TimetableUseCase.swift
 //  Timetable
 //
 //  Created by Павел Грабчак on 01.10.2022.
@@ -9,10 +9,10 @@ import UIKit
 import CoreData
 import Promises
 
-class ExtendedTimetableUseCase {
+class TimetableUseCase {
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    let gateway = ExtendedTimetableGateway()
+    let gateway = TimetableGateway()
 
     func getTimetable(for str: String) -> Timetable? {
         do {

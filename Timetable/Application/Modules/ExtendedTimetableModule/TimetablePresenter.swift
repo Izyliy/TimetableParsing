@@ -1,5 +1,5 @@
 //
-//  ExtendedTimetablePresenter.swift
+//  TimetablePresenter.swift
 //  Timetable
 //
 //  Created by Павел Грабчак on 01.10.2022.
@@ -8,13 +8,13 @@
 import UIKit
 import SwiftSoup
 
-class ExtendedTimetablePresenter {
-    private let useCase = ExtendedTimetableUseCase()
-    private let state = ExtendedTimetableState()
+class TimetablePresenter {
+    private let useCase = TimetableUseCase()
+    private let state = TimetableState()
     
-    weak var view: ExtendedTimetableViewController?
+    weak var view: TimetableViewController?
 
-    init(view: ExtendedTimetableViewController? = nil) {
+    init(view: TimetableViewController? = nil) {
         self.view = view
     }
     

@@ -1,5 +1,5 @@
 //
-//  ExtendedTimetableState.swift
+//  TimetableState.swift
 //  Timetable
 //
 //  Created by Павел Грабчак on 01.10.2022.
@@ -12,7 +12,7 @@ enum TimetableMode {
     case preview
 }
 
-class ExtendedTimetableState {
+class TimetableState {
     var name: String?
     var type: TimetableType?
     

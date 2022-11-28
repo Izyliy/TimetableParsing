@@ -33,13 +33,22 @@ class TimetableCoordinator: TimetableCoordinatorProtocol {
     }
     
     func showTimetableCoordinator() {
-        navigationController.pushViewController(getMainModule(), animated: true)
+        navigationController.pushViewController(getPreviewTimetableModule(), animated: true)
     }
     
     //MARK: - Methods for creating modules
-    func getMainModule() -> PlaceholderViewController {
-        let viewController = PlaceholderViewController()
-                
+    
+    func getPreviewTimetableModule() -> TimetableViewController {
+        let viewController = TimetableViewController()
+        
+        //TODO: set mode
+        viewController.configure(name: "ПИ2241", mode: .preview, type: .group)
+        navigationController.popViewController(animated: true)
+        
+        viewController.popModule = {
+            self.navigationController.popViewController(animated: true)
+        }
+        
         return viewController
     }
 }

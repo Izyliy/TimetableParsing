@@ -48,8 +48,8 @@ class SearchCoordinator: SearchCoordinatorProtocol {
         return viewController
     }
     
-    func getGroupTimetableFor(name: String, type: TimetableType) -> ExtendedTimetableViewController {
-        let viewController = ExtendedTimetableViewController()
+    func getGroupTimetableFor(name: String, type: TimetableType) -> TimetableViewController {
+        let viewController = TimetableViewController()
         
         //TODO: set mode
         viewController.configure(name: name, mode: .extended, type: type)

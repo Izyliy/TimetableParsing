@@ -1,5 +1,5 @@
 //
-//  ExtendedTimetableDisplayManager.swift
+//  TimetableDisplayManager.swift
 //  Timetable
 //
 //  Created by Павел Грабчак on 18.09.2022.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-class ExtendedTimetableDisplayManager: NSObject {
+class TimetableDisplayManager: NSObject {
     var tableView: UITableView
     var timetableWeek: [TimetableDay]
-    weak var view: ExtendedTimetableViewController?
+    weak var view: TimetableViewController?
     
-    init(tableView: UITableView, view: ExtendedTimetableViewController) {
+    init(tableView: UITableView, view: TimetableViewController) {
         self.tableView = tableView
         self.timetableWeek = []
         self.view = view
@@ -44,7 +44,7 @@ class ExtendedTimetableDisplayManager: NSObject {
     }
 }
 
-extension ExtendedTimetableDisplayManager: UITableViewDelegate {
+extension TimetableDisplayManager: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
     }
@@ -54,7 +54,7 @@ extension ExtendedTimetableDisplayManager: UITableViewDelegate {
     }
 }
 
-extension ExtendedTimetableDisplayManager: UITableViewDataSource {
+extension TimetableDisplayManager: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         timetableWeek[section].date?.timetableTitle()
     }
