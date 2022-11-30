@@ -15,6 +15,7 @@ enum TimetableMode {
 class TimetableState {
     var name: String?
     var type: TimetableType?
+    var mode: TimetableMode?
     
     var timetable: Timetable?
 }

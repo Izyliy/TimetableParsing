@@ -183,7 +183,7 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
-		E584201028D5D5D200948B8F /* ExtendedTimetableModule */ = {
+		E584201028D5D5D200948B8F /* TimetableModule */ = {
 			isa = PBXGroup;
 			children = (
 				E53FB42028E8A97A00BDACB9 /* TimetableState.swift */,
@@ -193,7 +193,7 @@
 				E584201128D5D69200948B8F /* TimetableViewController.swift */,
 				E584201728D74E0500948B8F /* TimetableDisplayManager.swift */,
 			);
-			path = ExtendedTimetableModule;
+			path = TimetableModule;
 			sourceTree = "<group>";
 		};
 		E5AFAB9C28E833D200482829 /* Models */ = {
@@ -330,7 +330,7 @@
 				E53FB43A28F1C3CD00BDACB9 /* PlaceholderViewController.swift */,
 				E5E18D8F28CCF56C0057EB2C /* MainViewController.swift */,
 				E53FB44F28FE8A0100BDACB9 /* MainSettingsModule */,
-				E584201028D5D5D200948B8F /* ExtendedTimetableModule */,
+				E584201028D5D5D200948B8F /* TimetableModule */,
 				E5E18DB228CCF9770057EB2C /* SearchTimetableModule */,
 			);
 			path = Modules;

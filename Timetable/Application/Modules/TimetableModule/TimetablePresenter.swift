@@ -18,13 +18,14 @@ class TimetablePresenter {
         self.view = view
     }
     
-    func setupInitialState(name: String, type: TimetableType) {
+    func setupInitialState(name: String, type: TimetableType, mode: TimetableMode) {
         state.name = name
         state.type = type
+        state.mode = mode
         
         if let timetable = useCase.getTimetable(for: name) {
             state.timetable = timetable
-            view?.updateTimetable(week: timetable.firstWeekArray)
+            view?.updateTimetable(week: timetable.firstWeekArray, mode: mode)
         } else {
             fetchTimetable(forReload: false)
         }
@@ -48,12 +49,15 @@ class TimetablePresenter {
     }
     
     func fetchTimetable(forReload: Bool) {
-        guard let name = state.name, let type = state.type else { return }
+        guard let name = state.name,
+              let type = state.type,
+              let mode = state.mode
+        else { return }
         
         view?.startIndication()
         useCase.getTimetableHtml(for: name, type: type).then { html in
             self.parseTimetable(with: html, name: name, type: type)
-            self.view?.updateTimetable(week: self.state.timetable?.firstWeekArray ?? [])
+            self.view?.updateTimetable(week: self.state.timetable?.firstWeekArray ?? [], mode: mode)
         }.catch { _ in
             self.view?.showError(message: "Не удалось загрузить расписание, проверьте соединение с интернетом и попробуйте снова", handler: { _ in
                 guard !forReload else { return }

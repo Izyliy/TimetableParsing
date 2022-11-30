@@ -33,16 +33,18 @@ class TimetableCoordinator: TimetableCoordinatorProtocol {
     }
     
     func showTimetableCoordinator() {
-        navigationController.pushViewController(getPreviewTimetableModule(), animated: true)
+        let name = UserDefaults.standard.string(forKey: "MainTimetable")
+    
+        navigationController.pushViewController(getTimetableModule(for: name), animated: true)
     }
     
     //MARK: - Methods for creating modules
     
-    func getPreviewTimetableModule() -> TimetableViewController {
+    func getTimetableModule(for name: String?) -> TimetableViewController {
         let viewController = TimetableViewController()
         
         //TODO: set mode
-        viewController.configure(name: "ПИ2241", mode: .preview, type: .group)
+        viewController.configure(name: name, mode: .preview, type: .group)
         navigationController.popViewController(animated: true)
         
         viewController.popModule = {

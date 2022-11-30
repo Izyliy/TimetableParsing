@@ -11,6 +11,7 @@ class TimetableDisplayManager: NSObject {
     var tableView: UITableView
     var timetableWeek: [TimetableDay]
     weak var view: TimetableViewController?
+    private var mode: TimetableMode?
     
     init(tableView: UITableView, view: TimetableViewController) {
         self.tableView = tableView
@@ -37,8 +38,9 @@ class TimetableDisplayManager: NSObject {
         return cell
     }
     
-    func updateTableView(with week: [TimetableDay]) {
+    func updateTableView(with week: [TimetableDay], mode: TimetableMode) {
         self.timetableWeek = week
+        self.mode = mode
         
         tableView.reloadData()
     }

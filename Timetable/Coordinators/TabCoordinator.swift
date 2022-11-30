@@ -28,7 +28,7 @@ enum TabBarPage {
     func pageTitleValue() -> String {
         switch self {
         case .timetable:
-            return "Расписание"
+            return "Избранное"
         case .search:
             return "Поиск"
         case .settings:
