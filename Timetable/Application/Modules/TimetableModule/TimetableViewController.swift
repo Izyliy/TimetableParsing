@@ -41,7 +41,7 @@ class TimetableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .lightGray
+        view.backgroundColor = UIColor(named: "BrandGreen")
     }
     
     func configure(name: String?, mode: TimetableMode, type: TimetableType) {
@@ -72,8 +72,10 @@ class TimetableViewController: UIViewController {
         
         tableView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        
+            guard mode == .preview else { return }
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
         
         guard mode == .extended else { return }
@@ -81,17 +83,18 @@ class TimetableViewController: UIViewController {
         view.addSubview(weekControl)
 
         weekControl.snp.makeConstraints { make in
-            make.left.right.equalToSuperview()
+            make.left.equalToSuperview().offset(4)
+            make.right.equalToSuperview().offset(-4)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(4)
         }
         
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(weekControl.snp.top).offset(4)
+            make.top.equalTo(weekControl.snp.bottom).offset(4)
         }
     }
     
-    func updateTimetable(week: [TimetableDay], mode: TimetableMode) {
-        displayManager?.updateTableView(with: week, mode: mode)
+    func updateTimetable(week: [TimetableDay]) {
+        displayManager?.updateTableView(with: week)
         weekControl.selectedSegmentIndex = 0
     }
     
@@ -132,6 +135,6 @@ class TimetableViewController: UIViewController {
     
     @objc func chooseWeek(_ sender: UISegmentedControl) {
         let timetable = presenter?.getWeek(index: sender.selectedSegmentIndex)
-        displayManager?.updateTableView(with: timetable ?? [], mode: .extended)
+        displayManager?.updateTableView(with: timetable ?? [])
     }
 }

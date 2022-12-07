@@ -26,4 +26,26 @@ public class Timetable: NSManagedObject {
         }
     }
     
+    public func getPreviewDays(for date: Date) -> [TimetableDay] {
+        let firstWeek = firstWeekArray
+        let secondWeek = secondWeekArray
+        
+        guard let firstDate = firstWeek.first?.date,
+              let secondDate = secondWeek.first?.date
+        else { return [] }
+        
+        var fullDaysArray: [TimetableDay] = []
+        
+        if firstDate.timeIntervalSince(secondDate) > 0 {
+            fullDaysArray = firstWeekArray + secondWeekArray
+        } else {
+            fullDaysArray = secondWeekArray + firstWeekArray
+        }
+        
+        if let index = try? fullDaysArray.firstIndex(where: { $0.date == date }) {
+            
+        }
+        
+        return []
+    }
 }

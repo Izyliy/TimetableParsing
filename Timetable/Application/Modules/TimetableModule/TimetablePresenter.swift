@@ -25,7 +25,7 @@ class TimetablePresenter {
         
         if let timetable = useCase.getTimetable(for: name) {
             state.timetable = timetable
-            view?.updateTimetable(week: timetable.firstWeekArray, mode: mode)
+            view?.updateTimetable(week: formDaysArray(mode: mode))
         } else {
             fetchTimetable(forReload: false)
         }
@@ -57,7 +57,7 @@ class TimetablePresenter {
         view?.startIndication()
         useCase.getTimetableHtml(for: name, type: type).then { html in
             self.parseTimetable(with: html, name: name, type: type)
-            self.view?.updateTimetable(week: self.state.timetable?.firstWeekArray ?? [], mode: mode)
+            self.view?.updateTimetable(week: self.formDaysArray(mode: mode))
         }.catch { _ in
             self.view?.showError(message: "Не удалось загрузить расписание, проверьте соединение с интернетом и попробуйте снова", handler: { _ in
                 guard !forReload else { return }
@@ -65,6 +65,19 @@ class TimetablePresenter {
             })
         }.always {
             self.view?.stopIndication()
+        }
+    }
+    
+    private func formDaysArray(mode: TimetableMode) -> [TimetableDay] {
+        switch mode {
+        case .extended:
+            return state.timetable?.firstWeekArray ?? []
+        case .preview:
+            guard let timetable = state.timetable else { return [] }
+            
+            let date = Calendar.current.startOfDay(for: Date())
+            
+            return timetable.getPreviewDays(for: date)
         }
     }
     
