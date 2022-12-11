@@ -39,7 +39,7 @@ public class Timetable: NSManagedObject {
             dateComponent.day = i + sundayCount - 1
             guard var newDate = Calendar.current.date(byAdding: dateComponent, to: date) else { continue }
             
-            if Calendar.current.dateComponents([.weekday], from: newDate ?? Date()).weekday == 1 {
+            if Calendar.current.dateComponents([.weekday], from: newDate).weekday == 1 {
                 sundayCount += 1
                 
                 dateComponent.day = i + sundayCount - 1
@@ -58,7 +58,7 @@ public class Timetable: NSManagedObject {
                 for i in 1...8 {
                     var dateComponent = DateComponents()
                     dateComponent.day = -i * 14
-                    var newDate = Calendar.current.date(byAdding: dateComponent, to: date)
+                    let newDate = Calendar.current.date(byAdding: dateComponent, to: date)
                     
                     guard let day = fullDaysArray.first(where: { $0.date == newDate }) else { continue }
                     previewDays.append(day)

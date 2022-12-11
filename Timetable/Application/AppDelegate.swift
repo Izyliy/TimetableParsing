@@ -30,6 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .light
+        }
+        
         appCoordinator = AppCoordinator.init(navigationController)
         appCoordinator?.start()
                 
