@@ -17,7 +17,9 @@ extension String {
         dateFormatter.dateFormat = "EEEE | dd MMMM yyyy"
         dateFormatter.timeZone = TimeZone(identifier: "UTC")
 
-        return dateFormatter.date(from: string)
+        guard let date = dateFormatter.date(from: string) else { return nil }
+        
+        return Calendar.current.startOfDay(for: date)
     }
     
 }

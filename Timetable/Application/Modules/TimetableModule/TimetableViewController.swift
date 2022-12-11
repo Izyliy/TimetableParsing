@@ -40,8 +40,6 @@ class TimetableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = UIColor(named: "BrandGreen")
     }
     
     func configure(name: String?, mode: TimetableMode, type: TimetableType) {
@@ -53,10 +51,6 @@ class TimetableViewController: UIViewController {
         tableView.delegate = displayManager
         tableView.dataSource = displayManager
         
-        if mode == .preview {
-            weekControl.isHidden = true
-        }
-        
         title = name
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: optionsButton)
         setNavButtonAction(name: name)
@@ -66,6 +60,7 @@ class TimetableViewController: UIViewController {
     }
     
     func setVisuals(for mode: TimetableMode) {
+        view.backgroundColor = mode == .extended ? UIColor(named: "BrandGreen") : .lightGray
         view.addSubview(tableView)
         
         weekControl.addTarget(self, action: #selector(chooseWeek(_:)), for: .valueChanged)

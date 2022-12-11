@@ -26,26 +26,46 @@ public class Timetable: NSManagedObject {
         }
     }
     
-    public func getPreviewDays(for date: Date) -> [TimetableDay] {
-        let firstWeek = firstWeekArray
-        let secondWeek = secondWeekArray
+    public func getPreviewDays(for date: Date, _ count: Int = 3) -> [TimetableDay] {
+        if count <= 0 { return [] }
         
-        guard let firstDate = firstWeek.first?.date,
-              let secondDate = secondWeek.first?.date
-        else { return [] }
+        let fullDaysArray = firstWeekArray + secondWeekArray
+        var datesArray: [Date] = []
+        var previewDays: [TimetableDay] = []
+        var sundayCount: Int = 0
         
-        var fullDaysArray: [TimetableDay] = []
-        
-        if firstDate.timeIntervalSince(secondDate) > 0 {
-            fullDaysArray = firstWeekArray + secondWeekArray
-        } else {
-            fullDaysArray = secondWeekArray + firstWeekArray
-        }
-        
-        if let index = try? fullDaysArray.firstIndex(where: { $0.date == date }) {
+        for i in 1...count {
+            var dateComponent = DateComponents()
+            dateComponent.day = i + sundayCount - 1
+            guard var newDate = Calendar.current.date(byAdding: dateComponent, to: date) else { continue }
             
+            if Calendar.current.dateComponents([.weekday], from: newDate ?? Date()).weekday == 1 {
+                sundayCount += 1
+                
+                dateComponent.day = i + sundayCount - 1
+                newDate = Calendar.current.date(byAdding: dateComponent, to: date) ?? Date()
+            }
+            
+            datesArray.append(newDate)
         }
         
-        return []
+        for date in datesArray {
+            if let day = fullDaysArray.first(where: { $0.date == date }) {
+                previewDays.append(day)
+            } else {
+                ///Tries to find a day if timetable has not been updated for a long time
+                ///Do it up to 8 times ( 4 months ), no point in searching further
+                for i in 1...8 {
+                    var dateComponent = DateComponents()
+                    dateComponent.day = -i * 14
+                    var newDate = Calendar.current.date(byAdding: dateComponent, to: date)
+                    
+                    guard let day = fullDaysArray.first(where: { $0.date == newDate }) else { continue }
+                    previewDays.append(day)
+                }
+            }
+        }
+        
+        return previewDays
     }
 }
