@@ -25,7 +25,8 @@ class TimetablePresenter {
         
         if let timetable = useCase.getTimetable(for: name) {
             state.timetable = timetable
-            view?.updateTimetable(week: formDaysArray(mode: mode))
+            let week = formDaysArray(mode: mode)
+            view?.updateTimetable(week: week)
         } else {
             fetchTimetable(forReload: false)
         }
@@ -57,7 +58,8 @@ class TimetablePresenter {
         view?.startIndication()
         useCase.getTimetableHtml(for: name, type: type).then { html in
             self.parseTimetable(with: html, name: name, type: type)
-            self.view?.updateTimetable(week: self.formDaysArray(mode: mode))
+            let week = self.formDaysArray(mode: mode)
+            self.view?.updateTimetable(week: week)
         }.catch { _ in
             self.view?.showError(message: "Не удалось загрузить расписание, проверьте соединение с интернетом и попробуйте снова", handler: { _ in
                 guard !forReload else { return }
@@ -65,6 +67,22 @@ class TimetablePresenter {
             })
         }.always {
             self.view?.stopIndication()
+        }
+    }
+    
+    func refreshViewIfNeeded() {
+        guard state.mode == .preview else { return }
+        
+        if let timetableName = UserDefaults.standard.string(forKey: "MainTimetable"), timetableName != state.name {
+            state.name = timetableName
+            view?.title = timetableName
+            if let timetable = useCase.getTimetable(for: timetableName) {
+                state.timetable = timetable
+                let week = formDaysArray(mode: state.mode ?? .extended)
+                view?.updateTimetable(week: week)
+            } else {
+                fetchTimetable(forReload: false)
+            }
         }
     }
     

@@ -42,6 +42,13 @@ class TimetableViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter?.refreshViewIfNeeded()
+    }
+    
     func configure(name: String?, mode: TimetableMode, type: TimetableType) {
         guard let name else { return } //TODO: some sort of image
         
