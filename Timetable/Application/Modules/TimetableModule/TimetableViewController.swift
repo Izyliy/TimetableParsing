@@ -74,14 +74,15 @@ class TimetableViewController: UIViewController {
         
         tableView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-        
+
             guard mode == .preview else { return }
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
         
         guard mode == .extended else { return }
         
+        hidesBottomBarWhenPushed = true
         view.addSubview(weekControl)
 
         weekControl.snp.makeConstraints { make in
@@ -91,6 +92,7 @@ class TimetableViewController: UIViewController {
         }
         
         tableView.snp.makeConstraints { make in
+            make.bottom.equalTo(view.snp.bottom)
             make.top.equalTo(weekControl.snp.bottom).offset(4)
         }
     }
