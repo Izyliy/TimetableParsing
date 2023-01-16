@@ -11,12 +11,12 @@ class MainSettingsDisplayManager: NSObject {
     var tableView: UITableView
     weak var view: MainSettingsViewController?
     
-    var timetableObjects: [SettingsTableObject]
+    var timetableSections: [SettingsSection]
     
     init(tableView: UITableView, view: MainSettingsViewController) {
         self.tableView = tableView
         self.view = view
-        self.timetableObjects = []
+        self.timetableSections = []
         super.init()
 
         tableView.delegate = self
@@ -29,24 +29,18 @@ class MainSettingsDisplayManager: NSObject {
         tableView.reloadData()
     }
     
-    func createCell(indexPath: IndexPath, switchable: Bool) -> SettingsTableViewCell {
+    func createCell(indexPath: IndexPath) -> SettingsTableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell") as? SettingsTableViewCell else { return SettingsTableViewCell() }
         
-        let object = timetableObjects[indexPath.row]
-        
-        if switchable {
-            cell.selectionStyle = .none
-        } else {
-            cell.accessoryType = .disclosureIndicator
-        }
+        let object = timetableSections[indexPath.section].objects[indexPath.row]
 
-        cell.configure(title: object.title, switchable: switchable)
+        cell.configure(with: object)
 
         return cell
     }
     
-    func updateTableView(with objects: [SettingsTableObject]) {
-        self.timetableObjects = objects
+    func updateTableView(with sections: [SettingsSection]) {
+        self.timetableSections = sections
         
         tableView.reloadData()
     }
@@ -55,7 +49,7 @@ class MainSettingsDisplayManager: NSObject {
 extension MainSettingsDisplayManager: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        timetableObjects[indexPath.row].handler()
+        timetableSections[indexPath.section].objects[indexPath.row].handler()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -65,20 +59,19 @@ extension MainSettingsDisplayManager: UITableViewDelegate {
 }
 
 extension MainSettingsDisplayManager: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        nil
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        timetableSections[section].hint
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        timetableSections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        timetableObjects.count
+        timetableSections[section].objects.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 2:
-            return createCell(indexPath: indexPath, switchable: false)
-        default:
-            return createCell(indexPath: indexPath, switchable: true)
-        }
+        createCell(indexPath: indexPath)
     }
 }

@@ -18,28 +18,32 @@ class MainSettingsViewController: UIViewController {
     }()
     
     var displayManager: MainSettingsDisplayManager?
+    var presenter: MainSettingsPresenter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configure()
+        setVisuals()
+        presenter?.setupInitialState()
+    }
+    
+    func updateTableView(with sections: [SettingsSection]) {
+        displayManager?.updateTableView(with: sections)
+    }
+    
+    private func configure() {
+        displayManager = MainSettingsDisplayManager(tableView: tableView, view: self)
+        presenter = MainSettingsPresenter(view: self)
+        
+        title = "Настройки"
+    }
+    
+    private func setVisuals() {
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
             make.left.right.bottom.top.equalToSuperview()
         }
-        
-        title = "Настройки"
-        
-        configure()
-    }
-    
-    func configure() {
-        displayManager = MainSettingsDisplayManager(tableView: tableView, view: self)
-        
-        displayManager?.updateTableView(with: [
-            .init(title: "title1", icon: UIImage(systemName: "doc"), handler: { print(1) }),
-            .init(title: "title2", handler: { print(2) }),
-            .init(title: "title3", icon: UIImage(systemName: "doc.text")?.withTintColor(.systemPink), handler: { print(3) }),
-            .init(title: "title4", icon: UIImage(systemName: "doc.zipper"), handler: { print(4) }),
-        ])
     }
 }

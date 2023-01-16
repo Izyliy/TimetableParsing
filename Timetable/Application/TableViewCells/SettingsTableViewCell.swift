@@ -27,20 +27,21 @@ class SettingsTableViewCell: UITableViewCell {
         return view
     }()
     
-    func configure(title: String, switchable: Bool) {
-        setUp(switchable: switchable)
+    func configure(with object: SettingsObject) {
+        setUp(for: object.type)
         
-        label.text = title
+        label.text = object.title
     }
     
-    private func setUp(switchable: Bool) {
+    private func setUp(for type: SettingsCellType) {
         contentView.addSubview(label)
         label.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(16)
         }
         
-        if switchable {
+        if type == .switcher {
+            self.selectionStyle = .none
             switchView.addTarget(self, action: #selector(switchTurned(_:)), for: .valueChanged)
 
             contentView.addSubview(switchView)
@@ -48,6 +49,8 @@ class SettingsTableViewCell: UITableViewCell {
                 make.right.equalToSuperview().offset(-16)
                 make.centerY.equalToSuperview()
             }
+        } else {
+            self.accessoryType = .disclosureIndicator
         }
     }
     

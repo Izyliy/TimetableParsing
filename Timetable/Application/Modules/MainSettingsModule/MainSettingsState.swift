@@ -7,9 +7,23 @@
 
 import UIKit
 
-struct SettingsTableObject {
+enum SettingsCellType {
+    case switcher
+    case disclosure
+}
+
+struct SettingsObject {
     var title: String
-    var icon: UIImage?
+    var type: SettingsCellType
     
     var handler: (() -> Void)
+}
+
+struct SettingsSection {
+    var objects: [SettingsObject]
+    var hint: String?
+}
+
+struct MainSettingsState {
+    var sections: [SettingsSection]
 }
