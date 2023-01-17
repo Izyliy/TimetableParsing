@@ -48,8 +48,10 @@ class MainSettingsDisplayManager: NSObject {
 
 extension MainSettingsDisplayManager: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard timetableSections[indexPath.section].objects[indexPath.row].type != .switcher else { return }
+        
         tableView.deselectRow(at: indexPath, animated: true)
-        timetableSections[indexPath.section].objects[indexPath.row].handler()
+        timetableSections[indexPath.section].objects[indexPath.row].handler(nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

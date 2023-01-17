@@ -16,7 +16,7 @@ struct SettingsObject {
     var title: String
     var type: SettingsCellType
     
-    var handler: (() -> Void)
+    var handler: ((Bool?) -> Void)
 }
 
 struct SettingsSection {

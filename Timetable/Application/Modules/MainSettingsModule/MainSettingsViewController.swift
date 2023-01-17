@@ -12,7 +12,7 @@ class MainSettingsViewController: UIViewController {
     let tableView: UITableView = {
         let view = UITableView(frame: CGRectZero, style: .insetGrouped)
         
-        view.isScrollEnabled = false
+//        view.isScrollEnabled = false
         
         return view
     }()

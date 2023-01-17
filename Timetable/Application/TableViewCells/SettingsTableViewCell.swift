@@ -30,6 +30,7 @@ class SettingsTableViewCell: UITableViewCell {
     func configure(with object: SettingsObject) {
         setUp(for: object.type)
         
+        handler = object.handler
         label.text = object.title
     }
     
@@ -42,6 +43,8 @@ class SettingsTableViewCell: UITableViewCell {
         
         if type == .switcher {
             self.selectionStyle = .none
+            self.accessoryType = .none
+            switchView.isHidden = false
             switchView.addTarget(self, action: #selector(switchTurned(_:)), for: .valueChanged)
 
             contentView.addSubview(switchView)
@@ -51,12 +54,13 @@ class SettingsTableViewCell: UITableViewCell {
             }
         } else {
             self.accessoryType = .disclosureIndicator
+            self.selectionStyle = .default
+            switchView.isHidden = true
         }
     }
     
     @objc
     private func switchTurned(_ sender: UISwitch) {
-        print(123)
         handler?(sender.isOn)
     }
 }
