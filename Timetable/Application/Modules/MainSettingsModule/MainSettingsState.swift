@@ -15,6 +15,7 @@ enum SettingsCellType {
 struct SettingsObject {
     var title: String
     var type: SettingsCellType
+    var isOn: Bool?
     
     var handler: ((Bool?) -> Void)
 }

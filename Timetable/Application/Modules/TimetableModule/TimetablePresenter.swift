@@ -41,8 +41,8 @@ class TimetablePresenter {
     }
     
     func setFavourite() {
-        if UserDefaults.standard.string(forKey: "MainTimetable") != state.name {
-            UserDefaults.standard.set(state.name, forKey: "MainTimetable")
+        if UserDefaults.standard.string(forKey: UDKeys.State.mainTimetable) != state.name {
+            UserDefaults.standard.set(state.name, forKey: UDKeys.State.mainTimetable)
             view?.showMessage("Избранное расписание записано")
         } else {
             view?.showError(message: "Данное расписание уже является избранным") //TODO: вместо ошибки убирать из избранного
@@ -73,7 +73,7 @@ class TimetablePresenter {
     func refreshViewIfNeeded() {
         guard state.mode == .preview else { return }
         
-        if let timetableName = UserDefaults.standard.string(forKey: "MainTimetable"), timetableName != state.name {
+        if let timetableName = UserDefaults.standard.string(forKey: UDKeys.State.mainTimetable), timetableName != state.name {
             state.name = timetableName
             view?.title = timetableName
             if let timetable = useCase.getTimetable(for: timetableName) {

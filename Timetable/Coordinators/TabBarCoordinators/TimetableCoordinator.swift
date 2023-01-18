@@ -33,7 +33,7 @@ class TimetableCoordinator: TimetableCoordinatorProtocol {
     }
     
     func showTimetableCoordinator() {
-        let name = UserDefaults.standard.string(forKey: "MainTimetable")
+        let name = UserDefaults.standard.string(forKey: UDKeys.State.mainTimetable)
     
         navigationController.pushViewController(getTimetableModule(for: name), animated: true)
     }

@@ -18,10 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
+        #if DEBUG
+        UserDefaults.standard.set(true, forKey: UDKeys.State.isDev)
         NFX.sharedInstance().start()
-        
-        //TODO: - replace all of UserDefaults sets
-        UserDefaults.standard.set(true, forKey: "DevMode")
+        #endif
         
         window = UIWindow.init(frame: UIScreen.main.bounds)
         

@@ -12,21 +12,25 @@ import Foundation
 enum UDKeys {
     enum Settings {
         /// Permission to send local notifications
-        /// Bool
-        static let allowNotifications = "allowLocalNotifications"
+        /// - Returns: Bool
+        static let allowNotifications = "AllowLocalNotifications"
         
         /// Permission to cache timetables
-        /// Bool
-        static let allowCache = "allowCache"
+        /// - Returns: Bool
+        static let allowCache = "AllowCache"
+        
+        /// Permission to update timetables after a week
+        /// - Returns: Bool
+        static let autoUpdates = "AutoUpdates"
     }
     
     enum State {
-        /// Should application display things, that only developer can see
-        /// Bool
+        /// Should application display things, that only developer can see (netfox; additional settings)
+        /// - Returns: Bool
         static let isDev = "DevMode"
         
         /// Favourite timetable displayed at first screen of application
-        /// String
+        /// - Returns: String
         static let mainTimetable = "MainTimetable"
     }
 }

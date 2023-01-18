@@ -35,6 +35,10 @@ class MainSettingsDisplayManager: NSObject {
         let object = timetableSections[indexPath.section].objects[indexPath.row]
 
         cell.configure(with: object)
+        
+        if let isOn = object.isOn {
+            cell.switchView.setOn(isOn, animated: false)
+        }
 
         return cell
     }
