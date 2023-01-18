@@ -27,22 +27,40 @@ class MainSettingsPresenter {
         var array: [SettingsSection] = []
         
         array.append(.init(objects: [
-            .init(title: "Разрешить уведомления", type: .switcher, handler: setNotif),
+            .init(title: "Разрешить уведомления", type: .switcher, handler: setNotification),
         ], hint: "Уведомления позволяют приложению напоминать о парах"))
         
         array.append(.init(objects: [
-            .init(title: "Кэширование расписаний", type: .switcher, handler: setNotif),
-            .init(title: "Очистить кэш", type: .disclosure, handler: setNotif),
-        ], hint: "Кэш содержит данные о расписании ранее открытых групп. Расписание кэшированной группы можно открыть без "))
+            .init(title: "Кэширование расписаний", type: .switcher, handler: setCache),
+            .init(title: "Очистить кэш", type: .disclosure, handler: clearCache),
+        ], hint: "Кэш содержит данные о расписании ранее открытых групп. Расписание кэшированной группы можно открыть без доступа к интернету"))
         
         array.append(.init(objects: [
-            .init(title: "123", type: .disclosure, handler: setNotif),
-        ], hint: "Разраб"))
+            .init(title: "Обновление расписаний", type: .switcher, handler: disableDevMode),
+        ], hint: "Автоматическое обновление кэша позваляет актуализировать расписания при доступе к интернету и всегда видеть правильное расписание"))
+        
+        array.append(.init(objects: [
+            .init(title: "Выключить", type: .disclosure, handler: disableDevMode),
+        ], hint: "Режим разработчика включен!"))
         
         return array
     }
     
-    private func setNotif(to isOn: Bool?) {
-        print(isOn)
+    private func setNotification(to isOn: Bool?) {
+        guard let isOn else { return }
+        print("set notifications to \(isOn)")
+    }
+    
+    private func setCache(to isOn: Bool?) {
+        guard let isOn else { return }
+        print("set cache to \(isOn)")
+    }
+    
+    private func clearCache(_ isOn: Bool?) {
+        print("cache cleared")
+    }
+    
+    private func disableDevMode(_ isOn: Bool?) {
+        print("dev mode disabled")
     }
 }

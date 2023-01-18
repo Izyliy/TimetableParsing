@@ -66,6 +66,7 @@
 		E5E18DAE28CCF7190057EB2C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18DAB28CCF7190057EB2C /* Coordinator.swift */; };
 		E5E18DB028CCF7E90057EB2C /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18DAF28CCF7E90057EB2C /* SearchCoordinator.swift */; };
 		E5E18DB428CCF9BD0057EB2C /* SearchTimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18DB328CCF9BD0057EB2C /* SearchTimetableViewController.swift */; };
+		E75B8AB72977DB3D006421EE /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B8AB62977DB3D006421EE /* UserDefaultsKeys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +127,7 @@
 		E5E18DAB28CCF7190057EB2C /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E5E18DAF28CCF7E90057EB2C /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		E5E18DB328CCF9BD0057EB2C /* SearchTimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTimetableViewController.swift; sourceTree = "<group>"; };
+		E75B8AB62977DB3D006421EE /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				E5AFABAE28E83CFD00482829 /* CoreData */,
+				E75B8AB62977DB3D006421EE /* UserDefaultsKeys.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				E53FB44A28F2ECA700BDACB9 /* UIButton+Animation.swift in Sources */,
 				E5E18DAD28CCF7190057EB2C /* AppCoordinator.swift in Sources */,
 				E53FB41F28E8A24D00BDACB9 /* Date+Format.swift in Sources */,
+				E75B8AB72977DB3D006421EE /* UserDefaultsKeys.swift in Sources */,
 				E53FB43B28F1C3CD00BDACB9 /* PlaceholderViewController.swift in Sources */,
 				E5E18DB028CCF7E90057EB2C /* SearchCoordinator.swift in Sources */,
 				E5E18DB428CCF9BD0057EB2C /* SearchTimetableViewController.swift in Sources */,
