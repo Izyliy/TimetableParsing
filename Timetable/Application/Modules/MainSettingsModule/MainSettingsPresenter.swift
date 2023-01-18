@@ -27,15 +27,17 @@ class MainSettingsPresenter {
         var array: [SettingsSection] = []
         
         array.append(.init(objects: [
-            .init(title: "пукпук", type: .switcher, handler: setNotif),
-            .init(title: "кхекхе", type: .disclosure, handler: setNotif),
-            .init(title: "хахаха", type: .disclosure, handler: setNotif),
-        ], hint: "Секция 1 для всякой фигни"))
+            .init(title: "Разрешить уведомления", type: .switcher, handler: setNotif),
+        ], hint: "Уведомления позволяют приложению напоминать о парах"))
+        
+        array.append(.init(objects: [
+            .init(title: "Кэширование расписаний", type: .switcher, handler: setNotif),
+            .init(title: "Очистить кэш", type: .disclosure, handler: setNotif),
+        ], hint: "Кэш содержит данные о расписании ранее открытых групп. Расписание кэшированной группы можно открыть без "))
         
         array.append(.init(objects: [
             .init(title: "123", type: .disclosure, handler: setNotif),
-            .init(title: "456", type: .switcher, handler: setNotif),
-        ], hint: "Секция 2 тоже для всякой хуйни"))
+        ], hint: "Разраб"))
         
         return array
     }
