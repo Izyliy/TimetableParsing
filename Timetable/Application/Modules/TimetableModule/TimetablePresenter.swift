@@ -18,10 +18,12 @@ class TimetablePresenter {
         self.view = view
     }
     
-    func setupInitialState(name: String, type: TimetableType, mode: TimetableMode) {
+    func setupInitialState(name: String?, type: TimetableType, mode: TimetableMode) {
         state.name = name
         state.type = type
         state.mode = mode
+        
+        guard let name else { return }
         
         if let timetable = useCase.getTimetable(for: name) {
             state.timetable = timetable
@@ -75,7 +77,11 @@ class TimetablePresenter {
         
         if let timetableName = UserDefaults.standard.string(forKey: UDKeys.State.mainTimetable), timetableName != state.name {
             state.name = timetableName
+            
             view?.title = timetableName
+            view?.updateVisuals(hasName: state.name != nil)
+            view?.setNavButtonAction()
+            
             if let timetable = useCase.getTimetable(for: timetableName) {
                 state.timetable = timetable
                 let week = formDaysArray(mode: state.mode ?? .extended)

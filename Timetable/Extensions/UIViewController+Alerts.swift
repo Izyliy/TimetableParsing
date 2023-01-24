@@ -25,10 +25,18 @@ extension UIViewController {
     func showActionSheet(title: String?, actions: [UIAlertAction]) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        for action in actions {
-            alert.addAction(action)
+        if actions.isEmpty {
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+        } else {
+            for action in actions { alert.addAction(action) }
         }
         
         present(alert, animated: true)
+    }
+    
+    func showDebugMsg(title: String?, actions: [UIAlertAction]) {
+        if UserDefaults.standard.bool(forKey: UDKeys.State.isDev) {
+            showActionSheet(title: title, actions: actions)
+        }
     }
 }

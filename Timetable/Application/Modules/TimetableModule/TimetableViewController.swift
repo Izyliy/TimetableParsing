@@ -32,6 +32,16 @@ class TimetableViewController: UIViewController {
         return button
     }()
     
+    let noNameLabel: UILabel = {
+        let label = UILabel()
+        
+        label.text = "ты лог хахаха \nхахахахах ахахаххаdfqwdqwdd"
+        label.font = UIFont.systemFont(ofSize: 32)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
     var displayManager: TimetableDisplayManager?
     var presenter: TimetablePresenter?
     var timetable: [Timetable]?
@@ -50,27 +60,40 @@ class TimetableViewController: UIViewController {
     }
     
     func configure(name: String?, mode: TimetableMode, type: TimetableType) {
-        guard let name else { return } //TODO: some sort of image
-        
-        displayManager = TimetableDisplayManager(tableView: tableView, view: self)
         presenter = TimetablePresenter(view: self)
+        displayManager = TimetableDisplayManager(tableView: tableView, view: self)
         
         tableView.delegate = displayManager
         tableView.dataSource = displayManager
         
-        title = name
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: optionsButton)
-        setNavButtonAction(name: name)
-        setVisuals(for: mode)
-        
         presenter?.setupInitialState(name: name, type: type, mode: mode)
+        
+        title = name != nil ? name : "Избранное"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: optionsButton)
+        
+        setNavButtonAction()
+        setVisuals(for: mode)
+        updateVisuals(hasName: name != nil)
+    }
+    
+    func updateVisuals(hasName: Bool) {
+        noNameLabel.isHidden = hasName
+        tableView.isHidden = !hasName
     }
     
     func setVisuals(for mode: TimetableMode) {
-        view.backgroundColor = mode == .extended ? UIColor(named: "BrandGreen") : .lightGray
+        view.addSubview(noNameLabel)        //TODO: some sort of image for name == nil
         view.addSubview(tableView)
         
+        view.backgroundColor = mode == .extended ? UIColor(named: "BrandGreen") : UIColor(red: 0.95, green: 0.95, blue: 0.97, alpha: 1)
+
         weekControl.addTarget(self, action: #selector(chooseWeek(_:)), for: .valueChanged)
+        
+        noNameLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+        }
         
         tableView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
@@ -102,7 +125,7 @@ class TimetableViewController: UIViewController {
         weekControl.selectedSegmentIndex = 0
     }
     
-    func setNavButtonAction(name: String) {
+    func setNavButtonAction() {
         if #available(iOS 14.0, *) {
             let actions: [UIAction] = [
                 UIAction(title: "Избранное", image: UIImage(systemName: "star"), handler: { _ in
