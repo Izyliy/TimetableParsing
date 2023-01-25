@@ -52,14 +52,16 @@ class MainSettingsPresenter {
     
     private func setNotification(to isOn: Bool?) {
         guard let isOn else { return }
-        print("set notifications to \(isOn)")
+        print("Gonna set notifications to \(isOn)")
         defaults.set(isOn, forKey: UDKeys.Settings.allowNotifications)
+        print("Notifications is \(defaults.bool(forKey: UDKeys.Settings.allowNotifications))")
     }
     
     private func setCache(to isOn: Bool?) {
         guard let isOn else { return }
-        print("set cache to \(isOn)")
+        print("Gonna set cache to \(isOn)")
         defaults.set(isOn, forKey: UDKeys.Settings.allowCache)
+        print("Cache is \(defaults.bool(forKey: UDKeys.Settings.allowCache))")
     }
     
     private func clearCache(_ isOn: Bool?) {
@@ -68,8 +70,9 @@ class MainSettingsPresenter {
     
     private func setAutoUpdates(to isOn: Bool?) {
         guard let isOn else { return }
-        print("set auto updates to \(isOn)")
+        print("Gonna set auto updates to \(isOn)")
         defaults.set(isOn, forKey: UDKeys.Settings.autoUpdates)
+        print("Auto updates is \(defaults.bool(forKey: UDKeys.Settings.autoUpdates))")
     }
     
     private func disableDevMode(_ isOn: Bool?) {

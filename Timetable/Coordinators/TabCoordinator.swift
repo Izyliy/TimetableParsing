@@ -46,8 +46,17 @@ enum TabBarPage {
             return 2
         }
     }
-
-    // Add tab icon value
+    
+    func pageIcon() -> UIImage? {
+        switch self {
+        case .timetable:
+            return UIImage(named: "Star")
+        case .search:
+            return UIImage(named: "Search")
+        case .settings:
+            return UIImage(named: "Settings")
+        }
+    }
     
     // Add tab icon selected / deselected color
     
@@ -126,7 +135,8 @@ class TabCoordinator: NSObject, Coordinator {
         tabBarController.selectedIndex = TabBarPage.timetable.pageOrderNumber()
         /// Styling
         tabBarController.tabBar.isTranslucent = true
-        tabBarController.tabBar.backgroundColor = UIColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 0.9)
+        tabBarController.tabBar.backgroundColor = .clear //UIColor(white: 0.85, alpha: 0.9)
+        tabBarController.tabBar.tintColor = UIColor(named: "DarkGreen")
         
         /// In this step, we attach tabBarController to navigation controller associated with this coordanator
         navigationController.viewControllers = [tabBarController]
@@ -138,7 +148,7 @@ class TabCoordinator: NSObject, Coordinator {
         navController.navigationBar.defaultAppearance()
 
         navController.tabBarItem = UITabBarItem.init(title: page.pageTitleValue(),
-                                                     image: nil,
+                                                     image: page.pageIcon(),
                                                      tag: page.pageOrderNumber())
 
         switch page {

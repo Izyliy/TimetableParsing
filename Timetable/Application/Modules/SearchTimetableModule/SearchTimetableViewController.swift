@@ -41,7 +41,7 @@ class SearchTimetableViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
+        view.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.97, alpha: 1)
         view.addSubview(textField)
         view.addSubview(tableView)
         view.addSubview(typeControl)
