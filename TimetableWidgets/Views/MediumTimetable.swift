@@ -18,15 +18,15 @@ struct MediumTimetable: View {
                 
                 Text("ПИ2241")
                 
-//                Spacer()
+                Spacer()
                 
-                Text(Date.now, format: .dateTime)
+                Text("Сегодня")
                 
                 Spacer()
             }
-            .padding(8)
-            .padding(.top)
-            .background(.blue)
+            .padding(4)
+            .padding(.top, 6)
+            .background(Color("LightGreen"))
             .foregroundColor(.white)
             .clipped()
             .shadow(radius: 5)
@@ -34,15 +34,23 @@ struct MediumTimetable: View {
             ForEach(0..<3) { _ in
                 HStack {
                     Rectangle()
-                        .frame(width: 10, height: 46, alignment: .leading)
-                        .foregroundColor(.yellow)
+                        .frame(width: 10, height: 43, alignment: .leading)
+                        .foregroundColor(.orange)
                         
-                    Text("Математический анализ")
-                        .font(.system(size: 20))
+                    Text("Математический анализ и что то ")
+//                        .font(.system(size: 16))
+                        .lineLimit(2)
+                        .fixedSize(horizontal: false, vertical: false)
                     
                     Spacer()
                     
-                    Text("14эк")
+                    Divider()
+                    
+                    VStack(alignment: .leading) {
+                        Text("11:30-13:00")
+                        Text("14эк")
+                    }
+
                 }
                 .padding(.top, -8)
                 .padding(.bottom, -8)
@@ -54,6 +62,7 @@ struct MediumTimetable: View {
             
             Spacer()
         }
+        .frame(maxWidth: .infinity)
     }
 }
 
@@ -61,5 +70,6 @@ struct MediumTimetable_Previews: PreviewProvider {
     static var previews: some View {
         MediumTimetable(entry: .init(date: .now))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
+//            .previewDevice(PreviewDevice(rawValue: "iPhone 13 mini"))
     }
 }
