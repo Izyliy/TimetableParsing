@@ -2,7 +2,7 @@
 //  TimetableDay+CoreDataProperties.swift
 //  Timetable
 //
-//  Created by Павел Грабчак on 01.10.2022.
+//  Created by Павел Грабчак on 03.02.2023.
 //
 //
 
@@ -19,6 +19,7 @@ extension TimetableDay {
     @NSManaged public var date: Date?
     @NSManaged public var weekDay: String?
     @NSManaged public var lessons: NSSet?
+    @NSManaged public var week: TimetableWeek?
 
 }
 

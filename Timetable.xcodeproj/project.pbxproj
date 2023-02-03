@@ -17,7 +17,6 @@
 		E53FB43728F172C500BDACB9 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB43628F172C500BDACB9 /* SettingsCoordinator.swift */; };
 		E53FB43928F1C3B400BDACB9 /* TimetableCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB43828F1C3B400BDACB9 /* TimetableCoordinator.swift */; };
 		E53FB43B28F1C3CD00BDACB9 /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB43A28F1C3CD00BDACB9 /* PlaceholderViewController.swift */; };
-		E53FB43F28F1E01400BDACB9 /* Timetable+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB43D28F1E01400BDACB9 /* Timetable+CoreDataProperties.swift */; };
 		E53FB44728F2ECA700BDACB9 /* UINavigationBar+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB44128F2ECA700BDACB9 /* UINavigationBar+Appearance.swift */; };
 		E53FB44928F2ECA700BDACB9 /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB44328F2ECA700BDACB9 /* UIView+Animation.swift */; };
 		E53FB44A28F2ECA700BDACB9 /* UIButton+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB44428F2ECA700BDACB9 /* UIButton+Animation.swift */; };
@@ -49,7 +48,6 @@
 		E5AFABBB28E844C700482829 /* TimetableLesson+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFABB328E844C700482829 /* TimetableLesson+CoreDataClass.swift */; };
 		E5AFABBC28E844C700482829 /* TimetableLesson+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFABB428E844C700482829 /* TimetableLesson+CoreDataProperties.swift */; };
 		E5AFABBD28E844C700482829 /* TimetableDay+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFABB528E844C700482829 /* TimetableDay+CoreDataClass.swift */; };
-		E5AFABBE28E844C700482829 /* TimetableDay+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFABB628E844C700482829 /* TimetableDay+CoreDataProperties.swift */; };
 		E5AFABBF28E844C700482829 /* Timetable+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFABB728E844C700482829 /* Timetable+CoreDataClass.swift */; };
 		E5AFABC128E844C700482829 /* Professor+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFABB928E844C700482829 /* Professor+CoreDataClass.swift */; };
 		E5AFABC228E844C700482829 /* Professor+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AFABBA28E844C700482829 /* Professor+CoreDataProperties.swift */; };
@@ -60,7 +58,7 @@
 		E5BE901F29744835001C3A22 /* MainSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE901E29744835001C3A22 /* MainSettingsPresenter.swift */; };
 		E5E18D8C28CCF56C0057EB2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18D8B28CCF56C0057EB2C /* AppDelegate.swift */; };
 		E5E18D8E28CCF56C0057EB2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18D8D28CCF56C0057EB2C /* SceneDelegate.swift */; };
-		E5E18D9028CCF56C0057EB2C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18D8F28CCF56C0057EB2C /* MainViewController.swift */; };
+		E5E18D9028CCF56C0057EB2C /* CoreDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18D8F28CCF56C0057EB2C /* CoreDataViewController.swift */; };
 		E5E18D9528CCF56D0057EB2C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5E18D9428CCF56D0057EB2C /* Images.xcassets */; };
 		E5E18D9828CCF56D0057EB2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5E18D9628CCF56D0057EB2C /* LaunchScreen.storyboard */; };
 		E5E18DAC28CCF7190057EB2C /* TabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18DA928CCF7190057EB2C /* TabCoordinator.swift */; };
@@ -68,6 +66,8 @@
 		E5E18DAE28CCF7190057EB2C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18DAB28CCF7190057EB2C /* Coordinator.swift */; };
 		E5E18DB028CCF7E90057EB2C /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18DAF28CCF7E90057EB2C /* SearchCoordinator.swift */; };
 		E5E18DB428CCF9BD0057EB2C /* SearchTimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18DB328CCF9BD0057EB2C /* SearchTimetableViewController.swift */; };
+		E7124F24298D0A3F00A035A3 /* TimetableWeek+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7124F22298D0A3F00A035A3 /* TimetableWeek+CoreDataClass.swift */; };
+		E7124F25298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7124F23298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift */; };
 		E75B8AB72977DB3D006421EE /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B8AB62977DB3D006421EE /* UserDefaultsKeys.swift */; };
 		E78495AD29826D7F005B7A16 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78495AC29826D7F005B7A16 /* WidgetKit.framework */; };
 		E78495AF29826D7F005B7A16 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78495AE29826D7F005B7A16 /* SwiftUI.framework */; };
@@ -79,6 +79,9 @@
 		E78495C42982700E005B7A16 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78495C32982700E005B7A16 /* WidgetView.swift */; };
 		E7B88B3E2982AC1B007EE8F9 /* MediumTimetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B88B3D2982AC1B007EE8F9 /* MediumTimetable.swift */; };
 		E7B88B402982AC2A007EE8F9 /* SmallTimetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B88B3F2982AC2A007EE8F9 /* SmallTimetable.swift */; };
+		E7E0C4E82983F2240004267F /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B8AB62977DB3D006421EE /* UserDefaultsKeys.swift */; };
+		E7E0C4F5298CFD990004267F /* Timetable+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E0C4EF298CFD990004267F /* Timetable+CoreDataProperties.swift */; };
+		E7E0C4F7298CFD990004267F /* TimetableDay+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E0C4F1298CFD990004267F /* TimetableDay+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,7 +120,6 @@
 		E53FB43628F172C500BDACB9 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		E53FB43828F1C3B400BDACB9 /* TimetableCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableCoordinator.swift; sourceTree = "<group>"; };
 		E53FB43A28F1C3CD00BDACB9 /* PlaceholderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
-		E53FB43D28F1E01400BDACB9 /* Timetable+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timetable+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E53FB44128F2ECA700BDACB9 /* UINavigationBar+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Appearance.swift"; sourceTree = "<group>"; };
 		E53FB44328F2ECA700BDACB9 /* UIView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
 		E53FB44428F2ECA700BDACB9 /* UIButton+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Animation.swift"; sourceTree = "<group>"; };
@@ -142,7 +144,6 @@
 		E5AFABB328E844C700482829 /* TimetableLesson+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimetableLesson+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E5AFABB428E844C700482829 /* TimetableLesson+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimetableLesson+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E5AFABB528E844C700482829 /* TimetableDay+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimetableDay+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E5AFABB628E844C700482829 /* TimetableDay+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimetableDay+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E5AFABB728E844C700482829 /* Timetable+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timetable+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E5AFABB928E844C700482829 /* Professor+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Professor+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E5AFABBA28E844C700482829 /* Professor+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Professor+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -154,7 +155,7 @@
 		E5E18D8828CCF56C0057EB2C /* Timetable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timetable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5E18D8B28CCF56C0057EB2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5E18D8D28CCF56C0057EB2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E5E18D8F28CCF56C0057EB2C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E5E18D8F28CCF56C0057EB2C /* CoreDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewController.swift; sourceTree = "<group>"; };
 		E5E18D9428CCF56D0057EB2C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E5E18D9728CCF56D0057EB2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5E18D9928CCF56D0057EB2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -163,6 +164,8 @@
 		E5E18DAB28CCF7190057EB2C /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E5E18DAF28CCF7E90057EB2C /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		E5E18DB328CCF9BD0057EB2C /* SearchTimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTimetableViewController.swift; sourceTree = "<group>"; };
+		E7124F22298D0A3F00A035A3 /* TimetableWeek+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimetableWeek+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E7124F23298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimetableWeek+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E75B8AB62977DB3D006421EE /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		E78495AA29826D7F005B7A16 /* TimetableWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TimetableWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78495AC29826D7F005B7A16 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -175,6 +178,8 @@
 		E78495C32982700E005B7A16 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		E7B88B3D2982AC1B007EE8F9 /* MediumTimetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumTimetable.swift; sourceTree = "<group>"; };
 		E7B88B3F2982AC2A007EE8F9 /* SmallTimetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTimetable.swift; sourceTree = "<group>"; };
+		E7E0C4EF298CFD990004267F /* Timetable+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timetable+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E7E0C4F1298CFD990004267F /* TimetableDay+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TimetableDay+CoreDataProperties.swift"; path = "../../TimetableDay+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				E5AFAB9928E8266300482829 /* TimetableModel.xcdatamodeld */,
+				E7E0C4F8298CFDBC0004267F /* TimetableWeek */,
 				E5AFABC628E844F300482829 /* TimetableLesson */,
 				E5AFABC528E844E700482829 /* TimetableDay */,
 				E5AFABC428E844DD00482829 /* Timetable */,
@@ -297,7 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				E5AFABB728E844C700482829 /* Timetable+CoreDataClass.swift */,
-				E53FB43D28F1E01400BDACB9 /* Timetable+CoreDataProperties.swift */,
+				E7E0C4EF298CFD990004267F /* Timetable+CoreDataProperties.swift */,
 			);
 			path = Timetable;
 			sourceTree = "<group>";
@@ -306,7 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				E5AFABB528E844C700482829 /* TimetableDay+CoreDataClass.swift */,
-				E5AFABB628E844C700482829 /* TimetableDay+CoreDataProperties.swift */,
+				E7E0C4F1298CFD990004267F /* TimetableDay+CoreDataProperties.swift */,
 			);
 			path = TimetableDay;
 			sourceTree = "<group>";
@@ -399,7 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				E53FB43A28F1C3CD00BDACB9 /* PlaceholderViewController.swift */,
-				E5E18D8F28CCF56C0057EB2C /* MainViewController.swift */,
+				E7E0C4E92984000F0004267F /* CoreDataModule */,
 				E53FB44F28FE8A0100BDACB9 /* MainSettingsModule */,
 				E584201028D5D5D200948B8F /* TimetableModule */,
 				E5E18DB228CCF9770057EB2C /* SearchTimetableModule */,
@@ -450,6 +456,23 @@
 				E7B88B3D2982AC1B007EE8F9 /* MediumTimetable.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E7E0C4E92984000F0004267F /* CoreDataModule */ = {
+			isa = PBXGroup;
+			children = (
+				E5E18D8F28CCF56C0057EB2C /* CoreDataViewController.swift */,
+			);
+			path = CoreDataModule;
+			sourceTree = "<group>";
+		};
+		E7E0C4F8298CFDBC0004267F /* TimetableWeek */ = {
+			isa = PBXGroup;
+			children = (
+				E7124F22298D0A3F00A035A3 /* TimetableWeek+CoreDataClass.swift */,
+				E7124F23298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift */,
+			);
+			path = TimetableWeek;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -574,26 +597,28 @@
 				E5AFABBD28E844C700482829 /* TimetableDay+CoreDataClass.swift in Sources */,
 				E53FB45128FE8A3400BDACB9 /* MainSettingsViewController.swift in Sources */,
 				E56BE77928CE58BB007FE14E /* SearchTimetableState.swift in Sources */,
-				E53FB43F28F1E01400BDACB9 /* Timetable+CoreDataProperties.swift in Sources */,
 				E5AFABCA28E8854600482829 /* TimetableUseCase.swift in Sources */,
 				E53FB45528FE8D0100BDACB9 /* MainSettingsState.swift in Sources */,
 				E5AFABBB28E844C700482829 /* TimetableLesson+CoreDataClass.swift in Sources */,
 				E584201628D6203600948B8F /* TimetableGateway.swift in Sources */,
-				E5E18D9028CCF56C0057EB2C /* MainViewController.swift in Sources */,
+				E5E18D9028CCF56C0057EB2C /* CoreDataViewController.swift in Sources */,
 				E5E18D8C28CCF56C0057EB2C /* AppDelegate.swift in Sources */,
+				E7E0C4F5298CFD990004267F /* Timetable+CoreDataProperties.swift in Sources */,
 				E5AFABC228E844C700482829 /* Professor+CoreDataProperties.swift in Sources */,
 				E584200C28D38F7F00948B8F /* SearchTimetableDisplayManager.swift in Sources */,
 				E56BE77728CE582D007FE14E /* SearchTimetablePresenter.swift in Sources */,
 				E584201A28D7521C00948B8F /* LessonTableViewCell.swift in Sources */,
+				E7124F24298D0A3F00A035A3 /* TimetableWeek+CoreDataClass.swift in Sources */,
 				E5AFABC828E8762C00482829 /* TimetablePresenter.swift in Sources */,
 				E53FB45728FE8EBD00BDACB9 /* IconTitleTableViewCell.swift in Sources */,
 				E5AFAB9B28E8266300482829 /* TimetableModel.xcdatamodeld in Sources */,
 				E584200F28D3949700948B8F /* SuggestedGroupTableViewCell.swift in Sources */,
 				E520F875292544760011D62B /* UIViewController+Alerts.swift in Sources */,
-				E5AFABBE28E844C700482829 /* TimetableDay+CoreDataProperties.swift in Sources */,
 				E53FB44728F2ECA700BDACB9 /* UINavigationBar+Appearance.swift in Sources */,
+				E7E0C4F7298CFD990004267F /* TimetableDay+CoreDataProperties.swift in Sources */,
 				E5E18DAE28CCF7190057EB2C /* Coordinator.swift in Sources */,
 				E5BE901D29744820001C3A22 /* MainSettingsUseCase.swift in Sources */,
+				E7124F25298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift in Sources */,
 				E584201228D5D69200948B8F /* TimetableViewController.swift in Sources */,
 				E53FB44A28F2ECA700BDACB9 /* UIButton+Animation.swift in Sources */,
 				E5E18DAD28CCF7190057EB2C /* AppCoordinator.swift in Sources */,
@@ -633,6 +658,7 @@
 				E78495B229826D7F005B7A16 /* TimetableWidgetsBundle.swift in Sources */,
 				E7B88B3E2982AC1B007EE8F9 /* MediumTimetable.swift in Sources */,
 				E7B88B402982AC2A007EE8F9 /* SmallTimetable.swift in Sources */,
+				E7E0C4E82983F2240004267F /* UserDefaultsKeys.swift in Sources */,
 				E78495C029826FAA005B7A16 /* Provider.swift in Sources */,
 				E78495B429826D7F005B7A16 /* TimetableWidgets.swift in Sources */,
 				E78495C42982700E005B7A16 /* WidgetView.swift in Sources */,

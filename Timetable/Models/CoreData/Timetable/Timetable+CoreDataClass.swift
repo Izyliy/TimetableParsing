@@ -12,18 +12,23 @@ import CoreData
 @objc(Timetable)
 public class Timetable: NSManagedObject {
     
-    public var firstWeekArray: [TimetableDay] {
-        let set = firstWeek as? Set<TimetableDay> ?? []
+    public var weeksArray: [TimetableWeek] {
+        let set = weeks as? Set<TimetableWeek> ?? []
         return set.sorted {
-            $0.date ?? Date() < $1.date ?? Date().advanced(by: 1)
+            $0.id < $1.id
         }
     }
     
+    public var firstWeekArray: [TimetableDay] {
+        guard weeksArray.count >= 1 else { return [] }
+        
+        return weeksArray[0].daysArray
+    }
+    
     public var secondWeekArray: [TimetableDay] {
-        let set = secondWeek as? Set<TimetableDay> ?? []
-        return set.sorted {
-            $0.date ?? Date() < $1.date ?? Date().advanced(by: 1)
-        }
+        guard weeksArray.count >= 2 else { return [] }
+        
+        return weeksArray[1].daysArray
     }
     
     public func getPreviewDays(for date: Date, _ count: Int = 3) -> [TimetableDay] {

@@ -21,7 +21,7 @@ class TimetableUseCase {
             
             request.predicate = predicate
             
-            return try context.fetch(request).first
+            return try context.fetch(request).last
         } catch {
             return nil
         }
@@ -31,24 +31,48 @@ class TimetableUseCase {
         return gateway.getTimetableHtmlFor(name: str, type: type)
     }
     
+    func deleteTimetablesWith(name: String) -> Bool {
+        do {
+            let request = Timetable.fetchRequest() as NSFetchRequest<Timetable>
+            let predicate = NSPredicate(format: "name CONTAINS %@", name)
+            
+            request.predicate = predicate
+            
+            let timetables = try context.fetch(request)
+            
+            for timetable in timetables {
+                context.delete(timetable)
+            }
+            
+            try context.save()
+            
+            return true
+        } catch {
+            return false
+        }
+    }
+    
     func createTimetableAndSave(name: String,
                                 type: TimetableType,
-                                firstWeek: [TimetableDay],
-                                secondWeek: [TimetableDay]) -> Timetable? {
+                                weeks: [TimetableWeek]) -> Timetable? {
+        
+        _ = deleteTimetablesWith(name: name)
+        
         let timetable = Timetable(context: context)
         
         timetable.name = name
         timetable.type = type.getTypeString()
         timetable.creationDate = Date()
         
-        guard let firstWeekSet = Set(firstWeek) as? NSSet,
-              let secondWeekSet = Set(secondWeek) as? NSSet
-        else {
-            return nil
-        }
+//        guard let firstWeekSet = Set(firstWeek) as? NSSet,
+//              let secondWeekSet = Set(secondWeek) as? NSSet
+//        else {
+//            return nil
+//        }
         
-        timetable.addToFirstWeek(firstWeekSet)
-        timetable.addToSecondWeek(secondWeekSet)
+        for week in weeks {
+            timetable.addToWeeks(week)
+        }
         
         do {
             try context.save()
@@ -58,23 +82,25 @@ class TimetableUseCase {
         }
     }
     
+    func getNewWeek(id: Int, days: [TimetableDay], title: String? = nil) -> TimetableWeek {
+        let week = TimetableWeek(context: context)
+        
+        week.id = Int64(id)
+        week.title = title
+        
+        for day in days {
+            week.addToDays(day)
+        }
+        
+        return week
+    }
+    
     func getNewDay(with date: Date) -> TimetableDay {
         let day = TimetableDay(context: context)
         
         day.date = date
         
         return day
-    }
-    
-    func getNewProfessor(name: String?, link: String?) -> Professor? {
-        guard let name = name else { return nil }
-        
-        let professor = Professor(context: context)
-        
-        professor.name = name
-        professor.link = link
-        
-        return professor
     }
     
     func getNewLesson(startTime: String,
@@ -96,5 +122,16 @@ class TimetableUseCase {
         }
 
         return lesson
+    }
+    
+    func getNewProfessor(name: String?, link: String?) -> Professor? {
+        guard let name = name else { return nil }
+        
+        let professor = Professor(context: context)
+        
+        professor.name = name
+        professor.link = link
+        
+        return professor
     }
 }

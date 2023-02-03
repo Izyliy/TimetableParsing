@@ -44,7 +44,9 @@ class MainSettingsPresenter {
         guard UserDefaults.standard.bool(forKey: UDKeys.State.isDev) == true else { return array }
                 
         array.append(.init(objects: [
-            .init(title: "Выключить", type: .disclosure, handler: disableDevMode),
+            .init(title: "Выключить devMode", type: .disclosure, handler: disableDevMode),
+            .init(title: "Просмотр CoreData", type: .disclosure, handler: viewCoreDataObjects),
+            .init(title: "Debug Alerts", type: .switcher, handler: { _ in })
         ], hint: "Режим разработчика включен!"))
         
         return array
@@ -80,5 +82,9 @@ class MainSettingsPresenter {
         defaults.set(false, forKey: UDKeys.State.isDev)
         NFX.sharedInstance().stop()
         setupInitialState()
+    }
+    
+    private func viewCoreDataObjects(_ isOn: Bool?) {
+        view?.openCoreDataView?()
     }
 }

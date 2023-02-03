@@ -2,7 +2,7 @@
 //  Timetable+CoreDataProperties.swift
 //  Timetable
 //
-//  Created by Павел Грабчак on 08.10.2022.
+//  Created by Павел Грабчак on 03.02.2023.
 //
 //
 
@@ -16,45 +16,27 @@ extension Timetable {
         return NSFetchRequest<Timetable>(entityName: "Timetable")
     }
 
+    @NSManaged public var creationDate: Date?
     @NSManaged public var name: String?
     @NSManaged public var type: String?
-    @NSManaged public var creationDate: Date?
-    @NSManaged public var firstWeek: NSSet?
-    @NSManaged public var secondWeek: NSSet?
+    @NSManaged public var weeks: NSSet?
 
 }
 
-// MARK: Generated accessors for firstWeek
+// MARK: Generated accessors for weeks
 extension Timetable {
 
-    @objc(addFirstWeekObject:)
-    @NSManaged public func addToFirstWeek(_ value: TimetableDay)
+    @objc(addWeeksObject:)
+    @NSManaged public func addToWeeks(_ value: TimetableWeek)
 
-    @objc(removeFirstWeekObject:)
-    @NSManaged public func removeFromFirstWeek(_ value: TimetableDay)
+    @objc(removeWeeksObject:)
+    @NSManaged public func removeFromWeeks(_ value: TimetableWeek)
 
-    @objc(addFirstWeek:)
-    @NSManaged public func addToFirstWeek(_ values: NSSet)
+    @objc(addWeeks:)
+    @NSManaged public func addToWeeks(_ values: NSSet)
 
-    @objc(removeFirstWeek:)
-    @NSManaged public func removeFromFirstWeek(_ values: NSSet)
-
-}
-
-// MARK: Generated accessors for secondWeek
-extension Timetable {
-
-    @objc(addSecondWeekObject:)
-    @NSManaged public func addToSecondWeek(_ value: TimetableDay)
-
-    @objc(removeSecondWeekObject:)
-    @NSManaged public func removeFromSecondWeek(_ value: TimetableDay)
-
-    @objc(addSecondWeek:)
-    @NSManaged public func addToSecondWeek(_ values: NSSet)
-
-    @objc(removeSecondWeek:)
-    @NSManaged public func removeFromSecondWeek(_ values: NSSet)
+    @objc(removeWeeks:)
+    @NSManaged public func removeFromWeeks(_ values: NSSet)
 
 }
 

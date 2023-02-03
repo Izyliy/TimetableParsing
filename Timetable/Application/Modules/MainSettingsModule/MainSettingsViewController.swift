@@ -19,6 +19,8 @@ class MainSettingsViewController: UIViewController {
     
     var displayManager: MainSettingsDisplayManager?
     var presenter: MainSettingsPresenter?
+    
+    var openCoreDataView: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()

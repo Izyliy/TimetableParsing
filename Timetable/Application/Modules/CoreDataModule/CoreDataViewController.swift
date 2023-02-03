@@ -16,7 +16,7 @@ enum toDisplay {
     case timetables
 }
 
-class MainViewController: UIViewController {
+class CoreDataViewController: UIViewController {
     
     let professorsButton: UIButton = {
         let button = UIButton()
@@ -174,7 +174,7 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+extension CoreDataViewController: UITableViewDelegate, UITableViewDataSource {
     func createCell(indexPath: IndexPath) -> TextTableViewCell {
         guard let cell = table.dequeueReusableCell(withIdentifier: "TextTableViewCell") as? TextTableViewCell else { return TextTableViewCell() }
         

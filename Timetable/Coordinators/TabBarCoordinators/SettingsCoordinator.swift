@@ -39,7 +39,17 @@ class SettingsCoordinator: SettingsCoordinatorProtocol {
     //MARK: - Methods for creating modules
     func getMainSettingsModule() -> MainSettingsViewController {
         let viewController = MainSettingsViewController()
+        
+        viewController.openCoreDataView = {
+            self.navigationController.pushViewController(self.getCoreDataViewController(), animated: true)
+        }
                 
         return viewController
+    }
+    
+    func getCoreDataViewController() -> CoreDataViewController {
+        let vc = CoreDataViewController()
+        
+        return vc
     }
 }

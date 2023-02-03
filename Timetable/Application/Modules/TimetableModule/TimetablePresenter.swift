@@ -112,22 +112,28 @@ class TimetablePresenter {
             let firstWeekDoc = try doc.select("div").filter({ try $0.classNames().contains("schedule-first-week") }).first
             let secondWeekDoc = try doc.select("div").filter({ try $0.classNames().contains("schedule-second-week") }).first
             
-            let firstWeek = try parseWeek(with: firstWeekDoc)
-            let secondWeek = try parseWeek(with: secondWeekDoc)
+            var weekArray: [TimetableWeek] = []
             
+            if let firstWeek = try parseWeek(with: firstWeekDoc, id: 0) {
+                weekArray.append(firstWeek)
+            }
+            
+            if let secondWeek = try parseWeek(with: secondWeekDoc, id: 1) {
+                weekArray.append(secondWeek)
+            }
+                        
             state.timetable = useCase.createTimetableAndSave(name: name,
                                                              type: type,
-                                                             firstWeek: firstWeek,
-                                                             secondWeek: secondWeek)
+                                                             weeks: weekArray)
             
         } catch {
             print(error.localizedDescription)
         }
     }
     
-    private func parseWeek(with html: Element?) throws -> [TimetableDay] {
-        guard let dayDocs = try html?.select("div").filter({ try !$0.className().contains("week") }) else { return [] }
-        var week: [TimetableDay] = []
+    private func parseWeek(with html: Element?, id: Int, title: String? = nil) throws -> TimetableWeek? {
+        guard let dayDocs = try html?.select("div").filter({ try !$0.className().contains("week") }) else { return nil }
+        var daysArray: [TimetableDay] = []
         
         for dayDoc in dayDocs {
             let lessons = try dayDoc.select("tr")
@@ -192,9 +198,9 @@ class TimetablePresenter {
                 day.addToLessons(lsn)
             }
             
-            week.append(day)
+            daysArray.append(day)
         }
         
-        return week
+        return useCase.getNewWeek(id: id, days: daysArray, title: title)
     }
 }
