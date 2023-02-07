@@ -24,11 +24,17 @@ enum UDKeys {
         static let autoUpdates = "AutoUpdates"
     }
     
-    enum State {
+    enum Develop {
         /// Should application display things, that only developer can see (netfox; additional settings)
         /// - Returns: Bool
         static let isDev = "DevMode"
         
+        /// Should application display things, that only developer can see (netfox; additional settings)
+        /// - Returns: Bool
+        static let devAlerts = "DevAlertsOn"
+    }
+    
+    enum State {
         /// Favourite timetable displayed at first screen of application
         /// - Returns: String
         static let mainTimetable = "MainTimetable"

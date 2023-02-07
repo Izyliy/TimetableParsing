@@ -30,6 +30,14 @@ class MainSettingsViewController: UIViewController {
         presenter?.setupInitialState()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if UserDefaults.standard.bool(forKey: UDKeys.Develop.isDev) {
+            presenter?.setupInitialState()
+        }
+    }
+    
     func updateTableView(with sections: [SettingsSection]) {
         displayManager?.updateTableView(with: sections)
     }

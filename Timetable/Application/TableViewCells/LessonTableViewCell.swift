@@ -62,7 +62,6 @@ class LessonTableViewCell: UITableViewCell {
         contentView.addSubview(timeLabel)
         contentView.addSubview(cabinetLabel)
         
-        
         lectionView.backgroundColor = lesson.isLection ? .yellow : .gray
         
         nameLabel.text = lesson.name

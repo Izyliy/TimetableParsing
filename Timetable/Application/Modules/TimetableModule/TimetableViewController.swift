@@ -16,9 +16,10 @@ class TimetableViewController: UIViewController {
     }()
     
     let weekControl: UISegmentedControl = {
-        let view = UISegmentedControl(items: ["First week", "Second week"])
+        let view = UISegmentedControl(items: ["Первая неделя", "Вторая неделя"])
         
         view.selectedSegmentIndex = 0
+        view.backgroundColor = UIColor(white: 0, alpha: 0.15) //UIColor(named: "DarkGreen")
         
         return view
     }()
@@ -109,14 +110,14 @@ class TimetableViewController: UIViewController {
         view.addSubview(weekControl)
 
         weekControl.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(4)
-            make.right.equalToSuperview().offset(-4)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(4)
+            make.left.equalToSuperview().offset(8)
+            make.right.equalToSuperview().offset(-8)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(8)
         }
         
         tableView.snp.makeConstraints { make in
             make.bottom.equalTo(view.snp.bottom)
-            make.top.equalTo(weekControl.snp.bottom).offset(4)
+            make.top.equalTo(weekControl.snp.bottom).offset(8)
         }
     }
     

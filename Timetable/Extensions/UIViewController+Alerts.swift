@@ -35,7 +35,7 @@ extension UIViewController {
     }
     
     func showDebugMsg(title: String?, actions: [UIAlertAction]) {
-        if UserDefaults.standard.bool(forKey: UDKeys.State.isDev) {
+        if UserDefaults.standard.bool(forKey: UDKeys.Develop.isDev) {
             showActionSheet(title: title, actions: actions)
         }
     }

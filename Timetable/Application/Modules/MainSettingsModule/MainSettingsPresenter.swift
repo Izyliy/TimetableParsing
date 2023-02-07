@@ -41,7 +41,7 @@ class MainSettingsPresenter {
             .init(title: "Обновление расписаний", type: .switcher, isOn: defaults.bool(forKey: UDKeys.Settings.autoUpdates), handler: setAutoUpdates),
         ], hint: "Автоматическое обновление кэша позваляет актуализировать расписания при доступе к интернету и всегда видеть правильное расписание"))
         
-        guard UserDefaults.standard.bool(forKey: UDKeys.State.isDev) == true else { return array }
+        guard UserDefaults.standard.bool(forKey: UDKeys.Develop.isDev) == true else { return array }
                 
         array.append(.init(objects: [
             .init(title: "Выключить devMode", type: .disclosure, handler: disableDevMode),
@@ -79,8 +79,7 @@ class MainSettingsPresenter {
     
     private func disableDevMode(_ isOn: Bool?) {
         print("dev mode disabled")
-        defaults.set(false, forKey: UDKeys.State.isDev)
-        NFX.sharedInstance().stop()
+        DevelopConfigurator.sharedInstance.setDev(to: false)
         setupInitialState()
     }
     
