@@ -83,7 +83,7 @@ class TimetableViewController: UIViewController {
     }
     
     func setVisuals(for mode: TimetableMode) {
-        view.addSubview(noNameLabel)        //TODO: some sort of image for name == nil
+        view.addSubview(noNameLabel)
         view.addSubview(tableView)
         
         view.backgroundColor = mode == .extended ? UIColor(named: "BrandGreen") : UIColor(red: 0.95, green: 0.95, blue: 0.97, alpha: 1)

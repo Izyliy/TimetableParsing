@@ -158,15 +158,24 @@ class TimetablePresenter {
                     .className()
                     .contains("yes") ?? false
                 
-                let profDoc = try lesson.select("td")
+                var profArray: [Professor?] = []
+                let profDocs = try lesson.select("td")
                     .filter({ try $0.classNames().contains("diss") })
                     .first?
                     .select("a")
-                    .first()
                 
-                let profName = try profDoc?.text()
-                let profLink = try profDoc?.attr("href")
-                let professor = useCase.getNewProfessor(name: profName, link: profLink)
+                if let profDocs = profDocs {
+                    for profDoc in profDocs {
+                        let profName = try profDoc.text()
+                        let profLink = try profDoc.attr("href")
+                        
+                        profArray.append(useCase.getNewProfessor(name: profName, link: profLink))
+                    }
+                }
+                
+//                let profName = try profDoc?.text()
+//                let profLink = try profDoc?.attr("href")
+//                let professor = useCase.getNewProfessor(name: profName, link: profLink)
 
                 let cabinet = try lesson.select("td")
                     .filter({ try $0.classNames().contains("who-where") })
@@ -181,17 +190,23 @@ class TimetablePresenter {
 //                    .first()?
 //                    .text()
                 
+                var dropNumber = 0
+                for prof in profArray {
+                    dropNumber += prof?.name?.count ?? 0
+                    dropNumber += 1
+                }
+                
                 let classNameSubstring = try lesson.select("td")
                     .filter({ try $0.classNames().contains("diss") })
                     .first?
                     .text()
-                    .dropLast(professor?.name?.count ?? 0)
+                    .dropLast(dropNumber)
                 let className = String(classNameSubstring ?? "")
                                 
                 let lsn = useCase.getNewLesson(startTime: startTime,
                                                endTime: endTime,
                                                isLection: isLection,
-                                               professors: [professor].compactMap{ $0 } ,
+                                               professors: profArray.compactMap{ $0 } ,
                                                cabinets: [cabinet],
                                                name: className)
                 

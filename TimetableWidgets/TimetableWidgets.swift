@@ -15,7 +15,7 @@ struct TimetableWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             TimetableWidgetView(entry: entry)
         }
-        .supportedFamilies([.systemMedium])
+        .supportedFamilies([])//.systemMedium
         .configurationDisplayName("Расписание")
         .description("Избранное расписание, выбранное в приложении")
     }
