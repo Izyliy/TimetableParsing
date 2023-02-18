@@ -58,6 +58,7 @@ class LessonTableViewCell: UITableViewCell {
     }()
     
     func setup(lesson: TimetableLesson) {
+        selectionStyle = .none
         setConstraints()
         fillElements(for: lesson)
     }

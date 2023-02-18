@@ -79,7 +79,7 @@ class CoreDataViewController: UIViewController {
     var days: [TimetableDay]?
     var timetables: [Timetable]?
     
-    var display: toDisplay = .professors
+    var display: toDisplay = .timetables
 
     override func viewDidLoad() {
         super.viewDidLoad()

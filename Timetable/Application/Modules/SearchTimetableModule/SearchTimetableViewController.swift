@@ -54,6 +54,7 @@ class SearchTimetableViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         
         view.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.97, alpha: 1)
         view.addSubview(textField)

@@ -67,7 +67,9 @@ class MainSettingsPresenter {
     }
     
     private func clearCache(_ isOn: Bool?) {
-        print("cache cleared")
+        view?.showConfirmMessage("Очистка кэша приведет к потере всех сохраненных расписаний, для повторного просмотра будет необходимо интернет соединение",
+                                 title: "Вы уверены?",
+                                 handler: {  _ in self.useCase.clearCache() })
     }
     
     private func setAutoUpdates(to isOn: Bool?) {

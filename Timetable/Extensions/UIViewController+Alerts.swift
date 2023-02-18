@@ -22,8 +22,16 @@ extension UIViewController {
         present(alert, animated: true)
     }
     
+    func showConfirmMessage(_ message: String, title: String? = nil, confirmTitle: String = "Ок", handler: @escaping (UIAlertAction) -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel))
+        alert.addAction(UIAlertAction(title: confirmTitle, style: .default, handler: handler))
+        present(alert, animated: true)
+    }
+    
     func showActionSheet(title: String?, actions: [UIAlertAction]) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
         
         if actions.isEmpty {
             alert.addAction(UIAlertAction(title: "OK", style: .default))

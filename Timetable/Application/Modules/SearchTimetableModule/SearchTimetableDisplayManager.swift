@@ -20,6 +20,7 @@ class SearchTimetableDisplayManager: NSObject {
 
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
 
         tableView.register(SuggestionTableViewCell.self, forCellReuseIdentifier: "SuggestionTableViewCell")
         

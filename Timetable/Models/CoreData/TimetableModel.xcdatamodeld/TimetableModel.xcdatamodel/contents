@@ -9,7 +9,7 @@
         <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
-        <relationship name="weeks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimetableWeek" inverseName="timetable" inverseEntity="TimetableWeek"/>
+        <relationship name="weeks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TimetableWeek" inverseName="timetable" inverseEntity="TimetableWeek"/>
     </entity>
     <entity name="TimetableDay" representedClassName="TimetableDay" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -29,7 +29,7 @@
     <entity name="TimetableWeek" representedClassName="TimetableWeek" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="days" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimetableDay" inverseName="week" inverseEntity="TimetableDay"/>
+        <relationship name="days" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TimetableDay" inverseName="week" inverseEntity="TimetableDay"/>
         <relationship name="timetable" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Timetable" inverseName="weeks" inverseEntity="Timetable"/>
     </entity>
 </model>
