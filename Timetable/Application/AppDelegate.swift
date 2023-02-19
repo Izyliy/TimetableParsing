@@ -22,6 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DevelopConfigurator.sharedInstance.setDev(to: true)
         #endif
         
+        if !UserDefaults.standard.bool(forKey: UDKeys.State.notFirstLaunch) {
+            UserDefaults.standard.set(true, forKey: UDKeys.State.notFirstLaunch)
+
+            UserDefaults.standard.set(true, forKey: UDKeys.Settings.autoUpdates)
+        }
+        
         window = UIWindow.init(frame: UIScreen.main.bounds)
         
         let navigationController: UINavigationController = .init()

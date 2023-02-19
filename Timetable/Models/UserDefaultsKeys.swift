@@ -38,5 +38,9 @@ enum UDKeys {
         /// Favourite timetable displayed at first screen of application
         /// - Returns: String
         static let mainTimetable = "MainTimetable"
+        
+        /// Used to catch first launch in "willFinishLaunchingWithOptions"
+        /// - Returns: Bool
+        static let notFirstLaunch = "NotFirstLaunch"
     }
 }

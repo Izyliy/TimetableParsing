@@ -26,6 +26,10 @@ class TimetablePresenter {
         guard let name else { return }
         
         if let timetable = useCase.getTimetable(for: name) {
+            if UserDefaults.standard.bool(forKey: UDKeys.Settings.autoUpdates) &&
+                timetable.creationDate?.timeIntervalSince(Date()) ?? 0 < -60 * 60 * 24 * 1 { //TODO: change one day to one week
+                fetchTimetable(forReload: true)
+            }
             state.timetable = timetable
             let week = formDaysArray(mode: mode)
             view?.updateTimetable(week: week)
@@ -63,7 +67,7 @@ class TimetablePresenter {
             let week = self.formDaysArray(mode: mode)
             self.view?.updateTimetable(week: week)
         }.catch { _ in
-            self.view?.showError(message: "Не удалось загрузить расписание, проверьте соединение с интернетом и попробуйте снова", handler: { _ in
+            self.view?.showError(message: "Не удалось \(forReload ? "обновить" : "загрузить") расписание, проверьте соединение с интернетом и попробуйте снова", handler: { _ in
                 guard !forReload else { return }
                 self.view?.popModule?()
             })

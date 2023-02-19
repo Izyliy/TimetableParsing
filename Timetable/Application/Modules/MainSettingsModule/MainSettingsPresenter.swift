@@ -32,8 +32,9 @@ class MainSettingsPresenter {
             .init(title: "Разрешить уведомления", type: .switcher, isOn: defaults.bool(forKey: UDKeys.Settings.allowNotifications), handler: setNotification),
         ], hint: "Уведомления позволяют приложению напоминать о парах"))
         
+        //TODO: implement allowing cache
         array.append(.init(objects: [
-            .init(title: "Кэширование расписаний", type: .switcher, isOn: defaults.bool(forKey: UDKeys.Settings.allowCache), handler: setCache),
+//            .init(title: "Кэширование расписаний", type: .switcher, isOn: defaults.bool(forKey: UDKeys.Settings.allowCache), handler: setCache),
             .init(title: "Очистить кэш", type: .disclosure, handler: clearCache),
         ], hint: "Кэш содержит данные о расписании ранее открытых групп. Расписание кэшированной группы можно открыть без доступа к интернету"))
         

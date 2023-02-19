@@ -64,12 +64,6 @@ class TimetableUseCase {
         timetable.type = type.getTypeString()
         timetable.creationDate = Date()
         
-//        guard let firstWeekSet = Set(firstWeek) as? NSSet,
-//              let secondWeekSet = Set(secondWeek) as? NSSet
-//        else {
-//            return nil
-//        }
-        
         for week in weeks {
             timetable.addToWeeks(week)
         }
