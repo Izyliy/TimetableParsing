@@ -42,9 +42,10 @@ class TimetableCoordinator: TimetableCoordinatorProtocol {
     
     func getTimetableModule(for name: String?) -> TimetableViewController {
         let viewController = TimetableViewController()
+        let type: TimetableType = UserDefaults.standard.bool(forKey: UDKeys.State.isGroupMainType) ? .group : .cabinet
         
         //TODO: set mode
-        viewController.configure(name: name, mode: .preview, type: .group)
+        viewController.configure(name: name, mode: .preview, type: type)
         navigationController.popViewController(animated: true)
         
         viewController.popModule = {

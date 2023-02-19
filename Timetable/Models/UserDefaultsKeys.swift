@@ -39,6 +39,10 @@ enum UDKeys {
         /// - Returns: String
         static let mainTimetable = "MainTimetable"
         
+        /// Favourite timetable's type displayed at first screen of application
+        /// - Returns: Bool
+        static let isGroupMainType = "MainType"
+        
         /// Used to catch first launch in "willFinishLaunchingWithOptions"
         /// - Returns: Bool
         static let notFirstLaunch = "NotFirstLaunch"

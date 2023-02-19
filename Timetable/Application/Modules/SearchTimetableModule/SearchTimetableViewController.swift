@@ -113,7 +113,7 @@ class SearchTimetableViewController: UIViewController, UITextFieldDelegate {
         }
         
         if textField == self.textField {
-            if let group = textField.text, group.count > 5, group.count < 9 {
+            if let group = textField.text, group.count > 2, group.count < 9 {
                 openTimetableForGroup?(group, getTimetableType())
             }
             
