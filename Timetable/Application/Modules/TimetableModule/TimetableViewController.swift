@@ -67,13 +67,12 @@ class TimetableViewController: UIViewController {
         tableView.delegate = displayManager
         tableView.dataSource = displayManager
         
-        presenter?.setupInitialState(name: name, type: type, mode: mode)
-        
         title = name != nil ? name : "Избранное"
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: optionsButton)
         
         setNavButtonAction()
         setVisuals(for: mode)
+        presenter?.setupInitialState(name: name, type: type, mode: mode)
         updateVisuals(hasName: name != nil)
     }
     
