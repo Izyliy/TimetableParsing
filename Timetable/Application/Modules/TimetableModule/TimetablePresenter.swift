@@ -56,6 +56,10 @@ class TimetablePresenter {
         }
     }
     
+    func showFullTimetable() {
+        view?.showFullTimetable?()
+    }
+    
     func fetchTimetable(forReload: Bool) {
         guard let name = state.name,
               let type = state.type,
@@ -85,7 +89,7 @@ class TimetablePresenter {
             
             view?.title = timetableName
             view?.updateVisuals(hasName: state.name != nil)
-            view?.setNavButtonAction()
+            view?.setNavButtonAction(for: state.mode ?? .preview)
             
             if let timetable = useCase.getTimetable(for: timetableName) {
                 state.timetable = timetable
@@ -95,6 +99,10 @@ class TimetablePresenter {
                 fetchTimetable(forReload: false)
             }
         }
+    }
+    
+    func getMode() -> TimetableMode? {
+        state.mode
     }
     
     private func formDaysArray(mode: TimetableMode) -> [TimetableDay] {

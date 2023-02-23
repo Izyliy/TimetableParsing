@@ -48,6 +48,7 @@ class TimetableViewController: UIViewController {
     var timetable: [Timetable]?
     
     var popModule: (() -> Void)?
+    var showFullTimetable: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +71,7 @@ class TimetableViewController: UIViewController {
         title = name != nil ? name : "Избранное"
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: optionsButton)
         
-        setNavButtonAction()
+        setNavButtonAction(for: mode)
         setVisuals(for: mode)
         presenter?.setupInitialState(name: name, type: type, mode: mode)
         updateVisuals(hasName: name != nil)
@@ -125,16 +126,17 @@ class TimetableViewController: UIViewController {
         weekControl.selectedSegmentIndex = 0
     }
     
-    func setNavButtonAction() {
+    func setNavButtonAction(for mode: TimetableMode) {
         if #available(iOS 14.0, *) {
-            let actions: [UIAction] = [
-                UIAction(title: "Избранное", image: UIImage(systemName: "star"), handler: { _ in
-                    self.presenter?.setFavourite()
-                }),
-                UIAction(title: "Обновить", image: UIImage(systemName: "arrow.clockwise"), handler: { _ in
-                    self.presenter?.fetchTimetable(forReload: true)
-                }),
-            ]
+            var actions: [UIAction] = []
+            
+            if mode == .preview {
+                actions.append(UIAction(title: "Полное расписание", image: UIImage(systemName: "table"), handler: { _ in self.presenter?.showFullTimetable() }))
+            } else {
+                actions.append(UIAction(title: "Избранное", image: UIImage(systemName: "star"), handler: { _ in self.presenter?.setFavourite() }))
+            }
+            
+            actions.append(UIAction(title: "Обновить", image: UIImage(systemName: "arrow.clockwise"), handler: { _ in self.presenter?.fetchTimetable(forReload: true) }))
             
             optionsButton.showsMenuAsPrimaryAction = true
             optionsButton.menu = UIMenu(title: "",
@@ -149,15 +151,18 @@ class TimetableViewController: UIViewController {
     }
         
     @objc func tapOnBarItem(_ sender: UIButton) {
-        showActionSheet(title: nil, actions: [
-            UIAlertAction(title: "Избранное", style: .default, handler: { _ in
-                self.presenter?.setFavourite()
-            }),
-            UIAlertAction(title: "Обновить", style: .default, handler: { _ in
-                self.presenter?.fetchTimetable(forReload: true)
-            }),
-            UIAlertAction(title: "Отмена", style: .cancel)
-        ])
+        var actions: [UIAlertAction] = []
+        
+        if presenter?.getMode() == .preview {
+            actions.append(UIAlertAction(title: "Полное расписание", style: .default, handler: { _ in self.presenter?.showFullTimetable() }))
+        } else {
+            actions.append(UIAlertAction(title: "Избранное", style: .default, handler: { _ in self.presenter?.setFavourite() }))
+        }
+        
+        actions.append(UIAlertAction(title: "Обновить", style: .default, handler: { _ in self.presenter?.fetchTimetable(forReload: true) }))
+        actions.append(UIAlertAction(title: "Отмена", style: .cancel))
+        
+        showActionSheet(title: nil, actions: actions)
     }
     
     @objc func chooseWeek(_ sender: UISegmentedControl) {
