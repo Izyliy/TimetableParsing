@@ -27,7 +27,7 @@ class TimetablePresenter {
         
         if let timetable = useCase.getTimetable(for: name) {
             if UserDefaults.standard.bool(forKey: UDKeys.Settings.autoUpdates) &&
-                timetable.creationDate?.timeIntervalSince(Date()) ?? 0 < -60 * 60 * 24 * 1 { //TODO: change one day to one week
+                Date().timeIntervalSince(timetable.creationDate ?? Date()) > 60 * 60 * 24 * 7 {
                 fetchTimetable(forReload: true)
             }
             state.timetable = timetable
