@@ -2,7 +2,7 @@
 //  TimetableLesson+CoreDataProperties.swift
 //  Timetable
 //
-//  Created by Павел Грабчак on 01.10.2022.
+//  Created by Павел Грабчак on 24.02.2023.
 //
 //
 
@@ -16,13 +16,14 @@ extension TimetableLesson {
         return NSFetchRequest<TimetableLesson>(entityName: "TimetableLesson")
     }
 
-    @NSManaged public var startTime: String?
+    @NSManaged public var cabinets: [String]?
     @NSManaged public var endTime: String?
     @NSManaged public var isLection: Bool
-    @NSManaged public var cabinets: [String]?
     @NSManaged public var name: String?
-    @NSManaged public var professors: NSSet?
+    @NSManaged public var startTime: String?
+    @NSManaged public var distantLinks: [String]?
     @NSManaged public var day: TimetableDay?
+    @NSManaged public var professors: NSSet?
 
 }
 

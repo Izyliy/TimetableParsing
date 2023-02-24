@@ -102,6 +102,7 @@ class TimetableUseCase {
                       isLection: Bool,
                       professors: [Professor],
                       cabinets: [String],
+                      links: [String],
                       name: String) -> TimetableLesson {
         let lesson = TimetableLesson(context: context)
         
@@ -110,6 +111,7 @@ class TimetableUseCase {
         lesson.isLection = isLection
         lesson.cabinets = cabinets
         lesson.name = name
+        lesson.distantLinks = links
         
         for professor in professors {
             lesson.addToProfessors(professor)

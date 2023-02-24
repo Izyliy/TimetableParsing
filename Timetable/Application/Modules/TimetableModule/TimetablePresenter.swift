@@ -172,6 +172,7 @@ class TimetablePresenter {
                     .contains("yes") ?? false
                 
                 var profArray: [Professor?] = []
+                var distantLinks: [String] = []
                 let profDocs = try lesson.select("td")
                     .filter({ try $0.classNames().contains("diss") })
                     .first?
@@ -182,7 +183,11 @@ class TimetablePresenter {
                         let profName = try profDoc.text()
                         let profLink = try profDoc.attr("href")
                         
-                        profArray.append(useCase.getNewProfessor(name: profName, link: profLink))
+                        if profName == "Ссылка на занятие" {
+                            distantLinks.append(profLink)
+                        } else {
+                            profArray.append(useCase.getNewProfessor(name: profName, link: profLink))
+                        }
                     }
                 }
                 
@@ -209,6 +214,11 @@ class TimetablePresenter {
                     dropNumber += 1
                 }
                 
+                for _ in distantLinks {
+                    dropNumber += "Ссылка на занятие".count
+                    dropNumber += 1
+                }
+                
                 let classNameSubstring = try lesson.select("td")
                     .filter({ try $0.classNames().contains("diss") })
                     .first?
@@ -221,6 +231,7 @@ class TimetablePresenter {
                                                isLection: isLection,
                                                professors: profArray.compactMap{ $0 } ,
                                                cabinets: [cabinet],
+                                               links: distantLinks,
                                                name: className)
                 
                 day.addToLessons(lsn)

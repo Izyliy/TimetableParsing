@@ -63,48 +63,6 @@ class LessonTableViewCell: UITableViewCell {
         fillElements(for: lesson)
     }
     
-    private func setConstraintsBeta() {
-        contentView.addSubview(lectionView)
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(professorTextView)
-        contentView.addSubview(timeLabel)
-        contentView.addSubview(cabinetLabel)
-        
-        timeLabel.snp.makeConstraints { make in
-            make.top.greaterThanOrEqualToSuperview().offset(4)
-            make.bottom.lessThanOrEqualToSuperview().offset(-4)
-            make.left.equalToSuperview().offset(4)
-            make.centerY.equalToSuperview()
-            make.width.equalTo(50)
-        }
-        
-        lectionView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
-            make.left.equalTo(timeLabel.snp.right).offset(4)
-            make.width.equalTo(8)
-            make.height.greaterThanOrEqualTo(55)
-        }
-        
-        nameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(4)
-            make.left.equalTo(lectionView.snp.right).offset(8)
-            make.right.lessThanOrEqualTo(cabinetLabel.snp.left).offset(-4)
-        }
-        
-        professorTextView.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(4)
-            make.left.equalTo(lectionView.snp.right).offset(4)
-            make.height.equalTo(20)
-            make.bottom.equalToSuperview().offset(-4)
-        }
-        
-        cabinetLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(4)
-            make.bottom.equalToSuperview().offset(-4)
-            make.right.equalToSuperview().offset(-6)
-        }
-    }
-    
     private func setConstraints() {
         contentView.addSubview(lectionView)
         contentView.addSubview(nameLabel)
