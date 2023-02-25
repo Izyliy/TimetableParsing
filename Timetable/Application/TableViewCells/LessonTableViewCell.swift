@@ -57,18 +57,37 @@ class LessonTableViewCell: UITableViewCell {
         return label
     }()
     
+    private let linkButton: UIButton = {
+        let btn = UIButton()
+        
+        btn.setTitle("Ссылка на занятие", for: .normal)
+        btn.setTitleColor(.link, for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 14)
+        btn.backgroundColor = .clear
+        
+        btn.layer.cornerRadius = 5
+        btn.layer.borderColor = UIColor.link.cgColor
+        btn.layer.borderWidth = 1
+        
+        return btn
+    }()
+    
+    var distantLink: String?
+    
     func setup(lesson: TimetableLesson) {
         selectionStyle = .none
-        setConstraints()
+        let haveLink = !(lesson.distantLinks?.isEmpty ?? true)
+        setConstraints(haveLink: haveLink)
         fillElements(for: lesson)
     }
     
-    private func setConstraints() {
+    private func setConstraints(haveLink: Bool) {
         contentView.addSubview(lectionView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(professorTextView)
         contentView.addSubview(timeLabel)
         contentView.addSubview(cabinetLabel)
+        contentView.addSubview(linkButton)
         
         lectionView.snp.makeConstraints { make in
             make.left.top.bottom.equalToSuperview()
@@ -86,8 +105,7 @@ class LessonTableViewCell: UITableViewCell {
             make.top.greaterThanOrEqualTo(nameLabel.snp.bottom).offset(4)
             make.left.equalTo(lectionView.snp.right).offset(4)
             make.height.equalTo(20)
-//            make.right.equalTo(cabinetLabel.le)
-            make.bottom.equalToSuperview().offset(-4)
+//            make.bottom.equalToSuperview().offset(-4)
         }
         
         timeLabel.snp.makeConstraints { make in
@@ -101,6 +119,25 @@ class LessonTableViewCell: UITableViewCell {
             make.right.equalToSuperview().offset(-6)
             make.left.greaterThanOrEqualTo(professorTextView.snp.right).offset(6)
             make.top.greaterThanOrEqualTo(timeLabel.snp.bottom).offset(6)
+        }
+        
+        if !haveLink {
+            professorTextView.snp.makeConstraints { make in
+                make.bottom.equalToSuperview().offset(-4)
+            }
+            
+            linkButton.snp.makeConstraints { make in
+                make.height.equalTo(0)
+            }
+            return
+        }
+        
+        linkButton.snp.makeConstraints { make in
+            make.top.equalTo(professorTextView.snp.bottom).offset(6)
+            make.left.equalTo(lectionView.snp.right).offset(4)
+            make.height.equalTo(25)
+            make.width.equalTo(140)
+            make.bottom.equalToSuperview().offset(-4)
         }
     }
     
@@ -148,5 +185,32 @@ class LessonTableViewCell: UITableViewCell {
         
         //cabinetLabel
         cabinetLabel.text = lesson.cabinets?.joined(separator: "\n")
+        
+        //linkButton
+        if let link = lesson.distantLinks?.first {
+            distantLink = link
+            linkButton.setTitle("Ссылка на занятие", for: .normal)
+            linkButton.addTarget(self, action: #selector(distantLinkPressed(_:)), for: .touchUpInside)
+        } else {
+            linkButton.setTitle("", for: .normal)
+        }
+    }
+    
+    @objc
+    func distantLinkPressed(_ button: UIButton) {
+        guard let url = URL(string: distantLink ?? "") else { return }
+        UIApplication.shared.open(url)
+//        print(distantLink)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        linkButton.snp.removeConstraints()
+        lectionView.snp.removeConstraints()
+        nameLabel.snp.removeConstraints()
+        professorTextView.snp.removeConstraints()
+        timeLabel.snp.removeConstraints()
+        cabinetLabel.snp.removeConstraints()
     }
 }
