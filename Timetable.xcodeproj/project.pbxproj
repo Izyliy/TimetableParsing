@@ -83,6 +83,7 @@
 		E7E0C4E82983F2240004267F /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B8AB62977DB3D006421EE /* UserDefaultsKeys.swift */; };
 		E7E0C4F5298CFD990004267F /* Timetable+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E0C4EF298CFD990004267F /* Timetable+CoreDataProperties.swift */; };
 		E7E0C4F7298CFD990004267F /* TimetableDay+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E0C4F1298CFD990004267F /* TimetableDay+CoreDataProperties.swift */; };
+		E7F6AEB929ACABDE003341B4 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F6AEB829ACABDE003341B4 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +183,7 @@
 		E7B88B3F2982AC2A007EE8F9 /* SmallTimetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTimetable.swift; sourceTree = "<group>"; };
 		E7E0C4EF298CFD990004267F /* Timetable+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timetable+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E7E0C4F1298CFD990004267F /* TimetableDay+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TimetableDay+CoreDataProperties.swift"; path = "../../TimetableDay+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E7F6AEB829ACABDE003341B4 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +356,7 @@
 				E5AFAB9C28E833D200482829 /* Models */,
 				E56BE76E28CDEE2C007FE14E /* Networking */,
 				E5E18DA828CCF6A30057EB2C /* Resources */,
+				E7F6AEB729ACABB4003341B4 /* Helpers */,
 				E5E18DA728CCF6810057EB2C /* Application */,
 				E5E18DA528CCF6140057EB2C /* Coordinators */,
 			);
@@ -476,6 +479,14 @@
 				E7124F23298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift */,
 			);
 			path = TimetableWeek;
+			sourceTree = "<group>";
+		};
+		E7F6AEB729ACABB4003341B4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E7F6AEB829ACABDE003341B4 /* NotificationManager.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -642,6 +653,7 @@
 				E53FB43728F172C500BDACB9 /* SettingsCoordinator.swift in Sources */,
 				E5AFABBF28E844C700482829 /* Timetable+CoreDataClass.swift in Sources */,
 				E5E18DAC28CCF7190057EB2C /* TabCoordinator.swift in Sources */,
+				E7F6AEB929ACABDE003341B4 /* NotificationManager.swift in Sources */,
 				E53FB45B290440A100BDACB9 /* SettingsTableViewCell.swift in Sources */,
 				E5E18D8E28CCF56C0057EB2C /* SceneDelegate.swift in Sources */,
 				E56BE77228CDEEF6007FE14E /* RequestOperation.swift in Sources */,

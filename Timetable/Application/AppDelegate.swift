@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import netfox
+import BackgroundTasks
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -44,7 +45,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
         return true
     }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.kubsautimetables.task.notifications", using: nil) { task in
+            self.handleNotificationsCreation(task: task as! BGAppRefreshTask)
+        }
+        
+        return true
+    }
 
+    func handleNotificationsCreation(task: BGAppRefreshTask) {
+        // Schedule a new refresh task.
+
+        scheduleNotification()
+        
+        scheduleAppRefresh()
+        task.setTaskCompleted(success: true)
+    }
+    
+    func scheduleNotification() {
+        let content = UNMutableNotificationContent()
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YY, MMM d, HH:mm:ss"
+        dateFormatter.timeZone = .current
+        content.title = "Task Fired!"
+        content.body = dateFormatter.string(from: date)
+        content.sound = UNNotificationSound.default
+
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+        UNUserNotificationCenter.current().add(request)
+    }
+    
+    func scheduleAppRefresh() {
+        let request = BGAppRefreshTaskRequest(identifier: "com.kubsautimetables.task.notifications")
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 60 * 60 * 24 * 3)
+            
+        do {
+            try BGTaskScheduler.shared.submit(request)
+            print("submit(request)")
+        } catch {
+            print("Could not schedule app refresh: \(error)")
+        }
+    }
+    
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {

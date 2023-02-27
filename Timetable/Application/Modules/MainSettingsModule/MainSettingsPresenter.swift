@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UserNotifications
 import netfox
 
 class MainSettingsPresenter {
@@ -47,7 +48,8 @@ class MainSettingsPresenter {
         array.append(.init(objects: [
             .init(title: "Выключить devMode", type: .disclosure, handler: disableDevMode),
             .init(title: "Просмотр CoreData", type: .disclosure, handler: viewCoreDataObjects),
-            .init(title: "Debug Alerts", type: .switcher, handler: { _ in })
+            .init(title: "Создать уведомление", type: .disclosure, handler: testNotification),
+            .init(title: "Debug Alerts", type: .switcher, handler: { _ in  }),
         ], hint: "Режим разработчика включен!"))
         
         return array
@@ -55,16 +57,13 @@ class MainSettingsPresenter {
     
     private func setNotification(to isOn: Bool?) {
         guard let isOn else { return }
-        print("Gonna set notifications to \(isOn)")
-        defaults.set(isOn, forKey: UDKeys.Settings.allowNotifications)
-        print("Notifications is \(defaults.bool(forKey: UDKeys.Settings.allowNotifications))")
+        
+        tryToSetNotifications(to: isOn)
     }
     
     private func setCache(to isOn: Bool?) {
         guard let isOn else { return }
-        print("Gonna set cache to \(isOn)")
         defaults.set(isOn, forKey: UDKeys.Settings.allowCache)
-        print("Cache is \(defaults.bool(forKey: UDKeys.Settings.allowCache))")
     }
     
     private func clearCache(_ isOn: Bool?) {
@@ -75,18 +74,71 @@ class MainSettingsPresenter {
     
     private func setAutoUpdates(to isOn: Bool?) {
         guard let isOn else { return }
-        print("Gonna set auto updates to \(isOn)")
         defaults.set(isOn, forKey: UDKeys.Settings.autoUpdates)
-        print("Auto updates is \(defaults.bool(forKey: UDKeys.Settings.autoUpdates))")
     }
     
     private func disableDevMode(_ isOn: Bool?) {
-        print("dev mode disabled")
         DevelopConfigurator.sharedInstance.setDev(to: false)
         setupInitialState()
     }
     
     private func viewCoreDataObjects(_ isOn: Bool?) {
         view?.openCoreDataView?()
+    }
+    
+    private func testNotification(_ isOn: Bool?) {
+        createTestNotification()
+    }
+}
+
+extension MainSettingsPresenter {
+    func tryToSetNotifications(to isOn: Bool) {
+        let current = UNUserNotificationCenter.current()
+
+        current.getNotificationSettings(completionHandler: { (settings) in
+            let status = settings.authorizationStatus
+            
+            switch status {
+            case .notDetermined:
+                current.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                    if success {
+                        self.defaults.set(isOn, forKey: UDKeys.Settings.allowNotifications)
+                    } else {
+                        self.defaults.set(false, forKey: UDKeys.Settings.allowNotifications)
+                        DispatchQueue.main.async {
+                            self.view?.updateTableView(with: self.getSections())
+                        }
+                    }
+                }
+            case .denied:
+                DispatchQueue.main.async {
+                    self.view?.showMessage("Разрешение на уведомление ранее было отклонено, для получения уведомлений разрешите их отправку в настройках телефона")
+                    self.view?.updateTableView(with: self.getSections())
+                }
+            case .authorized:
+                self.defaults.set(isOn, forKey: UDKeys.Settings.allowNotifications)
+            default:
+                return
+            }
+        })
+    }
+    
+    func scheduleNotifications() {
+        let notificManager = NotificationManager()
+    }
+    
+    func createTestNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "Расписание ПИ2241"
+        content.subtitle = "Иностранный язык делового и профессионального общения"
+        content.body = "11:35 - 222гл - Замотайлова Д.А."
+        content.sound = UNNotificationSound.default
+
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+        UNUserNotificationCenter.current().add(request)
+        print("notif created")
     }
 }

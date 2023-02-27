@@ -36,7 +36,7 @@ class TimetableViewController: UIViewController {
     let noNameLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "ты лог хахаха \nхахахахах ахахаххаdfqwdqwdd"
+        label.text = "Избранное расписание не выбрано\n\nДля добавления расписания в избранное найдите его через \"Поиск\" и отметьте его как избранное"
         label.font = UIFont.systemFont(ofSize: 32)
         label.numberOfLines = 0
         
