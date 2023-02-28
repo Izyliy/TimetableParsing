@@ -92,7 +92,7 @@ class MainSettingsPresenter {
 }
 
 extension MainSettingsPresenter {
-    func tryToSetNotifications(to isOn: Bool) {
+    private func tryToSetNotifications(to isOn: Bool) {
         let current = UNUserNotificationCenter.current()
 
         current.getNotificationSettings(completionHandler: { (settings) in
@@ -103,9 +103,13 @@ extension MainSettingsPresenter {
                 current.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
                     if success {
                         self.defaults.set(isOn, forKey: UDKeys.Settings.allowNotifications)
+                        DispatchQueue.main.async {
+                            self.scheduleNotifications(with: isOn)
+                        }
                     } else {
                         self.defaults.set(false, forKey: UDKeys.Settings.allowNotifications)
                         DispatchQueue.main.async {
+                            self.scheduleNotifications(with: isOn)
                             self.view?.updateTableView(with: self.getSections())
                         }
                     }
@@ -117,17 +121,53 @@ extension MainSettingsPresenter {
                 }
             case .authorized:
                 self.defaults.set(isOn, forKey: UDKeys.Settings.allowNotifications)
+                DispatchQueue.main.async {
+                    self.scheduleNotifications(with: isOn)
+                }
             default:
                 return
             }
         })
     }
-    
-    func scheduleNotifications() {
+        
+    private func scheduleNotifications(with isOn: Bool) {
         let notificManager = NotificationManager()
+        
+        if isOn {
+            guard let groupName = UserDefaults.standard.string(forKey: UDKeys.State.mainTimetable) else {
+                DispatchQueue.main.async {
+                    self.defaults.set(false, forKey: UDKeys.Settings.allowNotifications)
+                    self.view?.updateTableView(with: self.getSections())
+                    self.view?.showError(message: "Уведомления устанавливаются для избранного расписания.\nДобавьте расписание в избранное для получения уведомлений о парах")
+                }
+                return
+            }
+            
+            notificManager.scheduleNotifications(for: groupName) { success, error in
+                if success {
+                    //all done, nice
+                } else if let error = error {
+                    DispatchQueue.main.async {
+                        self.defaults.set(false, forKey: UDKeys.Settings.allowNotifications)
+                        self.view?.updateTableView(with: self.getSections())
+                        self.view?.showError(message: "Что-то пошло не так")
+                    }
+                    print(error.localizedDescription)
+                } else {
+                    self.defaults.set(false, forKey: UDKeys.Settings.allowNotifications)
+                    self.view?.updateTableView(with: self.getSections())
+                    self.view?.showError(message: "Что-то пошло не так")
+                }
+            }
+        } else {
+            notificManager.clearAllNotifications()
+        }
     }
     
-    func createTestNotification() {
+    private func createTestNotification() {
+        let notificManager = NotificationManager()
+        notificManager.createTestNotif()
+        return
         let content = UNMutableNotificationContent()
         content.title = "Расписание ПИ2241"
         content.subtitle = "Иностранный язык делового и профессионального общения"
