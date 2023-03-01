@@ -55,8 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func handleNotificationsCreation(task: BGAppRefreshTask) {
-        // Schedule a new refresh task.
-
         scheduleNotification()
         
         scheduleAppRefresh()
@@ -64,20 +62,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func scheduleNotification() {
-        let content = UNMutableNotificationContent()
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YY, MMM d, HH:mm:ss"
-        dateFormatter.timeZone = .current
-        content.title = "Task Fired!"
-        content.body = dateFormatter.string(from: date)
-        content.sound = UNNotificationSound.default
-
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-
-        UNUserNotificationCenter.current().add(request)
+        guard
+            UserDefaults.standard.bool(forKey: UDKeys.Settings.allowNotifications),
+            let timetableName = UserDefaults.standard.string(forKey: UDKeys.State.mainTimetable)
+        else { return }
+        
+        let notifManager = NotificationManager()
+        notifManager.clearAllNotifications()
+        notifManager.scheduleNotifications(for: timetableName, handler: { _, _ in  })
     }
     
     func scheduleAppRefresh() {

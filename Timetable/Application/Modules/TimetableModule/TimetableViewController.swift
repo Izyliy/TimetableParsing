@@ -33,13 +33,23 @@ class TimetableViewController: UIViewController {
         return button
     }()
     
-    let noNameLabel: UILabel = {
+    let noFavTitle: UILabel = {
         let label = UILabel()
         
-        label.text = "Избранное расписание не выбрано\n\nДля добавления расписания в избранное найдите его через \"Поиск\" и отметьте его как избранное"
-        label.font = UIFont.systemFont(ofSize: 32)
+        label.text = "Избранное расписание не выбрано!"
+        label.font = UIFont.boldSystemFont(ofSize: 28)
         label.numberOfLines = 0
         
+        return label
+    }()
+    
+    let noFavBody: UILabel = {
+        let label = UILabel()
+
+        label.text = "Для добавления расписания в избранное найдите его через \"Поиск\" и отметьте его как избранное"
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.numberOfLines = 0
+
         return label
     }()
     
@@ -78,20 +88,28 @@ class TimetableViewController: UIViewController {
     }
     
     func updateVisuals(hasName: Bool) {
-        noNameLabel.isHidden = hasName
+        noFavTitle.isHidden = hasName
+        noFavBody.isHidden = hasName
         tableView.isHidden = !hasName
     }
     
     func setVisuals(for mode: TimetableMode) {
-        view.addSubview(noNameLabel)
+        view.addSubview(noFavTitle)
+        view.addSubview(noFavBody)
         view.addSubview(tableView)
         
         view.backgroundColor = mode == .extended ? UIColor(named: "BrandGreen") : UIColor(red: 0.95, green: 0.95, blue: 0.97, alpha: 1)
 
         weekControl.addTarget(self, action: #selector(chooseWeek(_:)), for: .valueChanged)
         
-        noNameLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
+        noFavTitle.snp.makeConstraints { make in
+            make.bottom.equalTo(view.snp.centerY)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+        }
+        
+        noFavBody.snp.makeConstraints { make in
+            make.top.equalTo(view.snp.centerY).offset(8)
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-16)
         }

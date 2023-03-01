@@ -165,9 +165,6 @@ extension MainSettingsPresenter {
     }
     
     private func createTestNotification() {
-        let notificManager = NotificationManager()
-        notificManager.createTestNotif()
-        return
         let content = UNMutableNotificationContent()
         content.title = "Расписание ПИ2241"
         content.subtitle = "Иностранный язык делового и профессионального общения"

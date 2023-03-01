@@ -8,6 +8,7 @@
 import CoreData
 import NotificationCenter
 import UserNotifications
+import BackgroundTasks
 
 class NotificationManager {
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -28,6 +29,19 @@ class NotificationManager {
                     createNotification(for: lesson, of: timetableName)
                 }
             }
+        }
+        
+        submitNotificationsRefresh()
+    }
+    
+    func submitNotificationsRefresh() {
+        let request = BGAppRefreshTaskRequest(identifier: "com.kubsautimetables.task.notifications")
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 60 * 60 * 24 * 3)
+                
+        do {
+            try BGTaskScheduler.shared.submit(request)
+        } catch {
+            print(error.localizedDescription)
         }
     }
     
@@ -54,7 +68,7 @@ class NotificationManager {
         
         let time = startTime.components(separatedBy: ":")
         let hour = time.last == "00" ? (Int(time.first ?? "0") ?? 0) - 1 : (Int(time.first ?? "0") ?? 0)
-        let minute = time.last == "00" ? 55 : (Int(time.last ?? "0") ?? 0)
+        let minute = time.last == "00" ? 55 : (Int(time.last ?? "0") ?? 0) - 5
         
         var dateComp = DateComponents()
         dateComp.calendar = .current
@@ -106,7 +120,7 @@ extension NotificationManager {
         dateComp.minute = 58
         
         let triggerDate = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats: false)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
 
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: triggerDate)
 

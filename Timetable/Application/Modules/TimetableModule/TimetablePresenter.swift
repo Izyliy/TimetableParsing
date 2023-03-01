@@ -50,10 +50,20 @@ class TimetablePresenter {
         if UserDefaults.standard.string(forKey: UDKeys.State.mainTimetable) != state.name {
             UserDefaults.standard.set(state.name, forKey: UDKeys.State.mainTimetable)
             UserDefaults.standard.set(state.type == .group, forKey: UDKeys.State.isGroupMainType)
+            
+            scheduleNotifics(for: state.name)
             view?.showMessage("Избранное расписание записано")
         } else {
             view?.showError(message: "Данное расписание уже является избранным") //TODO: вместо ошибки убирать из избранного
         }
+    }
+    
+    func scheduleNotifics(for name: String?) {
+        guard let name else { return }
+        
+        let notifManager = NotificationManager()
+        notifManager.clearAllNotifications()
+        notifManager.scheduleNotifications(for: name ?? "", handler: { _, _ in  })
     }
     
     func showFullTimetable() {
@@ -71,6 +81,10 @@ class TimetablePresenter {
             self.parseTimetable(with: html, name: name, type: type)
             let week = self.formDaysArray(mode: mode)
             self.view?.updateTimetable(week: week)
+            
+            if name == UserDefaults.standard.string(forKey: UDKeys.State.mainTimetable) {
+                self.scheduleNotifics(for: name)
+            }
         }.catch { _ in
             self.view?.showError(message: "Не удалось \(forReload ? "обновить" : "загрузить") расписание, проверьте соединение с интернетом и попробуйте снова", handler: { _ in
                 guard !forReload else { return }
