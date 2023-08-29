@@ -26,8 +26,6 @@
 		E53FB45728FE8EBD00BDACB9 /* IconTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB45628FE8EBD00BDACB9 /* IconTitleTableViewCell.swift */; };
 		E53FB4592904264200BDACB9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E53FB4582904264200BDACB9 /* Colors.xcassets */; };
 		E53FB45B290440A100BDACB9 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FB45A290440A100BDACB9 /* SettingsTableViewCell.swift */; };
-		E5562F022982EAC50061C509 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E53FB4582904264200BDACB9 /* Colors.xcassets */; };
-		E5562F032982EAC80061C509 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5E18D9428CCF56D0057EB2C /* Images.xcassets */; };
 		E56BE76428CD1F3F007FE14E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E56BE76328CD1F3F007FE14E /* SnapKit */; };
 		E56BE76728CD1FA3007FE14E /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E56BE76628CD1FA3007FE14E /* SwiftSoup */; };
 		E56BE76A28CD208D007FE14E /* Promises in Frameworks */ = {isa = PBXBuildFile; productRef = E56BE76928CD208D007FE14E /* Promises */; };
@@ -70,31 +68,10 @@
 		E7124F25298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7124F23298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift */; };
 		E7124F482991397100A035A3 /* DevelopConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7124F472991397100A035A3 /* DevelopConfigurator.swift */; };
 		E75B8AB72977DB3D006421EE /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B8AB62977DB3D006421EE /* UserDefaultsKeys.swift */; };
-		E78495AD29826D7F005B7A16 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78495AC29826D7F005B7A16 /* WidgetKit.framework */; };
-		E78495AF29826D7F005B7A16 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78495AE29826D7F005B7A16 /* SwiftUI.framework */; };
-		E78495B229826D7F005B7A16 /* TimetableWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78495B129826D7F005B7A16 /* TimetableWidgetsBundle.swift */; };
-		E78495B429826D7F005B7A16 /* TimetableWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78495B329826D7F005B7A16 /* TimetableWidgets.swift */; };
-		E78495BA29826D81005B7A16 /* TimetableWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E78495AA29826D7F005B7A16 /* TimetableWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E78495C029826FAA005B7A16 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78495BF29826FAA005B7A16 /* Provider.swift */; };
-		E78495C229826FE1005B7A16 /* SimpleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78495C129826FE1005B7A16 /* SimpleEntry.swift */; };
-		E78495C42982700E005B7A16 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78495C32982700E005B7A16 /* WidgetView.swift */; };
-		E7B88B3E2982AC1B007EE8F9 /* MediumTimetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B88B3D2982AC1B007EE8F9 /* MediumTimetable.swift */; };
-		E7B88B402982AC2A007EE8F9 /* SmallTimetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B88B3F2982AC2A007EE8F9 /* SmallTimetable.swift */; };
-		E7E0C4E82983F2240004267F /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B8AB62977DB3D006421EE /* UserDefaultsKeys.swift */; };
 		E7E0C4F5298CFD990004267F /* Timetable+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E0C4EF298CFD990004267F /* Timetable+CoreDataProperties.swift */; };
 		E7E0C4F7298CFD990004267F /* TimetableDay+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E0C4F1298CFD990004267F /* TimetableDay+CoreDataProperties.swift */; };
 		E7F6AEB929ACABDE003341B4 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F6AEB829ACABDE003341B4 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E78495B829826D81005B7A16 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E5E18D8028CCF56C0057EB2C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E78495A929826D7F005B7A16;
-			remoteInfo = TimetableWidgetsExtension;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		E78495BE29826D81005B7A16 /* Embed Foundation Extensions */ = {
@@ -103,7 +80,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E78495BA29826D81005B7A16 /* TimetableWidgetsExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,7 +146,6 @@
 		E7124F23298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimetableWeek+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E7124F472991397100A035A3 /* DevelopConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopConfigurator.swift; sourceTree = "<group>"; };
 		E75B8AB62977DB3D006421EE /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
-		E78495AA29826D7F005B7A16 /* TimetableWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TimetableWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78495AC29826D7F005B7A16 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		E78495AE29826D7F005B7A16 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		E78495B129826D7F005B7A16 /* TimetableWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableWidgetsBundle.swift; sourceTree = "<group>"; };
@@ -196,15 +171,6 @@
 				E56BE76428CD1F3F007FE14E /* SnapKit in Frameworks */,
 				E56BE76728CD1FA3007FE14E /* SwiftSoup in Frameworks */,
 				E56BE76A28CD208D007FE14E /* Promises in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E78495A729826D7F005B7A16 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E78495AF29826D7F005B7A16 /* SwiftUI.framework in Frameworks */,
-				E78495AD29826D7F005B7A16 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,7 +310,6 @@
 			isa = PBXGroup;
 			children = (
 				E5E18D8828CCF56C0057EB2C /* Timetable.app */,
-				E78495AA29826D7F005B7A16 /* TimetableWidgetsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -504,7 +469,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E78495B929826D81005B7A16 /* PBXTargetDependency */,
 			);
 			name = Timetable;
 			packageProductDependencies = (
@@ -518,23 +482,6 @@
 			productReference = E5E18D8828CCF56C0057EB2C /* Timetable.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E78495A929826D7F005B7A16 /* TimetableWidgetsExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E78495BB29826D81005B7A16 /* Build configuration list for PBXNativeTarget "TimetableWidgetsExtension" */;
-			buildPhases = (
-				E78495A629826D7F005B7A16 /* Sources */,
-				E78495A729826D7F005B7A16 /* Frameworks */,
-				E78495A829826D7F005B7A16 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = TimetableWidgetsExtension;
-			productName = TimetableWidgetsExtension;
-			productReference = E78495AA29826D7F005B7A16 /* TimetableWidgetsExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -547,9 +494,6 @@
 				TargetAttributes = {
 					E5E18D8728CCF56C0057EB2C = {
 						CreatedOnToolsVersion = 13.4.1;
-					};
-					E78495A929826D7F005B7A16 = {
-						CreatedOnToolsVersion = 14.2;
 					};
 				};
 			};
@@ -575,7 +519,6 @@
 			projectRoot = "";
 			targets = (
 				E5E18D8728CCF56C0057EB2C /* Timetable */,
-				E78495A929826D7F005B7A16 /* TimetableWidgetsExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -588,15 +531,6 @@
 				E53FB4592904264200BDACB9 /* Colors.xcassets in Resources */,
 				E5E18D9828CCF56D0057EB2C /* LaunchScreen.storyboard in Resources */,
 				E5E18D9528CCF56D0057EB2C /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E78495A829826D7F005B7A16 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E5562F022982EAC50061C509 /* Colors.xcassets in Resources */,
-				E5562F032982EAC80061C509 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,30 +600,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E78495A629826D7F005B7A16 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E78495C229826FE1005B7A16 /* SimpleEntry.swift in Sources */,
-				E78495B229826D7F005B7A16 /* TimetableWidgetsBundle.swift in Sources */,
-				E7B88B3E2982AC1B007EE8F9 /* MediumTimetable.swift in Sources */,
-				E7B88B402982AC2A007EE8F9 /* SmallTimetable.swift in Sources */,
-				E7E0C4E82983F2240004267F /* UserDefaultsKeys.swift in Sources */,
-				E78495C029826FAA005B7A16 /* Provider.swift in Sources */,
-				E78495B429826D7F005B7A16 /* TimetableWidgets.swift in Sources */,
-				E78495C42982700E005B7A16 /* WidgetView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E78495B929826D81005B7A16 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E78495A929826D7F005B7A16 /* TimetableWidgetsExtension */;
-			targetProxy = E78495B829826D81005B7A16 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E5E18D9628CCF56D0057EB2C /* LaunchScreen.storyboard */ = {
@@ -831,7 +742,7 @@
 				DEVELOPMENT_TEAM = T3397XTR77;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Timetable/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Расписание";
+				INFOPLIST_KEY_CFBundleDisplayName = WhenLesson;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -866,7 +777,7 @@
 				DEVELOPMENT_TEAM = T3397XTR77;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Timetable/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Расписание";
+				INFOPLIST_KEY_CFBundleDisplayName = WhenLesson;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -890,64 +801,6 @@
 			};
 			name = Release;
 		};
-		E78495BC29826D81005B7A16 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T3397XTR77;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TimetableWidgets/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TimetableWidgets;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = pvGrab.timetable.kubsau.app.TimetableWidgets;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		E78495BD29826D81005B7A16 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T3397XTR77;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TimetableWidgets/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TimetableWidgets;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = pvGrab.timetable.kubsau.app.TimetableWidgets;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -965,15 +818,6 @@
 			buildConfigurations = (
 				E5E18D9D28CCF56D0057EB2C /* Debug */,
 				E5E18D9E28CCF56D0057EB2C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E78495BB29826D81005B7A16 /* Build configuration list for PBXNativeTarget "TimetableWidgetsExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E78495BC29826D81005B7A16 /* Debug */,
-				E78495BD29826D81005B7A16 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
