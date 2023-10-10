@@ -191,7 +191,7 @@ class TimetablePresenter {
                 let profDocs = try lesson.select("td")
                     .filter({ try $0.classNames().contains("diss") })
                     .first?
-                    .select("a")
+                    .select("span") // was "a" with a link, may come back one day
                 
                 if let profDocs = profDocs {
                     for profDoc in profDocs {
