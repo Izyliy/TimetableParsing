@@ -78,6 +78,9 @@ class TimetableViewController: UIViewController {
         tableView.delegate = displayManager
         tableView.dataSource = displayManager
         
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(reloadTableView(_:)), for: .valueChanged)
+        
         title = name != nil ? name : "Избранное"
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: optionsButton)
         
@@ -186,5 +189,9 @@ class TimetableViewController: UIViewController {
     @objc func chooseWeek(_ sender: UISegmentedControl) {
         let timetable = presenter?.getWeek(index: sender.selectedSegmentIndex)
         displayManager?.updateTableView(with: timetable ?? [])
+    }
+    
+    @objc func reloadTableView(_ sender: UIRefreshControl) {
+        self.presenter?.fetchTimetable(forReload: true)
     }
 }

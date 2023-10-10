@@ -92,6 +92,7 @@ class TimetablePresenter {
             })
         }.always {
             self.view?.stopIndication()
+            self.view?.tableView.refreshControl?.endRefreshing()
         }
     }
     
