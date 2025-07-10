@@ -63,6 +63,9 @@
 		E5E18DAE28CCF7190057EB2C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18DAB28CCF7190057EB2C /* Coordinator.swift */; };
 		E5E18DB028CCF7E90057EB2C /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18DAF28CCF7E90057EB2C /* SearchCoordinator.swift */; };
 		E5E18DB428CCF9BD0057EB2C /* SearchTimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18DB328CCF9BD0057EB2C /* SearchTimetableViewController.swift */; };
+		E5E19FE32E1FB6A90029D573 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5E19FE22E1FB6A90029D573 /* GoogleService-Info.plist */; };
+		E5E19FE62E1FB8680029D573 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E5E19FE52E1FB8680029D573 /* FirebaseAnalytics */; };
+		E5E19FE82E1FB8680029D573 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = E5E19FE72E1FB8680029D573 /* FirebaseAnalyticsCore */; };
 		E5FA0D4329A8CD07007F3BA7 /* TimetableLesson+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FA0D4129A8CD07007F3BA7 /* TimetableLesson+CoreDataProperties.swift */; };
 		E7124F24298D0A3F00A035A3 /* TimetableWeek+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7124F22298D0A3F00A035A3 /* TimetableWeek+CoreDataClass.swift */; };
 		E7124F25298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7124F23298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift */; };
@@ -141,6 +144,7 @@
 		E5E18DAB28CCF7190057EB2C /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E5E18DAF28CCF7E90057EB2C /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		E5E18DB328CCF9BD0057EB2C /* SearchTimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTimetableViewController.swift; sourceTree = "<group>"; };
+		E5E19FE22E1FB6A90029D573 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E5FA0D4129A8CD07007F3BA7 /* TimetableLesson+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimetableLesson+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E7124F22298D0A3F00A035A3 /* TimetableWeek+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimetableWeek+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E7124F23298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimetableWeek+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -168,8 +172,10 @@
 			files = (
 				E56BE77528CE0A54007FE14E /* netfox in Frameworks */,
 				E56BE76D28CDEC9B007FE14E /* URLRequestBuilder in Frameworks */,
+				E5E19FE62E1FB8680029D573 /* FirebaseAnalytics in Frameworks */,
 				E56BE76428CD1F3F007FE14E /* SnapKit in Frameworks */,
 				E56BE76728CD1FA3007FE14E /* SwiftSoup in Frameworks */,
+				E5E19FE82E1FB8680029D573 /* FirebaseAnalyticsCore in Frameworks */,
 				E56BE76A28CD208D007FE14E /* Promises in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +374,7 @@
 				E53FB4582904264200BDACB9 /* Colors.xcassets */,
 				E5E18D9428CCF56D0057EB2C /* Images.xcassets */,
 				E5E18D9928CCF56D0057EB2C /* Info.plist */,
+				E5E19FE22E1FB6A90029D573 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -477,6 +484,8 @@
 				E56BE76928CD208D007FE14E /* Promises */,
 				E56BE76C28CDEC9B007FE14E /* URLRequestBuilder */,
 				E56BE77428CE0A54007FE14E /* netfox */,
+				E5E19FE52E1FB8680029D573 /* FirebaseAnalytics */,
+				E5E19FE72E1FB8680029D573 /* FirebaseAnalyticsCore */,
 			);
 			productName = Timetable;
 			productReference = E5E18D8828CCF56C0057EB2C /* Timetable.app */;
@@ -513,6 +522,7 @@
 				E56BE76828CD208D007FE14E /* XCRemoteSwiftPackageReference "promises" */,
 				E56BE76B28CDEC9B007FE14E /* XCRemoteSwiftPackageReference "URLRequestBuilder" */,
 				E56BE77328CE0A54007FE14E /* XCRemoteSwiftPackageReference "netfox" */,
+				E5E19FE42E1FB8680029D573 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = E5E18D8928CCF56C0057EB2C /* Products */;
 			projectDirPath = "";
@@ -529,6 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E53FB4592904264200BDACB9 /* Colors.xcassets in Resources */,
+				E5E19FE32E1FB6A90029D573 /* GoogleService-Info.plist in Resources */,
 				E5E18D9828CCF56D0057EB2C /* LaunchScreen.storyboard in Resources */,
 				E5E18D9528CCF56D0057EB2C /* Images.xcassets in Resources */,
 			);
@@ -865,6 +876,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		E5E19FE42E1FB8680029D573 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.15.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -892,6 +911,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E56BE77328CE0A54007FE14E /* XCRemoteSwiftPackageReference "netfox" */;
 			productName = netfox;
+		};
+		E5E19FE52E1FB8680029D573 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5E19FE42E1FB8680029D573 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		E5E19FE72E1FB8680029D573 /* FirebaseAnalyticsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5E19FE42E1FB8680029D573 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 

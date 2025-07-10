@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 import netfox
 import BackgroundTasks
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -42,6 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         appCoordinator = AppCoordinator.init(navigationController)
         appCoordinator?.start()
+        
+        FirebaseApp.configure()
                 
         return true
     }
