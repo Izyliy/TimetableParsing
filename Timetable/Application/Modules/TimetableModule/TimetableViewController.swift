@@ -11,6 +11,8 @@ class TimetableViewController: UIViewController {
     
     let tableView: UITableView = {
         let tableView = UITableView(frame: CGRectZero, style: .grouped)
+        
+        tableView.showsVerticalScrollIndicator = false
                 
         return tableView
     }()

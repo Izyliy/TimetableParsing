@@ -6,6 +6,8 @@
 	<array>
 		<string>com.kubsautimetables.task.notifications</string>
 	</array>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>FiraSans-Regular.ttf</string>
