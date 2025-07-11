@@ -64,8 +64,8 @@
 		E5E18DB028CCF7E90057EB2C /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18DAF28CCF7E90057EB2C /* SearchCoordinator.swift */; };
 		E5E18DB428CCF9BD0057EB2C /* SearchTimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18DB328CCF9BD0057EB2C /* SearchTimetableViewController.swift */; };
 		E5E19FE32E1FB6A90029D573 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5E19FE22E1FB6A90029D573 /* GoogleService-Info.plist */; };
-		E5E19FE62E1FB8680029D573 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E5E19FE52E1FB8680029D573 /* FirebaseAnalytics */; };
-		E5E19FE82E1FB8680029D573 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = E5E19FE72E1FB8680029D573 /* FirebaseAnalyticsCore */; };
+		E5E19FEC2E20F7A60029D573 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E5E19FEB2E20F7A60029D573 /* FirebaseAnalytics */; };
+		E5E19FEE2E20F7A60029D573 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = E5E19FED2E20F7A60029D573 /* FirebaseCrashlytics */; };
 		E5FA0D4329A8CD07007F3BA7 /* TimetableLesson+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FA0D4129A8CD07007F3BA7 /* TimetableLesson+CoreDataProperties.swift */; };
 		E7124F24298D0A3F00A035A3 /* TimetableWeek+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7124F22298D0A3F00A035A3 /* TimetableWeek+CoreDataClass.swift */; };
 		E7124F25298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7124F23298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift */; };
@@ -172,10 +172,10 @@
 			files = (
 				E56BE77528CE0A54007FE14E /* netfox in Frameworks */,
 				E56BE76D28CDEC9B007FE14E /* URLRequestBuilder in Frameworks */,
-				E5E19FE62E1FB8680029D573 /* FirebaseAnalytics in Frameworks */,
+				E5E19FEC2E20F7A60029D573 /* FirebaseAnalytics in Frameworks */,
+				E5E19FEE2E20F7A60029D573 /* FirebaseCrashlytics in Frameworks */,
 				E56BE76428CD1F3F007FE14E /* SnapKit in Frameworks */,
 				E56BE76728CD1FA3007FE14E /* SwiftSoup in Frameworks */,
-				E5E19FE82E1FB8680029D573 /* FirebaseAnalyticsCore in Frameworks */,
 				E56BE76A28CD208D007FE14E /* Promises in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,8 +373,8 @@
 			children = (
 				E53FB4582904264200BDACB9 /* Colors.xcassets */,
 				E5E18D9428CCF56D0057EB2C /* Images.xcassets */,
-				E5E18D9928CCF56D0057EB2C /* Info.plist */,
 				E5E19FE22E1FB6A90029D573 /* GoogleService-Info.plist */,
+				E5E18D9928CCF56D0057EB2C /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -485,8 +485,8 @@
 				E56BE76928CD208D007FE14E /* Promises */,
 				E56BE76C28CDEC9B007FE14E /* URLRequestBuilder */,
 				E56BE77428CE0A54007FE14E /* netfox */,
-				E5E19FE52E1FB8680029D573 /* FirebaseAnalytics */,
-				E5E19FE72E1FB8680029D573 /* FirebaseAnalyticsCore */,
+				E5E19FEB2E20F7A60029D573 /* FirebaseAnalytics */,
+				E5E19FED2E20F7A60029D573 /* FirebaseCrashlytics */,
 			);
 			productName = Timetable;
 			productReference = E5E18D8828CCF56C0057EB2C /* Timetable.app */;
@@ -523,7 +523,7 @@
 				E56BE76828CD208D007FE14E /* XCRemoteSwiftPackageReference "promises" */,
 				E56BE76B28CDEC9B007FE14E /* XCRemoteSwiftPackageReference "URLRequestBuilder" */,
 				E56BE77328CE0A54007FE14E /* XCRemoteSwiftPackageReference "netfox" */,
-				E5E19FE42E1FB8680029D573 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				E5E19FEA2E20F7A60029D573 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = E5E18D8928CCF56C0057EB2C /* Products */;
 			projectDirPath = "";
@@ -687,7 +687,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -709,6 +709,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -763,6 +764,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -776,7 +778,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = T3397XTR77;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Timetable/Resources/Info.plist;
@@ -811,7 +813,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = T3397XTR77;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Timetable/Resources/Info.plist;
@@ -903,7 +905,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		E5E19FE42E1FB8680029D573 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		E5E19FEA2E20F7A60029D573 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
@@ -939,15 +941,15 @@
 			package = E56BE77328CE0A54007FE14E /* XCRemoteSwiftPackageReference "netfox" */;
 			productName = netfox;
 		};
-		E5E19FE52E1FB8680029D573 /* FirebaseAnalytics */ = {
+		E5E19FEB2E20F7A60029D573 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E5E19FE42E1FB8680029D573 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = E5E19FEA2E20F7A60029D573 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
 		};
-		E5E19FE72E1FB8680029D573 /* FirebaseAnalyticsCore */ = {
+		E5E19FED2E20F7A60029D573 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E5E19FE42E1FB8680029D573 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsCore;
+			package = E5E19FEA2E20F7A60029D573 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 

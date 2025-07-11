@@ -9,7 +9,10 @@ import UIKit
 import CoreData
 import netfox
 import BackgroundTasks
-import FirebaseCore
+
+import Firebase
+import FirebaseAnalytics
+import FirebaseCrashlytics
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -44,8 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appCoordinator = AppCoordinator.init(navigationController)
         appCoordinator?.start()
         
+        UserDefaults.standard.setValue(true, forKey: "FIRDebugEnabled")
         FirebaseApp.configure()
-                
+        
         return true
     }
     
