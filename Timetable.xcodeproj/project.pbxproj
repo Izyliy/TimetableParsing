@@ -66,6 +66,7 @@
 		E5E19FE32E1FB6A90029D573 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5E19FE22E1FB6A90029D573 /* GoogleService-Info.plist */; };
 		E5E19FEC2E20F7A60029D573 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E5E19FEB2E20F7A60029D573 /* FirebaseAnalytics */; };
 		E5E19FEE2E20F7A60029D573 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = E5E19FED2E20F7A60029D573 /* FirebaseCrashlytics */; };
+		E5E19FF02E2145640029D573 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = E5E19FEF2E2145640029D573 /* PrivacyInfo.xcprivacy */; };
 		E5FA0D4329A8CD07007F3BA7 /* TimetableLesson+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FA0D4129A8CD07007F3BA7 /* TimetableLesson+CoreDataProperties.swift */; };
 		E7124F24298D0A3F00A035A3 /* TimetableWeek+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7124F22298D0A3F00A035A3 /* TimetableWeek+CoreDataClass.swift */; };
 		E7124F25298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7124F23298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift */; };
@@ -145,6 +146,7 @@
 		E5E18DAF28CCF7E90057EB2C /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		E5E18DB328CCF9BD0057EB2C /* SearchTimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTimetableViewController.swift; sourceTree = "<group>"; };
 		E5E19FE22E1FB6A90029D573 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E5E19FEF2E2145640029D573 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		E5FA0D4129A8CD07007F3BA7 /* TimetableLesson+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimetableLesson+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E7124F22298D0A3F00A035A3 /* TimetableWeek+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimetableWeek+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E7124F23298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimetableWeek+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 		E5E18D7F28CCF56C0057EB2C = {
 			isa = PBXGroup;
 			children = (
+				E5E19FEF2E2145640029D573 /* PrivacyInfo.xcprivacy */,
 				E5E18D8A28CCF56C0057EB2C /* Timetable */,
 				E78495B029826D7F005B7A16 /* TimetableWidgets */,
 				E78495AB29826D7F005B7A16 /* Frameworks */,
@@ -542,6 +545,7 @@
 				E53FB4592904264200BDACB9 /* Colors.xcassets in Resources */,
 				E5E19FE32E1FB6A90029D573 /* GoogleService-Info.plist in Resources */,
 				E5E18D9828CCF56D0057EB2C /* LaunchScreen.storyboard in Resources */,
+				E5E19FF02E2145640029D573 /* PrivacyInfo.xcprivacy in Resources */,
 				E5E18D9528CCF56D0057EB2C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
