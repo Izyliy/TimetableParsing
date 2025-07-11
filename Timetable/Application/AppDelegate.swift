@@ -11,6 +11,7 @@ import netfox
 import BackgroundTasks
 
 import Firebase
+import FirebaseCore
 import FirebaseAnalytics
 import FirebaseCrashlytics
 
@@ -47,7 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appCoordinator = AppCoordinator.init(navigationController)
         appCoordinator?.start()
         
-        UserDefaults.standard.setValue(true, forKey: "FIRDebugEnabled")
         FirebaseApp.configure()
         
         return true

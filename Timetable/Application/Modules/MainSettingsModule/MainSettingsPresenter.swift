@@ -8,6 +8,7 @@
 import Foundation
 import UserNotifications
 import netfox
+import FirebaseAnalytics
 
 class MainSettingsPresenter {
     private let useCase = MainSettingsUseCase()
@@ -50,6 +51,7 @@ class MainSettingsPresenter {
             .init(title: "Просмотр CoreData", type: .disclosure, handler: viewCoreDataObjects),
             .init(title: "Создать уведомление", type: .disclosure, handler: testNotification),
             .init(title: "Test Crush", type: .disclosure, handler: testCrush),
+            .init(title: "FIRAnalytics Test Log", type: .disclosure, handler: testLog),
             .init(title: "Debug Alerts", type: .switcher, handler: { _ in  }),
         ], hint: "Режим разработчика включен!"))
         
@@ -94,6 +96,12 @@ class MainSettingsPresenter {
     private func testCrush(_ isOn: Bool?) {
         let n = [0]
         let _ = n[1]
+    }
+    
+    private func testLog(_ isOn: Bool?) {
+        Analytics.logEvent("test_log", parameters: [
+            "test": "123"
+        ])
     }
 }
 
