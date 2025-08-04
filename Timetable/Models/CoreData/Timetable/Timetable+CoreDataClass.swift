@@ -31,7 +31,7 @@ public class Timetable: NSManagedObject {
         return weeksArray[1].daysArray
     }
     
-    public func getPreviewDays(for date: Date, _ count: Int = 3) -> [TimetableDay] {
+    public func getPreviewDays(for date: Date, _ count: Int = 3, searchDepth: Int = 8) -> [TimetableDay] {
         if count <= 0 { return [] }
         
         let fullDaysArray = firstWeekArray + secondWeekArray
@@ -60,7 +60,7 @@ public class Timetable: NSManagedObject {
             } else {
                 ///Tries to find a day if timetable has not been updated for a long time
                 ///Do it up to 8 times ( 4 months ), no point in searching further
-                for i in 1...8 {
+                for i in 1...searchDepth {
                     var dateComponent = DateComponents()
                     dateComponent.day = -i * 14
                     let newDate = Calendar.current.date(byAdding: dateComponent, to: date)

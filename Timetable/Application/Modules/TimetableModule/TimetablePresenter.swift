@@ -128,8 +128,9 @@ class TimetablePresenter {
             guard let timetable = state.timetable else { return [] }
             
             let date = Calendar.current.startOfDay(for: Date())
+            let depth = state.name == "t1ES2202" ? 48 : 8
             
-            return timetable.getPreviewDays(for: date)
+            return timetable.getPreviewDays(for: date, searchDepth: depth)
         }
     }
     
