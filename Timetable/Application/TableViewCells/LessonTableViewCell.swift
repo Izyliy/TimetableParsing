@@ -33,6 +33,7 @@ class LessonTableViewCell: UITableViewCell {
         view.isEditable = false
         view.backgroundColor = .clear
         view.isScrollEnabled = false
+        view.textColor = .lightGray
         
         return view
     }()
@@ -41,7 +42,7 @@ class LessonTableViewCell: UITableViewCell {
         let label = UILabel()
         
         label.text = "Not Configured"
-        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.font = .monospacedDigitSystemFont(ofSize: 16, weight: .medium) // .systemFont(ofSize: 16, weight: .medium)
         label.textAlignment = .right
         label.numberOfLines = 0
         
@@ -98,13 +99,13 @@ class LessonTableViewCell: UITableViewCell {
         nameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(4)
             make.left.equalTo(lectionView.snp.right).offset(8)
-            make.right.lessThanOrEqualTo(timeLabel.snp.left)
+            make.right.lessThanOrEqualTo(timeLabel.snp.left).offset(-8)
         }
         
         professorTextView.snp.makeConstraints { make in
             make.top.greaterThanOrEqualTo(nameLabel.snp.bottom).offset(4)
             make.left.equalTo(lectionView.snp.right).offset(4)
-            make.height.equalTo(20)
+//            make.height.equalTo(20)
 //            make.bottom.equalToSuperview().offset(-4)
         }
         
@@ -156,15 +157,16 @@ class LessonTableViewCell: UITableViewCell {
             var string = ""
             
             if firstPassed {
-                string = ", " + (professor.name ?? "")
+                string = "\n" + (professor.name ?? "")
             } else {
                 firstPassed = true
                 string = professor.name ?? ""
             }
             
             let attributes: [NSAttributedString.Key: Any] = [
-                .link: professor.link ?? "",
-                .font: UIFont.systemFont(ofSize: 15),
+//                .link: professor.link ?? "",
+                .font: UIFont.systemFont(ofSize: 14, weight: .medium),
+                .foregroundColor: UIColor.gray,
             ]
             
             let attributedString = NSMutableAttributedString(string: string, attributes: attributes)
