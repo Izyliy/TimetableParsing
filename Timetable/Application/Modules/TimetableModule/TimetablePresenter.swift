@@ -172,6 +172,7 @@ class TimetablePresenter {
             let day = useCase.getNewDay(with: date)
             
             for lesson in lessons {
+                // Time section
                 let timeMas = try lesson.select("td")
                     .filter({ try $0.classNames().contains("time") })
                     .first?
@@ -180,68 +181,67 @@ class TimetablePresenter {
                 
                 let startTime = String(timeMas?.first ?? "")
                 let endTime = String(timeMas?.last ?? "")
-
+                
+                // Self-explanatory
                 let isLection = try lesson.select("td")
                     .filter({ try $0.classNames().contains("lection") })
                     .first?
                     .className()
                     .contains("yes") ?? false
                 
-                var profArray: [Professor?] = []
-                var distantLinks: [String] = []
-                let profDocs = try lesson.select("td")
+                // Cabinet if group schedule, group if cabinet schedule
+                let cabinet = try lesson.select("td")
+                    .filter({ try $0.classNames().contains("who-where") })
+                    .first?
+                    .text() ?? ""
+                
+                // Element for finding professors and lesson name
+                let mainElementNodes = try lesson.select("td")
                     .filter({ try $0.classNames().contains("diss") })
                     .first?
-                    .select("span") // was "a" with a link, may come back one day
+                    .getChildNodes()
                 
-                if let profDocs = profDocs {
+                // Section for filling in professors
+                var profArray: [Professor?] = []
+                var distantLinks: [String] = []
+                let profDocs = mainElementNodes?
+                    .compactMap({ $0 as? Element })
+                    .filter({ $0.tagName() == "span" })
+                
+                if let profDocs {
                     for profDoc in profDocs {
                         let profName = try profDoc.text()
                         let profLink = try profDoc.attr("href")
                         
                         if profName == "Ссылка на занятие" {
                             distantLinks.append(profLink)
+                        } else if profName.contains(",") {
+                            let profNames = profName.components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                            
+                            for name in profNames {
+                                profArray.append(useCase.getNewProfessor(name: name, link: profLink))
+                            }
                         } else {
                             profArray.append(useCase.getNewProfessor(name: profName, link: profLink))
                         }
                     }
                 }
                 
-//                let profName = try profDoc?.text()
-//                let profLink = try profDoc?.attr("href")
-//                let professor = useCase.getNewProfessor(name: profName, link: profLink)
-
-                let cabinet = try lesson.select("td")
-                    .filter({ try $0.classNames().contains("who-where") })
-                    .first?
-                    .text() ?? ""
-                
-//
-//                let className = try lesson.select("td")
-//                    .filter({ try $0.classNames().contains("diss") })
-//                    .first?
-//                    .select("strong")
-//                    .first()?
-//                    .text()
-                
-                var dropNumber = 0
-                for prof in profArray {
-                    dropNumber += prof?.name?.count ?? 0
-                    dropNumber += 1
+                // Section for a class name
+                let classNameSubstring = if isLection {
+                    try mainElementNodes?
+                        .compactMap({ $0 as? Element })
+                        .first(where: { $0.tagName() == "strong" })?
+                        .text()
+                } else {
+                    (mainElementNodes?.first(where: { $0 is TextNode }) as? TextNode)?
+                        .text()
+                        .trimmingCharacters(in: .whitespacesAndNewlines)
                 }
                 
-                for _ in distantLinks {
-                    dropNumber += "Ссылка на занятие".count
-                    dropNumber += 1
-                }
-                
-                let classNameSubstring = try lesson.select("td")
-                    .filter({ try $0.classNames().contains("diss") })
-                    .first?
-                    .text()
-                    .dropLast(dropNumber)
                 let className = String(classNameSubstring ?? "")
-                                
+                
+                // Lesson creation
                 let lsn = useCase.getNewLesson(startTime: startTime,
                                                endTime: endTime,
                                                isLection: isLection,
