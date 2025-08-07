@@ -53,6 +53,13 @@
 		E5BE901B29744810001C3A22 /* MainSettingsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE901A29744810001C3A22 /* MainSettingsGateway.swift */; };
 		E5BE901D29744820001C3A22 /* MainSettingsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE901C29744820001C3A22 /* MainSettingsUseCase.swift */; };
 		E5BE901F29744835001C3A22 /* MainSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BE901E29744835001C3A22 /* MainSettingsPresenter.swift */; };
+		E5D1C5AF2E44AED2009FC383 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D1C5AE2E44AECC009FC383 /* MapCoordinator.swift */; };
+		E5D1C5B42E44B229009FC383 /* MainMapState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D1C5B32E44B220009FC383 /* MainMapState.swift */; };
+		E5D1C5B62E44B239009FC383 /* MainMapDisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D1C5B52E44B22C009FC383 /* MainMapDisplayManager.swift */; };
+		E5D1C5B82E44B241009FC383 /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D1C5B72E44B23D009FC383 /* MainMapViewController.swift */; };
+		E5D1C5BA2E44B24A009FC383 /* MainMapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D1C5B92E44B246009FC383 /* MainMapPresenter.swift */; };
+		E5D1C5BC2E44B251009FC383 /* MainMapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D1C5BB2E44B24D009FC383 /* MainMapUseCase.swift */; };
+		E5D1C5BE2E44B257009FC383 /* MainMapGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D1C5BD2E44B253009FC383 /* MainMapGateway.swift */; };
 		E5E18D8C28CCF56C0057EB2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18D8B28CCF56C0057EB2C /* AppDelegate.swift */; };
 		E5E18D8E28CCF56C0057EB2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18D8D28CCF56C0057EB2C /* SceneDelegate.swift */; };
 		E5E18D9028CCF56C0057EB2C /* CoreDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E18D8F28CCF56C0057EB2C /* CoreDataViewController.swift */; };
@@ -133,6 +140,13 @@
 		E5BE901A29744810001C3A22 /* MainSettingsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsGateway.swift; sourceTree = "<group>"; };
 		E5BE901C29744820001C3A22 /* MainSettingsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsUseCase.swift; sourceTree = "<group>"; };
 		E5BE901E29744835001C3A22 /* MainSettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsPresenter.swift; sourceTree = "<group>"; };
+		E5D1C5AE2E44AECC009FC383 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
+		E5D1C5B32E44B220009FC383 /* MainMapState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapState.swift; sourceTree = "<group>"; };
+		E5D1C5B52E44B22C009FC383 /* MainMapDisplayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapDisplayManager.swift; sourceTree = "<group>"; };
+		E5D1C5B72E44B23D009FC383 /* MainMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
+		E5D1C5B92E44B246009FC383 /* MainMapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapPresenter.swift; sourceTree = "<group>"; };
+		E5D1C5BB2E44B24D009FC383 /* MainMapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapUseCase.swift; sourceTree = "<group>"; };
+		E5D1C5BD2E44B253009FC383 /* MainMapGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapGateway.swift; sourceTree = "<group>"; };
 		E5E18D8828CCF56C0057EB2C /* Timetable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timetable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5E18D8B28CCF56C0057EB2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5E18D8D28CCF56C0057EB2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -304,6 +318,19 @@
 			path = TimetableLesson;
 			sourceTree = "<group>";
 		};
+		E5D1C5B22E44B211009FC383 /* MainMapModule */ = {
+			isa = PBXGroup;
+			children = (
+				E5D1C5B32E44B220009FC383 /* MainMapState.swift */,
+				E5D1C5BD2E44B253009FC383 /* MainMapGateway.swift */,
+				E5D1C5BB2E44B24D009FC383 /* MainMapUseCase.swift */,
+				E5D1C5B92E44B246009FC383 /* MainMapPresenter.swift */,
+				E5D1C5B72E44B23D009FC383 /* MainMapViewController.swift */,
+				E5D1C5B52E44B22C009FC383 /* MainMapDisplayManager.swift */,
+			);
+			path = MainMapModule;
+			sourceTree = "<group>";
+		};
 		E5E18D7F28CCF56C0057EB2C = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +380,7 @@
 			children = (
 				E53FB43828F1C3B400BDACB9 /* TimetableCoordinator.swift */,
 				E5E18DAF28CCF7E90057EB2C /* SearchCoordinator.swift */,
+				E5D1C5AE2E44AECC009FC383 /* MapCoordinator.swift */,
 				E53FB43628F172C500BDACB9 /* SettingsCoordinator.swift */,
 			);
 			path = TabBarCoordinators;
@@ -388,6 +416,7 @@
 				E53FB43A28F1C3CD00BDACB9 /* PlaceholderViewController.swift */,
 				E7E0C4E92984000F0004267F /* CoreDataModule */,
 				E53FB44F28FE8A0100BDACB9 /* MainSettingsModule */,
+				E5D1C5B22E44B211009FC383 /* MainMapModule */,
 				E584201028D5D5D200948B8F /* TimetableModule */,
 				E5E18DB228CCF9770057EB2C /* SearchTimetableModule */,
 			);
@@ -598,19 +627,25 @@
 				E5AFABC228E844C700482829 /* Professor+CoreDataProperties.swift in Sources */,
 				E584200C28D38F7F00948B8F /* SearchTimetableDisplayManager.swift in Sources */,
 				E56BE77728CE582D007FE14E /* SearchTimetablePresenter.swift in Sources */,
+				E5D1C5B62E44B239009FC383 /* MainMapDisplayManager.swift in Sources */,
 				E584201A28D7521C00948B8F /* LessonTableViewCell.swift in Sources */,
 				E7124F24298D0A3F00A035A3 /* TimetableWeek+CoreDataClass.swift in Sources */,
 				E5AFABC828E8762C00482829 /* TimetablePresenter.swift in Sources */,
 				E53FB45728FE8EBD00BDACB9 /* IconTitleTableViewCell.swift in Sources */,
 				E5AFAB9B28E8266300482829 /* TimetableModel.xcdatamodeld in Sources */,
 				E584200F28D3949700948B8F /* SuggestedGroupTableViewCell.swift in Sources */,
+				E5D1C5B42E44B229009FC383 /* MainMapState.swift in Sources */,
 				E520F875292544760011D62B /* UIViewController+Alerts.swift in Sources */,
+				E5D1C5B82E44B241009FC383 /* MainMapViewController.swift in Sources */,
 				E53FB44728F2ECA700BDACB9 /* UINavigationBar+Appearance.swift in Sources */,
 				E7E0C4F7298CFD990004267F /* TimetableDay+CoreDataProperties.swift in Sources */,
+				E5D1C5BC2E44B251009FC383 /* MainMapUseCase.swift in Sources */,
 				E5E18DAE28CCF7190057EB2C /* Coordinator.swift in Sources */,
 				E5BE901D29744820001C3A22 /* MainSettingsUseCase.swift in Sources */,
 				E7124F25298D0A3F00A035A3 /* TimetableWeek+CoreDataProperties.swift in Sources */,
+				E5D1C5AF2E44AED2009FC383 /* MapCoordinator.swift in Sources */,
 				E584201228D5D69200948B8F /* TimetableViewController.swift in Sources */,
+				E5D1C5BE2E44B257009FC383 /* MainMapGateway.swift in Sources */,
 				E53FB44A28F2ECA700BDACB9 /* UIButton+Animation.swift in Sources */,
 				E5E18DAD28CCF7190057EB2C /* AppCoordinator.swift in Sources */,
 				E53FB41F28E8A24D00BDACB9 /* Date+Format.swift in Sources */,
@@ -636,6 +671,7 @@
 				E53FB43528E9EF1700BDACB9 /* TextTableViewCell.swift in Sources */,
 				E56BE77B28CF95BC007FE14E /* SearchTimetableGateway.swift in Sources */,
 				E7124F482991397100A035A3 /* DevelopConfigurator.swift in Sources */,
+				E5D1C5BA2E44B24A009FC383 /* MainMapPresenter.swift in Sources */,
 				E520F87C292A832E0011D62B /* SearchTimetableUseCase.swift in Sources */,
 				E5AFABC128E844C700482829 /* Professor+CoreDataClass.swift in Sources */,
 				E53FB42328E9A7B100BDACB9 /* String+Cast.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 enum TabBarPage {
     case timetable
     case search
+    case map
     case settings
 
     init?(index: Int) {
@@ -19,6 +20,8 @@ enum TabBarPage {
         case 1:
             self = .search
         case 2:
+            self = .map
+        case 3:
             self = .settings
         default:
             return nil
@@ -31,6 +34,8 @@ enum TabBarPage {
             return "Избранное"
         case .search:
             return "Поиск"
+        case .map:
+            return "Карта"
         case .settings:
             return "Настройки"
         }
@@ -42,8 +47,10 @@ enum TabBarPage {
             return 0
         case .search:
             return 1
-        case .settings:
+        case .map:
             return 2
+        case .settings:
+            return 3
         }
     }
     
@@ -53,6 +60,8 @@ enum TabBarPage {
             return UIImage(named: "Star")
         case .search:
             return UIImage(named: "Search")
+        case .map:
+            return UIImage(named: "Map")
         case .settings:
             return UIImage(named: "Settings")
         }
@@ -92,7 +101,7 @@ class TabCoordinator: NSObject, Coordinator {
 
     func start() {
         // Let's define which pages do we want to add into tab bar
-        let pages: [TabBarPage] = [.timetable, .search, .settings]
+        let pages: [TabBarPage] = [.timetable, .search, .map, .settings]
             .sorted(by: { $0.pageOrderNumber() < $1.pageOrderNumber() })
         
         // Initialization of ViewControllers or these pages
@@ -117,6 +126,13 @@ class TabCoordinator: NSObject, Coordinator {
         searchCoordinator.finishDelegate = self
         searchCoordinator.start()
         childCoordinators.append(searchCoordinator)
+    }
+    
+    private func startMapFlow(navigationController: UINavigationController) {
+        let mapCoordinator = MapCoordinator.init(navigationController)
+        mapCoordinator.finishDelegate = self
+        mapCoordinator.start()
+        childCoordinators.append(mapCoordinator)
     }
     
     private func startSettingsFlow(navigationController: UINavigationController){
@@ -156,6 +172,8 @@ class TabCoordinator: NSObject, Coordinator {
             startTimetableFlow(navigationController: navController)
         case .search:
             startSearchFlow(navigationController: navController)
+        case .map:
+            startMapFlow(navigationController: navController)
         case .settings:
             startSettingsFlow(navigationController: navController)
         }
