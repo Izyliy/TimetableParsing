@@ -63,7 +63,7 @@ class TimetablePresenter {
         
         let notifManager = NotificationManager()
         notifManager.clearAllNotifications()
-        notifManager.scheduleNotifications(for: name ?? "", handler: { _, _ in  })
+        notifManager.scheduleNotifications(for: name, handler: { _, _ in  })
     }
     
     func showFullTimetable() {
